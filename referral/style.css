@@ -1985,3 +1985,29 @@ ul {
   -webkit-mask-image: linear-gradient(270deg, #000 95%, transparent);
   mask-image: linear-gradient(270deg, #000 95%, transparent);
 }
+
+/* ─── Header description: fixed line breaks on desktop ─── */
+.description {
+  line-height: 1.6;
+}
+
+.description p {
+  margin-top: 14px;
+}
+
+.description-lead {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 639px) {
+  .description br {
+    display: none;
+  }
+
+  .description-lead {
+    font-size: 16px;
+  }
+}

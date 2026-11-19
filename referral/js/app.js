@@ -14,7 +14,7 @@
       '<li class="item">' +
         '<div class="item-box">' +
           '<img v-if="item.icon" :src="\'images/items/\' + item.icon" alt="" loading="lazy" />' +
-          '<i v-else aria-hidden="true">✦</i>' +
+          '<i v-else aria-hidden="true">?</i>' +
           '<span v-if="item.qty" class="item-qty">x{{ item.qty }}</span>' +
         '</div>' +
         '<p class="item-name">{{ item.name }}</p>' +
@@ -56,15 +56,9 @@
         lightbox: null,
         resultPopup: null,
         toasts: [],
-        scrolled: false,
-        activeSection: 'home',
-        navItems: [
-          { id: 'home', label: 'Home' },
-          { id: 'welcome', label: 'Welcome!' },
-          { id: 'my-invitation', label: 'My Invitation' },
-          { id: 'lucky-draw', label: 'Lucky Draw' },
-          { id: 'rules', label: 'Rules' }
-        ],
+        windowWidth: window.innerWidth,
+        envelopeNativeW: 898,
+        envelopeNativeH: 500,
         previewOpen: window.innerWidth >= 768,
         previewState: 'guest',
         previewStates: [
@@ -77,6 +71,12 @@
       };
     },
     computed: {
+      isMobile: function () {
+        return this.windowWidth < 640;
+      },
+      envelopeScale: function () {
+        return this.isMobile ? Math.min(1, (this.windowWidth - 16) / this.envelopeNativeW) : 1;
+      },
       // guest | registered | ineligible | ready
       codeState: function () {
         if (!this.me.loggedIn) return 'guest';
@@ -117,22 +117,13 @@
         else if (self.lightbox !== null) self.lightbox = null;
         else self.showDetails = false;
       };
-      this._onScroll = function () {
-        self.scrolled = window.scrollY > 320;
-        var current = 'home', line = window.innerHeight * 0.4;
-        self.navItems.forEach(function (n) {
-          var el = document.getElementById(n.id);
-          if (el && el.getBoundingClientRect().top <= line) current = n.id;
-        });
-        self.activeSection = current;
-      };
+      this._onResize = function () { self.windowWidth = window.innerWidth; };
       window.addEventListener('keydown', this._onKeydown);
-      window.addEventListener('scroll', this._onScroll, { passive: true });
-      this._onScroll();
+      window.addEventListener('resize', this._onResize);
     },
     beforeDestroy: function () {
       window.removeEventListener('keydown', this._onKeydown);
-      window.removeEventListener('scroll', this._onScroll);
+      window.removeEventListener('resize', this._onResize);
     },
     methods: {
       scrollTo: function (id) {
@@ -195,7 +186,7 @@
           if (window.confetti && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             window.confetti({
               particleCount: 140, spread: 80, origin: { y: 0.6 },
-              colors: ['#49a261', '#f1f047', '#f0468a', '#6a3df0', '#5ce8e8', '#ffffff']
+              colors: ['#a78bfa', '#f472b6', '#ffd043', '#3b82f6', '#10b981']
             });
           }
         }).catch(function () { self.busy = false; self.showError('fallback'); });

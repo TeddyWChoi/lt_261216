@@ -3,489 +3,499 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SHINING Referral Event - La Tale Online</title>
-  <meta name="description" content="La Tale Referral Event - Invite your friends and earn special rewards together!" />
-  <meta property="og:title" content="SHINING Referral Event" />
-  <meta property="og:description" content="Invite your friends to La Tale and earn special rewards together." />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-  <link rel="stylesheet" href="css/referral.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Tale Referral Event</title>
+  <meta name="description" content="La Tale Referral Event - Invite your friends and earn special rewards!" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
   <div id="app" v-cloak>
-    <div class="rf-wrap">
+    <div class="page-wrapper">
 
-      <!-- 0. Top bar -->
-      <header class="topbar" :class="{ 'is-scrolled': scrolled }">
-        <div class="topbar-inner">
-          <a class="topbar-logo" :href="links.home"><img src="images/logo_latale.png" alt="La Tale" /></a>
-          <nav class="topbar-nav" aria-label="Sections">
-            <a v-for="n in navItems" :key="n.id" :href="'#' + n.id" :class="{ active: activeSection === n.id }"
-              @click.prevent="scrollTo(n.id)">{{ n.label }}</a>
-          </nav>
-          <div class="topbar-account">
-            <template v-if="me.loggedIn">
-              <span class="account-name">{{ me.account }}</span>
-              <button class="btn-sign" type="button" @click="signOut">Sign Out</button>
-            </template>
-            <button v-else class="btn-sign btn-sign-in" type="button" @click="signIn">Sign In</button>
-          </div>
+      <!-- Atmospheric Glow (desktop) -->
+      <div class="atmo-glow"></div>
+
+      <!-- Left Character (desktop) -->
+      <div class="char-left-wrap">
+        <div class="char-left-inner">
+          <img src="images/idol-a.webp" alt="" />
         </div>
-      </header>
+      </div>
 
-      <!-- 1. Hero -->
-      <section class="hero" id="home">
-        <div class="hero-confetti" aria-hidden="true"></div>
-        <div class="hero-balloon hero-balloon-1" aria-hidden="true"></div>
-        <div class="hero-balloon hero-balloon-2" aria-hidden="true"></div>
+      <!-- Right Character (desktop) -->
+      <div class="char-right-wrap">
+        <img src="images/idol-b.webp" alt="" />
+      </div>
 
-        <div class="hero-copy">
-          <div class="hero-logo-wrap">
-            <div class="hero-logo" role="img" aria-label="SHINING"></div>
-          </div>
-          <p class="hero-kicker">Back to La Tale? New to La Tale?</p>
-          <h1 class="hero-title">Referral Event</h1>
-          <p class="ribbon hero-period">Event Period: December 16 ~ February 14</p>
-          <p class="hero-sub">A New Stage Begins with IDOL!</p>
-          <div class="hero-cta">
-            <a class="btn btn-large" href="#my-invitation" @click.prevent="scrollTo('my-invitation')">Invite Friends</a>
-            <a class="btn btn-large btn-purple" href="#code" @click.prevent="scrollTo('code')">Enter a Code</a>
-          </div>
-        </div>
+      <!-- Account (sign in / out) -->
+      <div class="account-bar">
+        <template v-if="me.loggedIn">
+          <span class="account-name">{{ me.account }}</span>
+          <button class="btn-account" type="button" @click="signOut">Sign Out</button>
+        </template>
+        <button v-else class="btn-account" type="button" @click="signIn">Sign In</button>
+      </div>
 
-        <div class="hero-chars" aria-hidden="true">
-          <div class="hero-char hero-char-1"></div>
-          <div class="hero-char hero-char-4"></div>
-          <div class="hero-char hero-char-3"></div>
-        </div>
-      </section>
+      <!-- Main Content Column -->
+      <div class="main-column">
 
-      <!-- ===== Sky: intro + invited player ===== -->
-      <section class="sec sec-sky">
-        <div class="inner">
+        <!-- Header -->
+        <div class="header">
+          <p class="header-subtitle">Back to La Tale? New to La Tale?</p>
 
-          <!-- 2. Intro -->
-          <div class="intro">
-            <h2 class="intro-title">Better Together, More Rewards!</h2>
-            <p>Invite your friends to <strong>La Tale</strong> during the two-month event period starting December 16,
-              and enjoy special rewards together!</p>
-            <p>New and returning players who enter a friend's <strong>Invitation Code</strong> receive a
-              <strong>Welcome Package</strong> — and even more rewards as they level up.</p>
-            <p>Every invited player who reaches <strong>Ascension Lv. {{ cfg.inviterGoalLevel }}</strong> also counts
-              toward the inviter's milestone rewards.</p>
-            <ol class="flow">
-              <li>Friend enters your code &amp; logs in</li>
-              <li>Welcome rewards</li>
-              <li>Friend levels up</li>
-              <li>Bonus rewards for both of you</li>
-            </ol>
+          <h1 class="referral-title-text">REFERRAL EVENT</h1>
+
+          <div class="date-badge-wrap">
+            <span class="date-badge-text">Event Period: December 16 ~ February 14</span>
           </div>
 
-          <!-- NO. 01 — Invited player -->
-          <div class="block" id="welcome">
-            <h2 class="sp-title sp-title-green">Welcome!</h2>
-            <p class="ribbon">No. 01 · Invited Player</p>
-
-            <!-- 3. Welcome package -->
-            <div class="card">
-              <span class="card-tag">Welcome Package</span>
-              <p class="card-title">When you log in after entering an Invitation Code</p>
-              <ul class="item-row">
-                <reward-item v-for="(it, i) in cfg.rewards.welcome" :key="'w' + i" :item="it"></reward-item>
-              </ul>
-              <p class="card-note">
-                * This package can be received <strong>once per account</strong>.<br />
-                * Rewards are sent to your in-game Mailbox and must be claimed within 14 days.
-              </p>
-            </div>
-
-            <!-- 4. Level rewards -->
-            <div class="card">
-              <span class="card-tag">Level Rewards</span>
-              <p class="card-title">When you reach these levels during the event period</p>
-              <div class="tier-row">
-                <div v-for="(t, i) in cfg.rewards.levelTiers" :key="'t' + i" class="tier" :class="{ 'tier-final': t.final }">
-                  <p class="tier-level">Ascension Lv. <span :class="{ tbd: !t.level }">{{ t.level || 'TBD' }}</span></p>
-                  <p class="tier-label">{{ t.label }}<template v-if="t.final"> · Selectable Box</template></p>
-                  <ul class="item-row">
-                    <reward-item v-for="(it, j) in t.items" :key="j" :item="it"></reward-item>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="guide">
-                <p class="guide-title">How to Level Up Fast</p>
-                <div class="guide-row">
-                  <div class="guide-card">
-                    <p class="guide-card-title">New Class IDOL &amp; Burning 6.0</p>
-                    <p>Start fresh with the new class IDOL and speed through the early levels with Burning 6.0.</p>
-                    <div class="guide-links">
-                      <ext-link :href="links.idolUpdate" class="text-link">View Update →</ext-link>
-                    </div>
-                  </div>
-                  <div class="guide-card">
-                    <p class="guide-card-title">Level Up Guide</p>
-                    <p>Step-by-step leveling tips on the La Tale Wiki.</p>
-                    <div class="guide-links">
-                      <ext-link :href="links.wiki" class="text-link">La Tale Wiki: Starting Out →</ext-link>
-                    </div>
-                  </div>
-                  <div class="guide-card">
-                    <p class="guide-card-title">New / Returning User Rewards and Special Sale</p>
-                    <p>Extra rewards and limited-time sales for new and returning players.</p>
-                    <div class="guide-links">
-                      <ext-link :href="links.rewards" class="btn-line btn-sm">Rewards</ext-link>
-                      <ext-link :href="links.sales" class="btn-line btn-sm">Sales</ext-link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <p class="card-note">* Level rewards are calculated based on the level reached through the previous day
-                and sent to your in-game Mailbox.</p>
-            </div>
-
-            <!-- 5. Code info / eligibility / input -->
-            <div class="info-row">
-              <div class="card info-block">
-                <p class="card-title">Don't Have a Referral Code?</p>
-                <p>No worries! Visit the <strong>Guild Promotion</strong> channel in our official Discord server and
-                  get a referral code from other players.</p>
-                <a class="btn-discord" :href="links.discord" target="_blank" rel="noopener">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.4a18 18 0 0 1 4.5 2.3 15.6 15.6 0 0 0-15.4 0 18 18 0 0 1 4.5-2.3L8.6 3a19.8 19.8 0 0 0-4.9 1.4C.6 9 0 13.4.2 17.8a19.9 19.9 0 0 0 6 3l1.3-2a12.7 12.7 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.7 12.7 0 0 1-2 1l1.3 2a19.9 19.9 0 0 0 6-3c.4-5.1-.9-9.5-3.5-13.4ZM8.5 15.1c-1.2 0-2.1-1.1-2.1-2.4s1-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm7 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z" />
-                  </svg>
-                  Join Discord · Guild Promotion
-                </a>
-              </div>
-              <div class="card info-block">
-                <p class="card-title">Referral Code Eligibility</p>
-                <ul class="info-list">
-                  <li><strong>New Players:</strong> Papaya Play accounts created on or after December 16, 2026</li>
-                  <li><strong>Returning Players:</strong> players who have not logged in to La Tale for 60 days or more
-                    before the event begins</li>
-                </ul>
-                <ul class="info-warn">
-                  <li>Players who join with a referral code cannot invite other players.</li>
-                  <li>Only one code can be entered per eligible account.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="card code-box" id="code" :class="'is-' + codeState">
-              <label class="form-label" for="inviteCode">Invitation Code</label>
-
-              <!-- signed out -->
-              <div v-if="codeState === 'guest'" class="state-box">
-                <div class="state-text">
-                  <p class="state-title">Please log in first</p>
-                  <p>Sign in to Papaya Play to enter your invitation code.</p>
-                </div>
-                <button class="btn" type="button" @click="signIn">Sign In</button>
-              </div>
-
-              <!-- already entered -->
-              <div v-else-if="codeState === 'registered'" class="state-box state-done">
-                <span class="state-icon" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-                    <polyline points="6,14 11,20 22,9" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
-                </span>
-                <div class="state-text">
-                  <p class="state-title">Invitation code registered</p>
-                  <p class="state-code">{{ formatCode(me.registeredCode) }}</p>
-                  <p>Your Welcome Package will be sent to your in-game Mailbox once you log in to La Tale. Level rewards
-                    follow as you reach each Ascension level.</p>
-                </div>
-              </div>
-
-              <!-- not eligible -->
-              <div v-else-if="codeState === 'ineligible'" class="state-box state-warn">
-                <span class="state-icon" aria-hidden="true">!</span>
-                <div class="state-text">
-                  <p class="state-title">This account can't enter an invitation code</p>
-                  <p>Invitation codes are for new and returning players only. You can still invite your friends and
-                    earn rewards below!</p>
-                </div>
-                <a class="btn-line" href="#my-invitation" @click.prevent="scrollTo('my-invitation')">My Invitation ↓</a>
-              </div>
-
-              <!-- eligible -->
-              <div v-else class="form-row">
-                <div class="text-input-wrap" :class="{ 'shake-anim': shakeInput }">
-                  <input id="inviteCode" type="text" class="text-input" v-model="inviteCode" maxlength="24"
-                    autocomplete="off" placeholder="Paste or enter your invitation code"
-                    @keyup.enter="handleConfirm" />
-                </div>
-                <button class="btn" type="button" :disabled="busy" @click="handleConfirm">Confirm</button>
-              </div>
-
-              <p class="card-note">* Log in to Papaya Play and enter your invitation code to receive rewards for you
-                and your friend!</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== Stage: inviting player ===== -->
-      <section class="sec sec-stage" id="my-invitation">
-        <div class="inner">
-          <div class="sec-deco sec-deco-idol-b" aria-hidden="true"></div>
-          <h2 class="sp-title sp-title-holo">My Invitation</h2>
-          <p class="ribbon ribbon-purple">No. 02 · Inviting Player</p>
-
-          <!-- 6. My code -->
-          <div class="invite-row">
-            <div class="card invite-code-box">
-              <label class="form-label" for="myCode">My Invitation Code</label>
-              <div class="form-row">
-                <div class="code-display-wrap">
-                  <input id="myCode" type="text" readonly class="code-display" :class="{ empty: !me.myCode }"
-                    :value="formatCode(me.myCode)" placeholder="XXX XXX XXX" />
-                </div>
-                <button class="btn" type="button" :disabled="!canGenerate || busy" @click="handleGenerate">
-                  {{ me.myCode ? 'Generated' : 'Generate' }}
-                </button>
-              </div>
-              <div class="copy-buttons">
-                <button class="btn-copy" type="button" :class="{ copied: copiedType === 'code' }" :disabled="!me.myCode"
-                  @click="handleCopy('code')">{{ copiedType === 'code' ? 'Copied!' : 'Copy Code' }}</button>
-                <button class="btn-copy" type="button" :class="{ copied: copiedType === 'url' }" :disabled="!me.myCode"
-                  @click="handleCopy('url')">{{ copiedType === 'url' ? 'Copied!' : 'Copy URL' }}</button>
-              </div>
-            </div>
-            <div class="card referral-box">
-              <p class="referral-label">Number of Referrals</p>
-              <p class="referral-count">{{ referralCount }}<span class="referral-max"> / {{ cfg.maxReferrals }}</span></p>
-              <button class="btn-line btn-sm" type="button" :disabled="!me.loggedIn" @click="showDetails = true">Details</button>
-            </div>
-          </div>
-
-          <p v-if="!me.loggedIn" class="inline-notice">
-            <span>Please log in to generate your invitation code.</span>
-            <button class="text-link" type="button" @click="signIn">Sign In →</button>
-          </p>
-          <p v-else-if="me.registeredCode" class="inline-notice">
-            <span>You joined with a referral code, so this account cannot invite other players.</span>
-          </p>
-
-          <ul class="notes">
-            <li>Copy the invitation code or URL and share it with someone you'd like to play with.</li>
-            <li>If the invited player enters the code, or logs in to Papaya Play through the shared URL and plays La
-              Tale, both players receive rewards.</li>
-          </ul>
-
-          <!-- 7. Inviter rewards -->
-          <div class="card">
-            <span class="card-tag">Per Invite</span>
-            <p class="card-title">When an Invitee Uses Your Code
-              <span class="card-title-sub">for each eligible invitee · up to {{ cfg.maxReferrals }}</span></p>
-            <ul class="item-row">
-              <reward-item v-for="(it, i) in cfg.rewards.perInvite" :key="'p' + i" :item="it"></reward-item>
-            </ul>
-          </div>
-
-          <div class="card">
-            <span class="card-tag">Milestones</span>
-            <p class="card-title">When Your Invitees Reach Ascension Lv. {{ cfg.inviterGoalLevel }}</p>
-            <div class="tier-row tier-row-3">
-              <div v-for="m in cfg.rewards.milestones" :key="m.count" class="tier"
-                :class="{ 'tier-final': m.final, 'tier-reached': me.loggedIn && reachedCount >= m.count }">
-                <p class="tier-level">{{ m.count }} {{ m.count === 1 ? 'Invitee' : 'Invitees' }}</p>
-                <p v-if="me.loggedIn && reachedCount >= m.count" class="tier-label tier-label-done">Milestone reached</p>
-                <ul class="item-row">
-                  <reward-item v-for="(it, j) in m.items" :key="j" :item="it"></reward-item>
-                </ul>
-              </div>
-            </div>
-            <p class="card-note">
-              * Milestones count eligible invitees who reach Ascension Lv. {{ cfg.inviterGoalLevel }} during the event
-              period.<br />
-              * Rewards are not granted immediately; eligibility is calculated based on progress through the previous
-              day and rewards are sent to your in-game Mailbox.
+          <div class="description">
+            <p>A new stage begins with IDOL!</p>
+            <p>
+              Invite your friends to La Tale during the two-month event period <strong>starting December 16</strong>,
+              and enjoy special rewards together!
+            </p>
+            <p>
+              New and returning players who enter a friend's <strong>Invitation Code</strong> receive a
+              <strong>Welcome Package</strong> — and even more rewards as they level up.
+            </p>
+            <p>
+              Every invited player who reaches <strong>Ascension Lv. {{ cfg.inviterGoalLevel }}</strong> also counts
+              toward the inviter's milestone rewards.
             </p>
           </div>
         </div>
-      </section>
 
-      <!-- ===== Night: lucky draw + rules ===== -->
-      <section class="sec sec-night" id="lucky-draw">
-        <div class="inner">
-          <div class="sec-deco sec-deco-idol-a" aria-hidden="true"></div>
-          <h2 class="sp-title sp-title-holo">Lucky Draw</h2>
-          <p class="ribbon ribbon-purple">5 Winners</p>
+        <!-- Paper / Envelope Body -->
+        <div class="paper-envelope-wrap">
 
-          <!-- 8. Lucky draw -->
-          <div class="card">
-            <h3 class="holo-title">La Tale 20th Anniversary Goods</h3>
-            <p class="lucky-sub">Official goods from the La Tale 20th Anniversary Pop-up Store in Korea!</p>
-            <div class="photos">
-              <figure v-for="(g, i) in cfg.goods" :key="i">
-                <button class="photo-btn" type="button" @click="lightbox = i" :aria-label="'View photo: ' + g.caption">
-                  <img :src="g.src" :alt="g.alt" loading="lazy" />
-                </button>
-                <figcaption>{{ g.caption }}</figcaption>
-              </figure>
+          <div class="paper">
+            <img class="paper-texture-tl" src="images/paper-top-left.png" alt="" />
+            <div class="paper-vignette"></div>
+
+            <div class="paper-inner">
+
+              <!-- Section 1 — Welcome (Invited Player) -->
+              <div class="section-card" id="welcome">
+                <div class="section-inner">
+                  <div class="section-badge">
+                    <div class="line"></div>
+                    <span class="badge-text">Invited Player</span>
+                    <div class="line"></div>
+                  </div>
+
+                  <h2 class="section-title">Welcome!</h2>
+
+                  <div id="code">
+                    <!-- eligible: enter a code -->
+                    <div v-if="codeState === 'ready'" class="form-row">
+                      <div class="form-field">
+                        <label class="form-label" for="inviteCode">Invitation Code</label>
+                        <div class="text-input-wrap" :class="{ 'shake-anim': shakeInput }">
+                          <input id="inviteCode" type="text" class="text-input" v-model="inviteCode" maxlength="24"
+                            autocomplete="off" placeholder="Enter your invitation code"
+                            @keyup.enter="handleConfirm" />
+                        </div>
+                      </div>
+                      <button class="btn-primary" :disabled="busy" @click="handleConfirm">Confirm</button>
+                    </div>
+
+                    <!-- signed out -->
+                    <div v-else-if="codeState === 'guest'" class="form-row">
+                      <div class="form-field">
+                        <label class="form-label">Invitation Code</label>
+                        <div class="text-input-wrap is-locked">
+                          <span class="input-locked-text">Please log in first</span>
+                        </div>
+                      </div>
+                      <button class="btn-primary" @click="signIn">Sign In</button>
+                    </div>
+
+                    <!-- already entered -->
+                    <div v-else-if="codeState === 'registered'" class="form-row">
+                      <div class="form-field">
+                        <label class="form-label">Invitation Code</label>
+                        <div class="code-display-wrap">
+                          <input type="text" readonly class="code-display" :value="formatCode(me.registeredCode)" />
+                        </div>
+                      </div>
+                      <button class="btn-primary" disabled>Registered</button>
+                    </div>
+
+                    <!-- not eligible -->
+                    <div v-else class="form-row">
+                      <div class="form-field">
+                        <label class="form-label">Invitation Code</label>
+                        <div class="text-input-wrap is-locked">
+                          <span class="input-locked-text">Not available for this account</span>
+                        </div>
+                      </div>
+                      <button class="btn-primary" disabled>Confirm</button>
+                    </div>
+                  </div>
+
+                  <p v-if="codeState === 'registered'" class="state-text state-done">
+                    ✓ Your invitation code has been registered. The Welcome Package will be sent to your in-game
+                    Mailbox once you log in to La Tale.
+                  </p>
+                  <p v-else-if="codeState === 'ineligible'" class="state-text state-warn">
+                    ※ Invitation codes can only be entered by new and returning players. You can still invite your
+                    friends below!
+                  </p>
+
+                  <p class="no-code-text">
+                    ※ Don&apos;t have a code? Visit the <strong>Guild Promotion</strong> channel in our official Discord
+                    server and get one from other players.
+                    <a :href="links.discord" target="_blank" rel="noopener">Join Discord</a>
+                  </p>
+                </div>
+
+                <!-- Welcome Package -->
+                <div class="reward-box">
+                  <p class="reward-cond">When you log in after entering an Invitation Code</p>
+                  <ul class="item-row">
+                    <reward-item v-for="(it, i) in cfg.rewards.welcome" :key="'w' + i" :item="it"></reward-item>
+                  </ul>
+                </div>
+                <p class="reward-package-name">[Welcome Package]</p>
+
+                <!-- Level rewards -->
+                <div class="reward-box">
+                  <p class="reward-cond">When you reach these levels during the event period</p>
+                  <div class="tier-row">
+                    <div v-for="(t, i) in cfg.rewards.levelTiers" :key="'t' + i" class="tier" :class="{ 'tier-final': t.final }">
+                      <p class="tier-level">Ascension Lv. {{ t.level || '___' }}</p>
+                      <p class="tier-label">{{ t.label }}<template v-if="t.final"> · Selectable Box</template></p>
+                      <ul class="item-row">
+                        <reward-item v-for="(it, j) in t.items" :key="j" :item="it"></reward-item>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="reward-package-name">[Level Rewards]</p>
+
+                <!-- How to level up -->
+                <div class="info-box">
+                  <p class="info-box-title">How to Level Up Fast</p>
+                  <ul class="info-list">
+                    <li><strong>New Class IDOL &amp; Burning 6.0</strong> —
+                      <ext-link :href="links.idolUpdate">View Update</ext-link></li>
+                    <li><strong>Level Up Guide</strong> — step-by-step leveling tips on the La Tale Wiki.
+                      <ext-link :href="links.wiki">La Tale Wiki: Starting Out</ext-link></li>
+                    <li><strong>New / Returning User Rewards and Special Sale</strong> —
+                      <ext-link :href="links.rewards">Rewards</ext-link> ·
+                      <ext-link :href="links.sales">Sales</ext-link></li>
+                  </ul>
+                </div>
+
+                <!-- Eligibility -->
+                <div class="info-box">
+                  <p class="info-box-title">Referral Code Eligibility</p>
+                  <ul class="info-list">
+                    <li><strong>New Players:</strong> Papaya Play accounts created on or after December 16, 2026</li>
+                    <li><strong>Returning Players:</strong> players who have not logged in to La Tale for 60 days or
+                      more before the event begins</li>
+                    <li class="warn">Players who join with a referral code cannot invite other players.</li>
+                    <li class="warn">Only one code can be entered per eligible account.</li>
+                  </ul>
+                </div>
+
+                <div class="notes">
+                  <p>* Paste or enter your invitation code, then click the Confirm button.</p>
+                  <p>* Log in to Papaya Play and enter your invitation code to receive rewards for you and your friend!
+                  </p>
+                  <p>* The Welcome Package can be received once per account.</p>
+                  <p>* Level rewards are calculated based on the level reached through the previous day and sent to
+                    your in-game Mailbox.</p>
+                </div>
+              </div>
+
+              <!-- Section 2 — My Invitation (Inviting Player) -->
+              <div class="section-card" id="my-invitation">
+                <div class="section-inner">
+                  <div class="section-badge">
+                    <div class="line"></div>
+                    <span class="badge-text">Inviting Player</span>
+                    <div class="line"></div>
+                  </div>
+
+                  <h2 class="section-title">My Invitation</h2>
+
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label class="form-label" for="myCode">My Invitation Code</label>
+                      <div class="code-display-wrap">
+                        <input id="myCode" type="text" readonly class="code-display" :class="{ empty: !me.myCode }"
+                          :value="formatCode(me.myCode)" placeholder="--- --- ---" />
+                      </div>
+                    </div>
+                    <button class="btn-primary" :disabled="!canGenerate || busy" @click="handleGenerate">
+                      {{ me.myCode ? 'Generated' : 'Generate' }}
+                    </button>
+                  </div>
+
+                  <div class="copy-referral-row">
+                    <div class="copy-buttons">
+                      <button class="btn-copy" :class="{ copied: copiedType === 'code' }" :disabled="!me.myCode"
+                        @click="handleCopy('code')">{{ copiedType === 'code' ? 'Copied!' : 'Copy Code' }}</button>
+                      <button class="btn-copy" :class="{ copied: copiedType === 'url' }" :disabled="!me.myCode"
+                        @click="handleCopy('url')">{{ copiedType === 'url' ? 'Copied!' : 'Copy URL' }}</button>
+                    </div>
+                    <div class="referral-info">
+                      <div>
+                        <p class="referral-label">Number of Referrals</p>
+                        <p class="referral-count">{{ referralCount }}<span class="referral-max"> / {{ cfg.maxReferrals }}</span></p>
+                      </div>
+                      <button class="btn-details" :disabled="!me.loggedIn" @click="showDetails = true">DETAILS</button>
+                    </div>
+                  </div>
+
+                  <p v-if="!me.loggedIn" class="state-text state-warn">
+                    ※ Please log in to generate your invitation code.
+                    <a href="#" @click.prevent="signIn">Sign In</a>
+                  </p>
+                  <p v-else-if="me.registeredCode" class="state-text state-warn">
+                    ※ You joined with a referral code, so this account cannot invite other players.
+                  </p>
+                </div>
+
+                <!-- Per-invite reward -->
+                <div class="reward-box">
+                  <p class="reward-cond">When an Invitee Uses Your Code
+                    <span>(for each eligible invitee · up to {{ cfg.maxReferrals }})</span></p>
+                  <ul class="item-row">
+                    <reward-item v-for="(it, i) in cfg.rewards.perInvite" :key="'p' + i" :item="it"></reward-item>
+                  </ul>
+                </div>
+                <p class="reward-package-name">[Invitation Reward]</p>
+
+                <!-- Milestones -->
+                <div class="reward-box">
+                  <p class="reward-cond">When Your Invitees Reach Ascension Lv. {{ cfg.inviterGoalLevel }}</p>
+                  <div class="tier-row tier-row-3">
+                    <div v-for="m in cfg.rewards.milestones" :key="m.count" class="tier"
+                      :class="{ 'tier-final': m.final, 'tier-reached': me.loggedIn && reachedCount >= m.count }">
+                      <p class="tier-level">{{ m.count }} {{ m.count === 1 ? 'Invitee' : 'Invitees' }}</p>
+                      <p v-if="me.loggedIn && reachedCount >= m.count" class="tier-label tier-label-done">Reached</p>
+                      <ul class="item-row">
+                        <reward-item v-for="(it, j) in m.items" :key="j" :item="it"></reward-item>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="reward-package-name">[Milestone Rewards]</p>
+
+                <div class="notes">
+                  <p>* Copy the invitation code or URL and share it with someone you&apos;d like to play with.</p>
+                  <p>* If the invited player enters the code, or logs in to Papaya Play through the shared URL and plays
+                    La Tale, both players receive rewards.</p>
+                  <p>* Milestones count eligible invitees who reach Ascension Lv. {{ cfg.inviterGoalLevel }} during the
+                    event period.</p>
+                  <p>* Rewards are not granted immediately; eligibility is calculated based on progress through the
+                    previous day and rewards are sent to your in-game Mailbox.</p>
+                </div>
+              </div>
+
+              <!-- Section 3 — Lucky Draw -->
+              <div class="section-card" id="lucky-draw">
+                <div class="section-inner">
+                  <div class="section-badge">
+                    <div class="line"></div>
+                    <span class="badge-text">Lucky Draw · 5 Winners</span>
+                    <div class="line"></div>
+                  </div>
+
+                  <h2 class="section-title">20th Anniversary Goods</h2>
+
+                  <p class="section-lead">Official goods from the La Tale 20th Anniversary Pop-up Store in Korea!</p>
+                </div>
+
+                <div class="photos">
+                  <figure v-for="(g, i) in cfg.goods" :key="i">
+                    <button class="photo-btn" type="button" @click="lightbox = i" :aria-label="'View photo: ' + g.caption">
+                      <img :src="g.src" :alt="g.alt" loading="lazy" />
+                    </button>
+                    <figcaption>{{ g.caption }}</figcaption>
+                  </figure>
+                </div>
+
+                <div class="info-box">
+                  <p class="info-box-title">Who Can Win?</p>
+                  <p>5 winners in total will be drawn from both inviting and invited players.</p>
+                  <ul class="info-list">
+                    <li><strong>Inviting players:</strong> invited at least 1 eligible player during the event
+                      period</li>
+                    <li><strong>Invited players:</strong> entered an invitation code and reached
+                      <strong>Ascension Lv. {{ cfg.luckyDrawLevel }}</strong> during the event period</li>
+                  </ul>
+                </div>
+
+                <div class="notes">
+                  <p>* Winners will be announced after the event ends.
+                    <ext-link :href="links.officialRules">Official Rules</ext-link></p>
+                </div>
+              </div>
+
             </div>
-            <div class="lucky-info">
-              <p><strong>Who can win?</strong> 5 winners in total will be drawn from both inviting and invited
-                players.</p>
-              <ul>
-                <li>Inviting players: invited at least 1 eligible player during the event period</li>
-                <li>Invited players: entered an invitation code and reached
-                  <strong>Ascension Lv. {{ cfg.luckyDrawLevel }}</strong> during the event period</li>
-              </ul>
-              <p>Winners will be announced after the event ends.
-                <ext-link :href="links.officialRules" class="text-link">Official Rules</ext-link></p>
-            </div>
-          </div>
+          </div><!-- /paper -->
 
-          <!-- 9. Rules -->
-          <div class="card rules" id="rules">
-            <h3 class="holo-title">Event Rules &amp; Important Notices</h3>
-            <div class="rules-body">
-              <h4>Event Period</h4>
-              <ul>
-                <li>December 16, 2026 – February 14, 2027. All times are based on Eastern Standard Time (US).</li>
-              </ul>
-              <h4>Eligibility</h4>
-              <ul>
+          <!-- Envelope flap + wax seal -->
+          <div class="envelope-wrap">
+            <div class="envelope-scaled" :style="{
+              transform: 'translateX(-50%) scale(' + envelopeScale + ')',
+              width: envelopeNativeW + 'px',
+              height: (envelopeNativeH - 120) + 'px'
+            }">
+              <img class="envelope-flap" :style="{
+                width: envelopeNativeW + 'px',
+                height: envelopeNativeH + 'px',
+                top: '-120px'
+              }" src="images/envelope-flap.webp" alt="" />
+            </div>
+
+            <div class="notices-wrap" id="rules">
+              <p class="notices-title">IMPORTANT NOTICES</p>
+              <ul class="notices-list">
+                <li>The event runs from December 16, 2026 to February 14, 2027.</li>
                 <li>New Players: Papaya Play accounts created on or after December 16, 2026.</li>
                 <li>Returning Players: players with no La Tale login history for 60 days or more before the event
                   begins. Returning status remains even after logging in during the event.</li>
                 <li>Players who have joined with a referral code cannot invite other players.</li>
                 <li>Only one invitation code can be entered per eligible account.</li>
-              </ul>
-              <h4>Rewards</h4>
-              <ul>
                 <li>The event entry is completed once the invited player logs in to Papaya Play and La Tale.</li>
                 <li>Inviting players can receive per-invite rewards for up to {{ cfg.maxReferrals }} eligible
                   invitees.</li>
                 <li>Level and milestone rewards are not granted immediately. Eligibility is calculated based on
                   progress through the previous day.</li>
-                <li>All rewards are sent to your in-game Mailbox and must be claimed within 14 days.</li>
-              </ul>
-              <h4>Lucky Draw</h4>
-              <ul>
-                <li>5 winners in total will be drawn from eligible inviting and invited players after the event ends.
-                  Invited players must reach Ascension Lv. {{ cfg.luckyDrawLevel }} to be eligible.</li>
+                <li>All rewards are sent to your Mailbox in-game, and must be claimed within 14 days.</li>
+                <li>Lucky Draw: 5 winners in total will be drawn from eligible inviting and invited players after the
+                  event ends. Invited players must reach Ascension Lv. {{ cfg.luckyDrawLevel }} to be eligible.</li>
                 <li>No purchase is necessary to enter or win. Winners will be contacted to collect shipping
                   information.</li>
-              </ul>
-              <h4>Other</h4>
-              <ul>
                 <li>Participation using abnormal methods (multiple accounts, the same IP or device, etc.) may result in
                   disqualification and reward removal.</li>
                 <li>Event details and rewards may be changed without prior notice.</li>
+                <li>All times are based on Eastern Standard Time (US).</li>
               </ul>
+              <p class="notices-links">
+                <ext-link :href="links.officialRules">Official Rules</ext-link>
+                <ext-link :href="links.faq">FAQ</ext-link>
+                <ext-link :href="links.support">Support</ext-link>
+              </p>
             </div>
-            <div class="rules-links">
-              <ext-link :href="links.officialRules" class="btn-line">Official Rules</ext-link>
-              <ext-link :href="links.faq" class="btn-line">FAQ</ext-link>
-              <ext-link :href="links.support" class="btn-line">Support</ext-link>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <footer class="footer">
-        <div class="footer-logos">
-          <img class="logo-papaya" src="images/logo_papaya.png" alt="Papaya Play" loading="lazy" />
-          <img class="logo-latale" src="images/logo_latale.png" alt="La Tale" loading="lazy" />
-        </div>
-        <p class="copyright">© Vertigo Games Inc. All Rights Reserved. &nbsp;·&nbsp; © Vertigo Games America Inc. All Rights Reserved.</p>
-      </footer>
-
-      <!-- Floating section menu -->
-      <nav class="float-menu" :class="{ show: scrolled }" aria-label="Quick menu">
-        <a href="#welcome" :class="{ active: activeSection === 'welcome' }" @click.prevent="scrollTo('welcome')">Welcome</a>
-        <a href="#my-invitation" :class="{ active: activeSection === 'my-invitation' }"
-          @click.prevent="scrollTo('my-invitation')">My<br />Invite</a>
-        <a href="#lucky-draw" :class="{ active: activeSection === 'lucky-draw' || activeSection === 'rules' }"
-          @click.prevent="scrollTo('lucky-draw')">Lucky<br />Draw</a>
-        <a href="#home" class="float-top" @click.prevent="scrollTo('home')">Top ↑</a>
-      </nav>
-
-      <!-- Details popup -->
-      <div v-if="showDetails" class="modal-bg" @click.self="showDetails = false">
-        <div class="modal modal-wide" role="dialog" aria-modal="true" aria-label="Referred Users">
-          <button class="modal-close" type="button" @click="showDetails = false">Close</button>
-          <p class="modal-kicker">Inviting Player</p>
-          <h2 class="modal-title">Referred Users</h2>
-
-          <div class="popup-summary">
-            <span>Referrals <strong>{{ referralCount }} / {{ cfg.maxReferrals }}</strong></span>
-            <span>Reached Ascension Lv. {{ cfg.inviterGoalLevel }} <strong>{{ reachedCount }}</strong></span>
+            <img class="wax-seal" :style="{
+              top: isMobile ? Math.round(19 * envelopeScale) + 'px' : '-19px',
+              width: isMobile ? Math.round(150 * envelopeScale) + 'px' : '170px',
+              height: isMobile ? Math.round(146 * envelopeScale) + 'px' : '146px'
+            }" src="images/seal.webp" alt="" />
           </div>
 
-          <div class="details-table">
-            <div class="table-header">
-              <div>No.</div>
-              <div>Date</div>
-              <div>Papaya Play Account</div>
-              <div>Ascension Lv. {{ cfg.inviterGoalLevel }}</div>
-            </div>
-            <div class="table-body">
-              <div v-for="row in referralRows" :key="row.no" class="table-row" :class="{ blank: !row.account }">
-                <div class="no-col">{{ row.no }}</div>
-                <div>{{ row.date || '-' }}</div>
-                <div>{{ row.account || '-' }}</div>
-                <div>
-                  <span v-if="!row.account">-</span>
-                  <span v-else class="status" :class="row.reached ? 'done' : 'wait'">{{ row.reached ? 'Reached' : 'In progress' }}</span>
+        </div><!-- /paper-envelope-wrap -->
+
+      </div><!-- /main-column -->
+
+      <!-- Details Popup -->
+      <div v-if="showDetails" class="popup-backdrop" @click="showDetails = false">
+        <div class="popup-panel" @click.stop>
+          <div class="popup-texture"></div>
+          <div class="popup-inner-border"></div>
+
+          <div class="popup-content">
+            <div class="popup-header">
+              <div>
+                <div class="popup-badge-row">
+                  <div class="popup-badge-line"></div>
+                  <span class="popup-badge-text">Inviting Player</span>
+                  <div class="popup-badge-line"></div>
                 </div>
+                <h2 class="popup-title">Referred Users</h2>
+              </div>
+              <button class="btn-close" @click="showDetails = false" aria-label="Close">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="details-table details-table-4">
+              <div class="table-header">
+                <div class="table-header-cell">No.</div>
+                <div class="table-header-cell">Date</div>
+                <div class="table-header-cell">Papaya Play Account</div>
+                <div class="table-header-cell">Ascension Lv. {{ cfg.inviterGoalLevel }}</div>
+              </div>
+              <div v-for="(row, idx) in referralRows" :key="row.no" class="table-row"
+                :class="idx % 2 === 1 ? 'even' : 'odd'">
+                <div class="table-cell no-col">{{ row.no }}</div>
+                <div class="table-cell" :class="{ empty: !row.date }">{{ row.date || '-' }}</div>
+                <div class="table-cell" :class="{ empty: !row.account }">{{ row.account || '-' }}</div>
+                <div class="table-cell" :class="{ empty: !row.account, done: row.reached }">
+                  {{ !row.account ? '-' : (row.reached ? 'Reached' : 'In progress') }}</div>
               </div>
             </div>
-          </div>
 
-          <p class="popup-note">• Information is shown for the first {{ cfg.maxReferrals }} invitees only; per-invite
-            rewards are limited to {{ cfg.maxReferrals }} per account.<br />• Level progress is updated once a day,
-            based on progress through the previous day.</p>
+            <div class="popup-note">
+              <span>• Information is shown for the first {{ cfg.maxReferrals }} invited users only; rewards are limited
+                to a maximum of {{ cfg.maxReferrals }} per account.<br />• Level progress is updated once a day, based
+                on progress through the previous day.</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Photo lightbox -->
-      <div v-if="lightbox !== null" class="modal-bg" @click.self="lightbox = null">
-        <figure class="lightbox">
-          <button class="modal-close" type="button" @click="lightbox = null">Close</button>
+      <!-- Photo popup -->
+      <div v-if="lightbox !== null" class="popup-backdrop" @click="lightbox = null">
+        <figure class="photo-popup" @click.stop>
           <img :src="cfg.goods[lightbox].src" :alt="cfg.goods[lightbox].alt" />
           <figcaption>{{ cfg.goods[lightbox].caption }}</figcaption>
+          <button class="btn-close" @click="lightbox = null" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
         </figure>
       </div>
 
-      <!-- Result popup -->
-      <div v-if="resultPopup" class="modal-bg modal-bg-top" @click.self="resultPopup = null">
-        <div class="modal modal-result" :class="resultPopup.type" role="alertdialog" aria-modal="true">
-          <div class="result-icon" :class="resultPopup.type">
-            <svg v-if="resultPopup.type === 'success'" width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <polyline points="6,14 11,20 22,9" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-            <svg v-else width="26" height="26" viewBox="0 0 26 26" fill="none">
-              <line x1="13" y1="5" x2="13" y2="15" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-              <circle cx="13" cy="20.5" r="1.8" fill="currentColor" />
-            </svg>
-          </div>
-          <h2 class="modal-title">{{ resultPopup.title }}</h2>
-          <p class="result-message">{{ resultPopup.message }}</p>
-          <div class="result-actions">
-            <button v-if="resultPopup.action === 'signin'" class="btn" type="button"
+      <!-- Confirm Result Popup -->
+      <div v-if="resultPopup" class="result-popup-backdrop" @click="resultPopup = null">
+        <div class="result-popup-panel" :class="resultPopup.type" @click.stop>
+          <div class="result-popup-accent" :class="resultPopup.type"></div>
+          <div class="result-popup-body">
+            <div class="result-popup-icon" :class="resultPopup.type">
+              <svg v-if="resultPopup.type === 'success'" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <polyline points="6,14 11,20 22,9" stroke="#c9a020" stroke-width="2.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <svg v-else width="26" height="26" viewBox="0 0 26 26" fill="none">
+                <line x1="7" y1="7" x2="19" y2="19" stroke="#ff85a2" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="19" y1="7" x2="7" y2="19" stroke="#ff85a2" stroke-width="2.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <p class="result-popup-title">{{ resultPopup.title }}</p>
+            <p class="result-popup-message">{{ resultPopup.message }}</p>
+            <button v-if="resultPopup.action === 'signin'" class="result-popup-btn success"
               @click="resultPopup = null; signIn()">Sign In</button>
-            <button :class="resultPopup.action ? 'btn-line' : 'btn'" type="button" @click="resultPopup = null">
-              {{ resultPopup.action ? 'Close' : 'OK' }}</button>
+            <button v-else class="result-popup-btn" :class="resultPopup.type" @click="resultPopup = null">OK</button>
           </div>
         </div>
       </div>
 
-      <!-- Toasts -->
-      <div class="toast-container" aria-live="polite">
+      <!-- Toast Container -->
+      <div class="toast-container">
         <div v-for="toast in toasts" :key="toast.id" class="toast" :class="{ 'toast-out': toast.leaving }">
-          <span class="toast-icon" aria-hidden="true">✦</span>
-          <span>{{ toast.message }}</span>
+          <span class="toast-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5" />
+              <polyline points="5,9 8,12 13,6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="toast-text">{{ toast.message }}</span>
         </div>
       </div>
 
@@ -498,7 +508,7 @@
         </div>
       </div>
 
-    </div><!-- /rf-wrap -->
+    </div><!-- /page-wrapper -->
   </div><!-- /app -->
 
   <script src="js/vendor/vue.js"></script>

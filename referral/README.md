@@ -1,31 +1,31 @@
-# La Tale Referral Event (SHINING) - 2026-12-16 ~ 2027-02-14
+# La Tale Referral Event - 2026-12-16 ~ 2027-02-14
 
-Referral event page for La Tale NA, built as plain HTML5 + CSS3 + Vue 2 (no build step).
-The look follows the SHINING pre-registration page in `../pre-register`
-(sky hero, green sky section, purple stage section, night section).
+Referral event page for La Tale NA, plain HTML5 + CSS3 + Vue 2 (no build step).
+
+The layout is the one of the previous La Tale referral event (header, letter paper with
+section cards, envelope with the notices and the paw seal). Only the background and the
+characters were changed to the SHINING / IDOL update, and the content follows the new plan
+(features added in the Closers referral event: level rewards, milestones, Details column,
+Lucky Draw, account states).
 
 ## Running it
 
 Open `index.html` in a browser. No build, no `npm install`.
-Unlike the pre-registration page this one is fluid and reflows down to phone width.
 
 ## Sections
 
-0. Top bar: section links, Sign In / account name + Sign Out
-1. Hero
-2. Intro ("Better Together, More Rewards!") and the 4-step flow
-3. Invited player: Welcome Package
-4. Invited player: Ascension level rewards, "How to Level Up Fast"
-5. Discord guide, eligibility, invitation code input (4 states: signed out / ready / registered / not eligible)
-6. Inviting player: my code, copy code / URL, referral count, Details popup
-7. Inviting player: per-invite reward, 1 / 3 / 5 invitee milestones
-8. Lucky Draw (20th anniversary goods)
-9. Event rules
+- Header: title, event period, introduction
+- Invited Player - Welcome!: invitation code input (signed out / ready / registered / not eligible),
+  Discord guide, Welcome Package, Ascension level rewards, how to level up, eligibility
+- Inviting Player - My Invitation: my code, copy code / URL, referral count, Details popup,
+  per-invite reward, 1 / 3 / 5 invitee milestones
+- Lucky Draw: 20th anniversary goods
+- Envelope: Important Notices
 
 ## Where to change things
 
 - `js/config.js` - links, reward tables, Ascension level steps, goods photos.
-  An empty link is shown as a disabled "soon" label; an empty reward `icon` is shown as a placeholder.
+  An empty link is shown as a disabled "soon" label; an empty reward `icon` is shown as a "?" slot.
   Reward icons go in `images/items/`.
 - `js/api.js` - the only place that talks to the server. It returns sample data for now;
   replace the body of each function with the real request (response shapes are documented at the top).

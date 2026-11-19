@@ -75,6 +75,20 @@ img {
   color: transparent;
   filter: drop-shadow(0 0 18px rgba(130, 96, 255, 0.9));
 }
+.sp-title-purple {
+  background: linear-gradient(100deg, #6a3df0 0%, #a04bff 50%, #d27bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 3px 0 #fff) drop-shadow(0 0 16px rgba(255, 255, 255, 0.95));
+}
+.sp-title-blue {
+  background: linear-gradient(100deg, #3f7df0 0%, #5aa7ff 55%, #7fd4ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 3px 0 #fff) drop-shadow(0 0 16px rgba(255, 255, 255, 0.95));
+}
 .sp-ribbon {
   margin: 28px auto 0;
   border-radius: 999px;
@@ -106,34 +120,64 @@ img {
   color: #5ce8e8;
 }
 
-/* "Pre-Register Now!" button (art: the green pill from the Characters tabs) */
+/* Button art from the Korean pre-registration page. The Korean label in the middle is
+   painted over (::before) and the English label is drawn on top. */
 .sp-btn {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
-  transition: transform 0.2s, filter 0.2s;
+  transition: transform 0.2s;
   margin: 0 auto;
-  background: url(../images/ui/btn.webp) center / 100% 100% no-repeat;
-  width: 360px;
-  height: 92px;
-  color: #fff;
+  background: url(../images/prereg/btn_preregister.webp) center / 100% 100% no-repeat;
+  width: 399px;
+  height: 117px;
+  color: #fff3c4;
   font-weight: 800;
-  font-size: 26px;
+  font-size: 30px;
   letter-spacing: -0.5px;
-  text-shadow: 0 2px 0 rgba(18, 62, 40, 0.45);
+  white-space: nowrap;
+}
+.sp-btn::before {
+  position: absolute;
+  top: 24%;
+  left: 24%;
+  background: linear-gradient(100deg, #7438ff, #8f40ff);
+  width: 52%;
+  height: 52%;
+  content: "";
+}
+.sp-btn span {
+  position: relative;
+  text-shadow: 0 2px 0 rgba(60, 20, 150, 0.5);
 }
 .sp-btn:hover {
-  transform: scale(1.05);
-  filter: brightness(1.12) saturate(1.1);
+  transform: scale(1.04);
+  background-image: url(../images/prereg/btn_preregister_hover.webp);
 }
-.sp-btn-large {
-  width: 460px;
-  height: 112px;
-  font-size: 32px;
+.sp-btn:hover::before {
+  background: linear-gradient(100deg, #8c5aff, #ab66ff);
+}
+.sp-btn-blue {
+  background-image: url(../images/prereg/btn_preregister_reward.webp);
+  color: #e6ecff;
+}
+.sp-btn-blue::before {
+  background: linear-gradient(100deg, #444cfd, #5357ff);
+}
+.sp-btn-blue:hover {
+  background-image: url(../images/prereg/btn_preregister_reward_hover.webp);
+}
+.sp-btn-blue:hover::before {
+  background: linear-gradient(100deg, #5878ff, #6590fd);
 }
 .sp-btn-wide {
-  width: 520px;
-  font-size: 22px;
+  width: 560px;
+  font-size: 23px;
+}
+.sp-btn-wide::before {
+  left: 17%;
+  width: 66%;
 }
 .sp-loading {
   animation: sp-spin 1s linear infinite;
@@ -177,160 +221,102 @@ img {
 }
 
 /* ===================== 1. hero ===================== */
+/* Layout of the Korean pre-registration page: 2560px-wide stage centred on the screen */
 .sp-hero {
-  background: #000;
-  height: 1300px;
+  background: #0d0a4a;
+  height: 1200px;
 }
-/* 2560px-wide stage centred on the screen; positions are the ones of the update page */
 .sp-stage {
   position: absolute;
   top: 0;
   left: 50%;
-  animation: sp-opening 1.2s 0.3s ease-in both;
   margin-left: -1280px;
-  background: url(../images/hero/intro.webp) center 0;
   width: 2560px;
   height: 100%;
 }
 .sp-stage > * {
   position: absolute;
 }
+.sp-hero .sp-stage {
+  animation: sp-opening 1.2s 0.3s ease-in both;
+  background: url(../images/prereg/bg.webp) center 0;
+}
 .sp-hero-title-effect {
-  top: -17px;
-  left: 911px;
-  mix-blend-mode: screen;
-  animation: sp-drop 1s 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
-  background: url(../images/hero/title-effect.webp);
-  width: 754px;
-  height: 436px;
+  top: 138px;
+  left: 779px;
+  animation: sp-fade-in 0.8s 1.3s both, sp-blink 1.5s 2.3s ease-in-out infinite alternate;
+  background: url(../images/prereg/title_effect.webp);
+  width: 1009px;
+  height: 589px;
 }
 .sp-hero-title {
-  top: 60px;
-  left: 929px;
-  animation: sp-drop 1s 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
-  width: 702px;
-  height: 282px;
+  top: 286px;
+  left: 818px;
+  animation: sp-fade-in 0.8s 1.3s both;
+  width: 928px;
+  height: 595px;
   color: transparent;
   font-size: 0;
 }
-/* logo art without the Korean tagline printed under it */
+/* logo art without the Korean tagline and date printed under it */
 .sp-hero-title::before {
   position: absolute;
   inset: 0;
-  -webkit-mask: linear-gradient(#000 0 206px, transparent 214px);
-  mask: linear-gradient(#000 0 206px, transparent 214px);
-  background: url(../images/hero/title.webp);
+  -webkit-mask: linear-gradient(#000 0 242px, transparent 250px);
+  mask: linear-gradient(#000 0 242px, transparent 250px);
+  background: url(../images/prereg/title.webp);
   content: "";
 }
 .sp-hero-title span {
   position: absolute;
-  top: 210px;
   right: 0;
   left: 0;
-  color: #fff;
   font-style: italic;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 52px;
-  letter-spacing: 1px;
   text-align: center;
-  text-shadow: 0 0 10px #1f9a5a, 0 0 24px #1f9a5a, 0 2px 0 #1f6742;
+  white-space: nowrap;
 }
-.sp-hero-title span::before,
-.sp-hero-title span::after {
-  margin: 0 0.5em;
-  content: "✦";
-  font-style: normal;
-  font-size: 0.5em;
-  vertical-align: middle;
+.sp-hero-tagline {
+  top: 262px;
+  color: #e9dcff;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 14px #8f40ff, 0 0 4px #5a2ad0;
 }
-.sp-hero-char-1 {
-  top: 485px;
-  left: 144px;
-  animation: sp-fade-in 0.6s 1.9s both;
-  background: url(../images/hero/char-1.webp);
-  width: 2254px;
-  height: 594px;
-}
-.sp-hero-char-2 {
-  top: 220px;
-  left: 572px;
-  animation: sp-fade-in 0.6s 2.1s both;
-  background: url(../images/hero/char-2.webp);
-  width: 314px;
-  height: 268px;
-}
-.sp-hero-char-3 {
-  top: 385px;
-  left: 369px;
-  animation: sp-fade-in 0.6s 2s both;
-  background: url(../images/hero/char-3.webp);
-  width: 1971px;
-  height: 915px;
-}
-.sp-hero-char-4 {
-  top: 474px;
-  left: 733px;
-  animation: sp-fade-in 0.6s 2.1s both;
-  background: url(../images/hero/char-4.webp);
-  width: 1062px;
-  height: 753px;
-}
-.sp-hero-balloon-1 {
-  top: 40px;
-  left: 0;
-  animation: sp-float 3s ease-in-out infinite alternate;
-  background: url(../images/hero/balloon-1.webp);
-  width: 534px;
-  height: 411px;
-}
-.sp-hero-balloon-2 {
-  top: 40px;
-  left: 2015px;
-  animation: sp-float 3s 0.6s ease-in-out infinite alternate;
-  background: url(../images/hero/balloon-2.webp);
-  width: 570px;
-  height: 411px;
-}
-.sp-hero-confetti {
-  top: -27px;
-  left: 616px;
-  animation: sp-fade-in 0.8s 2.2s both;
-  background: url(../images/hero/confetti.webp);
-  width: 1272px;
-  height: 475px;
-  pointer-events: none;
+.sp-hero-date {
+  top: 340px;
+  background: linear-gradient(100deg, #8f6bff 0%, #c58bff 50%, #f2b8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgba(143, 64, 255, 0.9));
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 84px;
+  letter-spacing: 4px;
 }
 .sp-hero-cta {
-  top: 342px;
-  left: 0;
-  z-index: 5;
-  animation: sp-pop 0.5s 2.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  width: 100%;
+  display: flex;
+  top: 853px;
+  left: 872px;
+  gap: 20px;
+  animation: sp-fade-in 0.6s 2s both;
+  width: 818px;
+}
+.sp-hero-cta .sp-btn {
+  margin: 0;
 }
 .sp-scroll {
-  display: block;
-  position: relative;
-  margin: 6px auto 0;
-  padding-bottom: 26px;
-  color: #123e28;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.sp-scroll::after {
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  rotate: 45deg;
-  animation: sp-bounce 1.2s ease-in-out infinite alternate;
-  margin-left: -8px;
-  border-right: 4px solid #123e28;
-  border-bottom: 4px solid #123e28;
-  width: 16px;
-  height: 16px;
-  content: "";
+  top: 1076px;
+  left: 1232px;
+  animation: sp-float 1.5s ease-in-out infinite alternate;
+  background: url(../images/prereg/btn_scroll.webp);
+  width: 96px;
+  height: 80px;
+  overflow: hidden;
+  color: transparent;
+  font-size: 0;
 }
 
 /* ===================== 2. introduction + video ===================== */
@@ -392,79 +378,187 @@ img {
 }
 
 /* ===================== 3. rewards ===================== */
+/* Card positions are the ones of the Korean pre-registration page (2560px stage) */
 .sp-rewards {
-  background: #2a1d8f url(../images/rewards/bg.webp) center top / cover no-repeat;
-  padding: 150px 0 120px;
-  min-height: 1440px;
-  color: #fff;
+  background: #d9c9f5 url(../images/prereg/reward_bg.webp) center 0;
+  height: 1300px;
 }
-.sp-rewards-panel {
-  margin-top: 50px;
-  background: url(../images/rewards/panel.webp) center / 100% 100% no-repeat;
-  padding: 86px 90px 70px;
-  min-height: 800px;
+.sp-rewards .sp-title {
+  top: 150px;
+  left: 780px;
+  width: 1000px;
+  white-space: nowrap;
 }
-.sp-rewards-panel .sp-ribbon {
-  margin-top: 0;
+.sp-rewards-char {
+  top: 482px;
+  left: 220px;
+  background: url(../images/prereg/reward_char_1.webp);
+  width: 408px;
+  height: 567px;
 }
-.sp-rewards-list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 34px 10px;
-  margin-top: 44px;
+.sp-card {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
 }
-.sp-reward {
+.sp-card-1 {
+  top: 391px;
+  left: 680px;
+  background-image: url(../images/prereg/reward_reward_1.webp);
+}
+.sp-card-2 {
+  top: 391px;
+  left: 1020px;
+  background-image: url(../images/prereg/reward_reward_2.webp);
+}
+.sp-card-3 {
+  top: 731px;
+  left: 680px;
+  background-image: url(../images/prereg/reward_reward_3.webp);
+}
+.sp-card-4 {
+  top: 731px;
+  left: 1020px;
+  background-image: url(../images/prereg/reward_reward_4.webp);
+}
+.sp-card-5 {
+  top: 354px;
+  left: 1380px;
+  background-image: url(../images/prereg/reward_reward_5.webp);
+  width: 500px;
+  height: 677px;
+}
+/* English item name painted over the Korean one */
+.sp-card-name {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.sp-reward-icon {
-  display: flex;
-  position: relative;
+  position: absolute;
+  top: 34px;
+  left: 30px;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 0 3px rgba(196, 236, 255, 0.85), 0 0 22px rgba(130, 96, 255, 0.9);
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 35%, #fff 0%, #e9dcff 55%, #b9a4ff 100%);
-  width: 118px;
-  height: 118px;
-}
-.sp-reward-icon img {
-  width: 84px;
-  height: 84px;
-  object-fit: contain;
-}
-.sp-reward-icon i {
-  color: #6a3df0;
-  font-style: normal;
-  font-size: 52px;
-  line-height: 1;
-}
-.sp-reward-quantity {
-  position: absolute;
-  right: -10px;
-  bottom: -4px;
-  border-radius: 999px;
-  background: #f0468a;
-  padding: 0 12px;
-  color: #fff;
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 30px;
-}
-.sp-reward-name {
-  margin-top: 14px;
+  background: #f5edff;
+  width: 240px;
+  height: 60px;
+  color: #7a4ad8;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: -0.4px;
+  text-align: center;
+}
+.sp-card-4 .sp-card-name {
+  background: linear-gradient(#9342f4, #9845f8);
+  color: #fff;
+}
+.sp-card-5 .sp-card-name {
+  top: 180px;
+  left: 80px;
+  background: #f9f2ff;
+  width: 340px;
+  height: 34px;
+}
+.sp-card-title-gif {
+  position: absolute;
+  top: 123px;
+  left: 70px;
+  background: url(../images/prereg/reward_title.gif) center / contain no-repeat;
+  width: 160px;
+  height: 80px;
+}
+.sp-card-effect {
+  position: absolute;
+  top: 214px;
+  left: 97px;
+  cursor: help;
+  border-radius: 4px;
+  background: #8b45f2;
+  width: 106px;
+  height: 32px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+}
+.sp-tooltip {
+  position: absolute;
+  top: -150px;
+  left: -132px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 5;
+  transition: opacity 0.2s;
+  box-shadow: 0 8px 24px rgba(90, 42, 208, 0.3);
+  border: 2px solid #d9c2ff;
+  border-radius: 10px;
+  background: linear-gradient(#fff, #f3e9ff);
+  padding: 20px 24px;
+  width: 370px;
+  color: #5a2ad0;
+  font-size: 15px;
+  line-height: 22px;
   letter-spacing: -0.3px;
+  text-align: left;
+}
+.sp-card-effect:hover .sp-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.sp-tooltip dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  border-bottom: 1px solid #d9c2ff;
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+.sp-tooltip strong {
+  display: block;
+  margin-top: 10px;
+  font-weight: 700;
+}
+.sp-tooltip p {
+  color: #6b5a8e;
+  font-weight: 400;
+  font-size: 14px;
+}
+.sp-card-char {
+  position: absolute;
+  top: -120px;
+  left: 255px;
+  background: url(../images/prereg/reward_char_2.webp);
+  width: 233px;
+  height: 253px;
+}
+.sp-card-char-gif {
+  position: absolute;
+  top: 270px;
+  left: 90px;
+  background: url(../images/prereg/reward_char.gif) center / contain no-repeat;
+  width: 320px;
+  height: 360px;
+}
+.sp-card-5::after {
+  position: absolute;
+  top: 591px;
+  left: 294px;
+  background: url(../images/prereg/reward_reward_5_effect.webp);
+  width: 112px;
+  height: 110px;
+  content: "";
+}
+.sp-rewards-foot {
+  top: 1076px;
+  left: 680px;
+  width: 1200px;
+  text-align: center;
 }
 .sp-rewards-message {
-  margin: 44px 0 20px;
-  color: #c4ecff;
-  font-size: 18px;
-  text-align: center;
+  margin-bottom: 14px;
+  color: #5a2ad0;
+  font-weight: 600;
+  font-size: 19px;
 }
 
 /* ===================== 4. what's new ===================== */
@@ -599,7 +693,55 @@ img {
   height: 107px;
 }
 .sp-news .sp-inner > .sp-btn {
-  margin-top: 70px;
+  margin-top: 60px;
+}
+
+/* ===================== 5. please note ===================== */
+.sp-notice {
+  background: #dff0ff url(../images/prereg/info_bg.webp) center top / cover no-repeat;
+  padding: 110px 0 120px;
+}
+.sp-notice-char {
+  position: absolute;
+  top: -40px;
+  right: -260px;
+  animation: sp-float 3s ease-in-out infinite alternate;
+  background: url(../images/prereg/info_char_1.webp) center / contain no-repeat;
+  width: 240px;
+  height: 490px;
+}
+.sp-notice-box {
+  margin: 50px auto 0;
+  box-shadow: 0 0 0 3px #a9cdfb, 0 14px 30px rgba(63, 125, 240, 0.18);
+  border-radius: 10px;
+  background: linear-gradient(#f3fbff, #e3f3ff);
+  padding: 44px 80px 50px;
+  width: 992px;
+}
+.sp-notice-box h3 {
+  color: #3f8df0;
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+.sp-notice-box ul {
+  margin-top: 20px;
+}
+.sp-notice-box li {
+  position: relative;
+  padding-left: 24px;
+  color: #23364d;
+  font-size: 20px;
+  line-height: 36px;
+  letter-spacing: -0.3px;
+}
+.sp-notice-box li::before {
+  position: absolute;
+  left: 0;
+  color: #5aa7ff;
+  content: "✦";
+  font-size: 13px;
 }
 
 /* ===================== popups ===================== */
@@ -618,54 +760,66 @@ img {
   position: relative;
   animation: sp-modal-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   margin: auto;
-  box-shadow: 0 0 0 4px #49a261, 0 0 0 12px #f1f047, 0 30px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 4px #8f40ff, 0 0 0 12px #f3c98b, 0 30px 60px rgba(0, 0, 0, 0.5);
   border-radius: 30px;
-  background: linear-gradient(#fff, #f6fbe6);
+  background: linear-gradient(#fff, #f3e9ff);
   padding: 34px 60px 44px;
   width: 760px;
   text-align: center;
 }
 .sp-modal-logo {
   margin: 0 auto;
-  background: url(../images/hero/title.webp) center top / 340px auto no-repeat;
-  width: 340px;
-  height: 100px;
+  background: #1a1266 url(../images/prereg/title.webp) center -6px / 330px auto no-repeat;
+  border-radius: 16px;
+  width: 360px;
+  height: 84px;
 }
 .sp-modal h2 {
-  margin-top: 6px;
-  color: #123e28;
+  margin-top: 12px;
+  color: #3b1d9e;
   font-weight: 800;
   font-size: 34px;
   letter-spacing: -1px;
 }
 .sp-modal-subtitle {
   margin-top: 8px;
-  color: #3a4d42;
+  color: #4a4266;
   font-size: 18px;
 }
 .sp-modal-items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-  gap: 10px;
+  align-items: start;
+  gap: 6px;
   margin-top: 26px;
   border-radius: 20px;
-  background: #1f6742;
-  padding: 24px 16px;
+  background: #3b1d9e;
+  padding: 16px 12px;
+}
+/* the reward cards at half size */
+.sp-modal-items .sp-card {
+  position: relative;
+  top: auto;
+  left: auto;
+  zoom: 0.5;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+.sp-modal-items .sp-card-name {
+  color: transparent;
+}
+.sp-modal-item span {
+  display: block;
+  margin-top: 8px;
   color: #fff;
-}
-.sp-modal-items .sp-reward-icon {
-  width: 96px;
-  height: 96px;
-}
-.sp-modal-items .sp-reward-icon i {
-  font-size: 42px;
-}
-.sp-modal-items .sp-reward-name {
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 17px;
+  letter-spacing: -0.3px;
 }
 .sp-modal-more {
-  color: #f1f047;
+  align-self: center;
+  color: #ffe9a8;
   font-style: italic;
   font-weight: 800;
   font-size: 24px;
@@ -673,7 +827,7 @@ img {
 }
 .sp-modal-desc {
   margin: 22px 0 18px;
-  color: #3a4d42;
+  color: #4a4266;
   font-size: 17px;
 }
 .sp-close {
@@ -730,6 +884,14 @@ img {
   }
   to {
     clip-path: circle(1600px at 50% 40%);
+  }
+}
+@keyframes sp-blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.35;
   }
 }
 @keyframes sp-drop {

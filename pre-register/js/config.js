@@ -8,6 +8,9 @@
 
   global.preRegisterConfig = {
     updateName: "SHINING",
+    tagline: "A ray of light connecting the past, present and future",
+    // Shown under the logo. The Korean page showed its launch date (26.06.24) here.
+    date: "COMING SOON",
 
     links: {
       home: "https://latale.papayaplay.com/",
@@ -41,18 +44,31 @@
       90001: "Logical Error",
     },
 
-    // PLACEHOLDERS - replace with the real reward items (image: path under images/, optional).
+    // Reward cards. The artwork (and quantities) comes from the Korean pre-registration page;
+    // names are translated here and are not official English item names.
     rewards: [
-      { name: "Reward Item 01", quantity: "" },
-      { name: "Reward Item 02", quantity: "" },
-      { name: "Reward Item 03", quantity: "x2" },
-      { name: "Reward Item 04", quantity: "x10" },
-      { name: "Reward Item 05", quantity: "" },
-      { name: "Reward Item 06", quantity: "x10" },
-      { name: "Reward Item 07", quantity: "" },
-      { name: "Reward Item 08", quantity: "" },
-      { name: "Reward Item 09", quantity: "" },
-      { name: "Reward Item 10", quantity: "x300" },
+      { id: 1, name: "[Event] Essence of Resurrection<br />Exchange Ticket" },
+      { id: 2, name: "[Event] Bottle of<br />Twinkling Stars" },
+      { id: 3, name: "[Event] Advanced Awakening Stone<br />Extension Ticket (90 Days)" },
+      { id: 4, name: "[Event]<br />SHINING Title Book" },
+      { id: 5, name: "[Event] SHINING Rabbit Costume Set" },
+    ],
+
+    // Effect of the SHINING title (shown when hovering "Title Effect" on the title book)
+    titleEffect: {
+      stats: [
+        ["Physical / Magic Critical Rate", "+1%"],
+        ["Physical / Magic Critical Damage", "+10%"],
+        ["EXP Gain", "+3%"],
+      ],
+      trigger: "Activates on a direct critical hit",
+      detail: "Critical Damage +200% for 15 sec.<br />(the duration is not refreshed)",
+    },
+
+    notes: [
+      "Pre-registration is available once per account.",
+      "Pre-registration rewards are delivered through the in-game Gift Bundle after the SHINING update.",
+      "This page is optimized for PC. Some features may be limited on mobile devices.",
     ],
 
     news: [

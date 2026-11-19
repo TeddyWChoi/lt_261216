@@ -17,25 +17,43 @@
 
   /* ---------- "Pre-Register Now!" button ---------- */
   Vue.component("pre-register-btn", {
-    props: { large: Boolean },
+    props: { label: { type: String, default: "Pre-Register Now!" }, blue: Boolean },
     template: `
-      <button class="sp-btn" :class="{ 'sp-btn-large': large }" type="button" @click="$emit('open')">
-        <span>Pre-Register Now!</span>
+      <button class="sp-btn" :class="{ 'sp-btn-blue': blue }" type="button" @click="$emit('open')">
+        <span>{{ label }}</span>
       </button>
     `,
   });
 
-  /* ---------- reward item (list and popup) ---------- */
-  Vue.component("reward-item", {
+  /* ---------- reward card (art from the Korean page, name repainted in English) ---------- */
+  Vue.component("reward-card", {
     props: { reward: Object },
+    data: function () {
+      return { titleEffect: config.titleEffect };
+    },
     template: `
-      <div class="sp-reward">
-        <div class="sp-reward-icon">
-          <img v-if="reward.image" :src="reward.image" alt="" />
-          <i v-else>✦</i>
-          <span class="sp-reward-quantity" v-if="reward.quantity">{{ reward.quantity }}</span>
-        </div>
-        <span class="sp-reward-name">{{ reward.name }}</span>
+      <div class="sp-card" :class="'sp-card-' + reward.id">
+        <p class="sp-card-name" v-html="reward.name"></p>
+        <template v-if="reward.id === 4">
+          <div class="sp-card-title-gif"></div>
+          <div class="sp-card-effect">
+            Title Effect
+            <div class="sp-tooltip">
+              <dl>
+                <template v-for="stat in titleEffect.stats">
+                  <dt>{{ stat[0] }}</dt>
+                  <dd>{{ stat[1] }}</dd>
+                </template>
+              </dl>
+              <strong>{{ titleEffect.trigger }}</strong>
+              <p v-html="titleEffect.detail"></p>
+            </div>
+          </div>
+        </template>
+        <template v-if="reward.id === 5">
+          <div class="sp-card-char"></div>
+          <div class="sp-card-char-gif"></div>
+        </template>
       </div>
     `,
   });
@@ -90,8 +108,8 @@
       closeModal: function () {
         this.isModalOpen = false;
       },
-      scrollDown: function () {
-        var target = this.$refs.intro;
+      scrollTo: function (name) {
+        var target = this.$refs[name];
         if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
       },
       soundToggle: function () {
@@ -178,19 +196,17 @@
         <!-- ===== 1. hero ===== -->
         <section class="sp-hero">
           <div class="sp-stage">
-            <div class="sp-hero-char-1"></div>
             <div class="sp-hero-title-effect"></div>
-            <h1 class="sp-hero-title">SHINING<span>Pre-Registration</span></h1>
-            <div class="sp-hero-char-2"></div>
-            <div class="sp-hero-char-4"></div>
-            <div class="sp-hero-char-3"></div>
-            <div class="sp-hero-balloon-1"></div>
-            <div class="sp-hero-balloon-2"></div>
-            <div class="sp-hero-confetti"></div>
+            <h1 class="sp-hero-title">
+              SHINING
+              <span class="sp-hero-tagline">{{ config.tagline }}</span>
+              <span class="sp-hero-date">{{ config.date }}</span>
+            </h1>
             <div class="sp-hero-cta">
-              <pre-register-btn large @open="openModal"></pre-register-btn>
-              <button class="sp-scroll" type="button" @click="scrollDown" v-show="!isModalOpen">Scroll down</button>
+              <pre-register-btn label="Pre-Register" @open="openModal"></pre-register-btn>
+              <pre-register-btn label="Rewards" blue @open="scrollTo('rewards')"></pre-register-btn>
             </div>
+            <button class="sp-scroll" type="button" @click="scrollTo('intro')" v-show="!isModalOpen">Scroll down</button>
           </div>
         </section>
 
@@ -216,14 +232,12 @@
         </section>
 
         <!-- ===== 3. rewards ===== -->
-        <section class="sp-rewards">
-          <div class="sp-inner">
-            <h2 class="sp-title sp-title-holo" v-animation:slide-bottom="{ distance: 80 }">Pre-Registration Rewards</h2>
-            <div class="sp-rewards-panel" v-animation:zoom-out="{ delay: 150, duration: 400 }">
-              <p class="sp-ribbon sp-ribbon-purple">Rewards List</p>
-              <div class="sp-rewards-list">
-                <reward-item v-for="(reward, index) in config.rewards" :key="index" :reward="reward"></reward-item>
-              </div>
+        <section class="sp-rewards" ref="rewards">
+          <div class="sp-stage">
+            <h2 class="sp-title sp-title-purple" v-animation:fade="{ duration: 400 }">Pre-Registration Rewards</h2>
+            <div class="sp-rewards-char" v-animation:fade="{ delay: 100 }"></div>
+            <reward-card v-for="(reward, index) in config.rewards" :key="reward.id" :reward="reward" v-animation:fade="{ delay: 150 * (index + 1) }"></reward-card>
+            <div class="sp-rewards-foot">
               <p class="sp-rewards-message">* Rewards will be sent via Gift Bundle after the SHINING update!</p>
               <pre-register-btn @open="openModal"></pre-register-btn>
             </div>
@@ -255,7 +269,21 @@
                 </div>
               </div>
             </div>
-            <pre-register-btn large @open="openModal"></pre-register-btn>
+            <pre-register-btn @open="openModal"></pre-register-btn>
+          </div>
+        </section>
+
+        <!-- ===== 5. please note ===== -->
+        <section class="sp-notice">
+          <div class="sp-inner">
+            <div class="sp-notice-char"></div>
+            <h2 class="sp-title sp-title-blue" v-animation:fade="{ duration: 400 }">Please Note!</h2>
+            <div class="sp-notice-box" v-animation:slide-top="{ distance: 80 }">
+              <h3>Pre-Registration</h3>
+              <ul>
+                <li v-for="(note, index) in config.notes" :key="index">{{ note }}</li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -268,7 +296,10 @@
               <h2>Pre-Registration for SHINING</h2>
               <p class="sp-modal-subtitle">Pre-register now to get a jump ahead of the other players with a bunch of items.</p>
               <div class="sp-modal-items">
-                <reward-item v-for="(reward, index) in config.rewards.slice(0, 3)" :key="index" :reward="reward"></reward-item>
+                <div class="sp-modal-item" v-for="reward in config.rewards.slice(0, 3)" :key="reward.id">
+                  <reward-card :reward="reward"></reward-card>
+                  <span v-html="reward.name"></span>
+                </div>
                 <div class="sp-modal-more">AND MUCH<br />MORE!</div>
               </div>
               <p class="sp-modal-desc">In order to pre-register you must already have a created account.</p>

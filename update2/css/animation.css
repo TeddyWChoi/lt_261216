@@ -1,0 +1,104 @@
+/* ------------------------------------------------------------------
+ * v-animation (scroll entrance animation) base stylesheet
+ * Static CSS port of the rules @actozsoft-web/aaa injected at runtime.
+ * ------------------------------------------------------------------ */
+
+:root {
+  --animation-delay: 0s;
+  --animation-duration: 0.5s;
+  --animation-easing: ease;
+  --animation-distance-x: 200px;
+  --animation-distance-y: 200px;
+  --animation-origin: center center;
+  --animation-scale-in: 1.5;
+  --animation-scale-out: 0.25;
+  --animation-angle-x: 90deg;
+  --animation-angle-y: 90deg;
+  --animation-perspective: 2000px;
+  --animation-disappear-delay: 0s;
+  --animation-disappear-duration: 0s;
+}
+
+[data-animation][data-animation-status="false"] {
+  opacity: 0 !important;
+}
+
+[data-animation][data-animation-status="false"],
+[data-animation][data-animation-complete="run"] {
+  pointer-events: none;
+}
+
+[data-animation][data-animation-complete="run"] {
+  transition-property: opacity, width, height, transform !important;
+  transform-origin: var(--animation-origin) !important;
+}
+
+[data-animation][data-animation-status="true"][data-animation-complete="run"] {
+  transition: var(--animation-duration) var(--animation-easing)
+    var(--animation-delay);
+}
+
+[data-animation][data-animation-status="false"][data-animation-complete="run"] {
+  transition: var(--animation-disappear-duration) var(--animation-easing)
+    var(--animation-disappear-delay);
+}
+
+/* --- animation types ------------------------------------------------ */
+
+[data-animation="zoom-in"][data-animation-status="false"] {
+  transform: scale(var(--animation-scale-in)) !important;
+}
+
+[data-animation="zoom-out"][data-animation-status="false"] {
+  transform: scale(var(--animation-scale-out)) !important;
+}
+
+[data-animation="slide-top"][data-animation-status="false"] {
+  transform: translateY(var(--animation-distance-y)) !important;
+}
+
+[data-animation="slide-bottom"][data-animation-status="false"] {
+  transform: translateY(calc(var(--animation-distance-y) * -1)) !important;
+}
+
+[data-animation="slide-left"][data-animation-status="false"] {
+  transform: translateX(var(--animation-distance-x)) !important;
+}
+
+[data-animation="slide-right"][data-animation-status="false"] {
+  transform: translateX(calc(var(--animation-distance-x) * -1)) !important;
+}
+
+[data-animation="flip-top"][data-animation-status="false"] {
+  transform: perspective(var(--animation-perspective))
+    rotateX(var(--animation-angle-x)) !important;
+}
+
+[data-animation="flip-bottom"][data-animation-status="false"] {
+  transform: perspective(var(--animation-perspective))
+    rotateX(calc(var(--animation-angle-x) * -1)) !important;
+}
+
+[data-animation="slide-flip-top"][data-animation-status="false"] {
+  transform: perspective(var(--animation-perspective))
+    translateY(var(--animation-distance-y)) rotateX(var(--animation-angle-x))
+    !important;
+}
+
+[data-animation="slide-flip-bottom"][data-animation-status="false"] {
+  transform: perspective(var(--animation-perspective))
+    translateY(calc(var(--animation-distance-y) * -1))
+    rotateX(calc(var(--animation-angle-x) * -1)) !important;
+}
+
+[data-animation="slide-flip-left"][data-animation-status="false"] {
+  transform: perspective(var(--animation-perspective))
+    translateX(var(--animation-distance-x))
+    rotateY(calc(var(--animation-angle-y) * -1)) !important;
+}
+
+[data-animation="slide-flip-right"][data-animation-status="false"] {
+  transform: perspective(var(--animation-perspective))
+    translateX(calc(var(--animation-distance-x) * -1))
+    rotateY(var(--animation-angle-y)) !important;
+}

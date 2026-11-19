@@ -1,0 +1,21 @@
+#w-intro{background:url(../../images/web/intro/intro.webp) center 0;height:1450px}
+#w-intro .w-intro-title-effect{--top:18px;--left:911px;background:url(../../images/web/intro/title-effect.webp);width:754px;height:436px;mix-blend-mode:screen}
+#w-intro .w-intro-title-effect[data-animation-complete=true]{animation:animation-title-shining 1s cubic-bezier(0.16, 1, 0.3, 1) forwards}
+#w-intro h2.w-intro-title{--top:95px;--left:928px;background:url(../../images/web/intro/title.webp);width:702px;height:282px}
+#w-intro h2.w-intro-title[data-animation-complete=true]{animation:animation-title-shining 1s cubic-bezier(0.16, 1, 0.3, 1) forwards}
+#w-intro .w-intro-char-1{--top:485px;--left:144px;background:url(../../images/web/intro/char-1.webp);width:2254px;height:594px}
+#w-intro .w-intro-char-2{--top:220px;--left:572px;background:url(../../images/web/intro/char-2.webp);width:314px;height:268px}
+#w-intro .w-intro-char-2[data-animation-complete=true]{animation:animation-char-fly .5s ease-out both}
+#w-intro .w-intro-char-3{--top:385px;--left:369px;background:url(../../images/web/intro/char-3.webp);width:1971px;height:915px}
+#w-intro .w-intro-char-3[data-animation-complete=true]{transform-origin:center bottom;animation:animation-char-popup .3s cubic-bezier(0.16, 1, 0.3, 1) both}
+#w-intro .w-intro-char-4{--top:474px;--left:733px;background:url(../../images/web/intro/char-4.webp);width:1062px;height:753px}
+#w-intro .w-intro-char-4[data-animation-complete=true]{transform-origin:center 50px;animation:animation-3d-toddle 1.5s linear forwards;will-change:transform}
+#w-intro .w-intro-balloon-1{--top:40px;--left:0px;background:url(../../images/web/intro/balloon-1.webp);width:534px;height:411px}
+#w-intro .w-intro-balloon-1[data-animation-complete=true]{animation:animation-ballon 3s linear both infinite alternate}
+#w-intro .w-intro-balloon-2{--top:40px;--left:2015px;background:url(../../images/web/intro/balloon-2.webp);width:570px;height:411px}
+#w-intro .w-intro-balloon-2[data-animation-complete=true]{animation:animation-ballon 3s linear both infinite alternate}
+#w-intro .w-intro-confetti{--top:-27px;--left:616px;background:url(../../images/web/intro/confetti.webp);width:1272px;height:475px}
+#w-intro .w-intro-confetti[data-animation-complete=true]{animation:animation-confetti-fall 3s ease-in-out forwards infinite}
+#w-intro .w-intro-scroll{--top:411px;--left:1223px;background:url(../../images/web/intro/scroll.webp);width:114px;height:46px}
+#w-intro .w-intro-scroll[data-animation-complete=true]{animation:animation-floating-v-10 1.5s ease-in-out both infinite alternate}
+

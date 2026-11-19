@@ -1,0 +1,11 @@
+#m-battle{background:url(../../images/mobile/battle/battle.webp) center 0;height:2878px}
+.m-battle-content-1{--top:116px;--left:50px;background:url(../../images/mobile/battle/content-1.webp);width:620px;height:206px}
+.m-battle-content-2{--top:353px;--left:51px;background:url(../../images/mobile/battle/content-2.webp);width:620px;height:421px}
+.m-battle-content-3{--top:802px;--left:51px;background:url(../../images/mobile/battle/content-3.webp);width:619px;height:300px}
+.m-battle-content-4{--top:1132px;--left:51px;background:url(../../images/mobile/battle/content-4.webp);width:619px;height:405px}
+.m-battle-content-5{--top:1568px;--left:51px;background:url(../../images/mobile/battle/content-5.webp);width:619px;height:1207px}
+.m-battle-content-5>*{--base-width:619px}
+.m-battle-btn-play-1{--top:130px;--left:49px;background:url(../../images/mobile/battle/btn-play-1.webp);width:520px;height:322px}
+.m-battle-btn-play-2{--top:482px;--left:49px;background:url(../../images/mobile/battle/btn-play-2.webp);width:520px;height:322px}
+.m-battle-btn-play-3{--top:834px;--left:49px;background:url(../../images/mobile/battle/btn-play-3.webp);width:520px;height:322px}
+

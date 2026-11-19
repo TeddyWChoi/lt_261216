@@ -1,0 +1,14 @@
+#w-battle{background:url(../../images/web/battle/battle.webp) center 0;height:1702px}
+.w-battle-content-1{--top:261px;--left:579px;background:url(../../images/web/battle/content-1.webp);width:687px;height:259px}
+.w-battle-content-2{--top:261px;--left:1294px;background:url(../../images/web/battle/content-2.webp);width:687px;height:259px}
+.w-battle-content-3{--top:548px;--left:579px;background:url(../../images/web/battle/content-3.webp);width:687px;height:418px}
+.w-battle-content-4{--top:548px;--left:1297px;background:url(../../images/web/battle/content-4.webp);width:687px;height:418px}
+.w-battle-content-5{--top:994px;--left:579px;background:url(../../images/web/battle/content-5.webp);width:1402px;height:445px}
+.w-battle-content-5>*{--base-width:1402px}
+.w-battle-btn-play-1{--top:134px;--left:51px;background:url(../../images/web/battle/btn-play-1.webp);width:420px;height:260px;transition-property:background}
+.w-battle-btn-play-1:hover{background-image:url(../../images/web/battle/btn-play-1-hover.webp)}
+.w-battle-btn-play-2{--top:134px;--left:491px;background:url(../../images/web/battle/btn-play-2.webp);width:420px;height:260px;transition-property:background}
+.w-battle-btn-play-2:hover{background-image:url(../../images/web/battle/btn-play-2-hover.webp)}
+.w-battle-btn-play-3{--top:134px;--left:931px;background:url(../../images/web/battle/btn-play-3.webp);width:420px;height:260px;transition-property:background}
+.w-battle-btn-play-3:hover{background-image:url(../../images/web/battle/btn-play-3-hover.webp)}
+

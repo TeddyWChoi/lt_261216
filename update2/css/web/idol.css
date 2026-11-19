@@ -1,0 +1,14 @@
+#w-idol{background:url(../../images/web/idol/idol.webp) center 0;height:1440px;position:relative}
+.w-idol-btn-idol-1{--top:919px;--left:575px;background:url(../../images/web/idol/btn-idol-1.webp);width:117px;height:129px;z-index:70;transition-property:background-image}
+.w-idol-btn-idol-1:hover,.w-idol-btn-idol-1.w-idol-active{background:url(../../images/web/idol/btn-idol-1-hover.webp);width:117px;height:129px}
+.w-idol-btn-idol-2{--top:919px;--left:722px;background:url(../../images/web/idol/btn-idol-2.webp);width:117px;height:129px;z-index:70;transition-property:background-image}
+.w-idol-btn-idol-2:hover,.w-idol-btn-idol-2.w-idol-active{background:url(../../images/web/idol/btn-idol-2-hover.webp);width:117px;height:129px}
+.w-idol-title{--top:262px;--left:540px}
+.w-idol-title-1{background:url(../../images/web/idol/title-1.webp);width:439px;height:262px}
+.w-idol-title-2{background:url(../../images/web/idol/title-2.webp);width:439px;height:262px}
+.w-idol-char-1{--top:268px;--left:1084px;background:url(../../images/web/idol/char-1.webp);width:1048px;height:1021px}
+.w-idol-char-2{--top:26px;--left:158px;background:url(../../images/web/idol/char-2.webp);width:2379px;height:1342px}
+.w-idol-desc{--top:573px;--left:580px;color:#fff;font-weight:300;font-size:20px;line-height:31px}
+.w-idol-desc p+p{margin-top:31px}
+.w-idol-swiper,.w-idol-slide{position:relative;height:100%}
+

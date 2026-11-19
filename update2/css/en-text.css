@@ -1,0 +1,493 @@
+@import url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css);
+/* ------------------------------------------------------------------
+ * English build: live text in place of the Korean lettering that was
+ * baked into the artwork, plus copy sizing for the longer English text.
+ * (must load last)
+ * ------------------------------------------------------------------ */
+body {
+  font-family: pretendard, NanumGothic, sans-serif;
+}
+.en-holo,
+.en-h,
+.w-idol-title .en-label b,
+.m-idol-title .en-label b,
+.w-style-title .en-label,
+.m-style-title .en-label {
+  background: linear-gradient(100deg, #fff 0%, #fff3cf 22%, #e9dcff 50%, #c4ecff 76%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  font-family: pretendard, sans-serif;
+}
+
+/* ----- logo: hide the Korean lines around SHINING, add the English tagline ----- */
+#w-intro h2.w-intro-title.en,
+#m-intro h2.m-intro-title.en,
+#w-header .w-header-scroll-area .w-header-logo.en {
+  background: none;
+}
+#w-intro h2.w-intro-title.en::before,
+#m-intro h2.m-intro-title.en::before,
+#w-header .w-header-scroll-area .w-header-logo.en::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+#w-intro h2.w-intro-title.en::before {
+  background: url(../images/web/intro/title.webp);
+  -webkit-mask: linear-gradient(transparent 344px, #000 372px, #000 621px, transparent 623px);
+  mask: linear-gradient(transparent 344px, #000 372px, #000 621px, transparent 623px);
+}
+#m-intro h2.m-intro-title.en::before {
+  background: url(../images/mobile/intro/title.webp);
+  -webkit-mask: linear-gradient(transparent 476px, #000 500px, #000 697px, transparent 699px);
+  mask: linear-gradient(transparent 476px, #000 500px, #000 697px, transparent 699px);
+}
+#w-header .w-header-scroll-area .w-header-logo.en {
+  position: relative;
+}
+#w-header .w-header-scroll-area .w-header-logo.en::before {
+  background: url(../images/web/header/logo.webp);
+  -webkit-mask: linear-gradient(#000 0 43px, transparent 45px);
+  mask: linear-gradient(#000 0 43px, transparent 45px);
+}
+.en-sub {
+  position: absolute;
+  color: #fff;
+  font-style: italic;
+  font-weight: 700;
+  font-family: pretendard, sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+.en-sub::before,
+.en-sub::after {
+  margin: 0 0.5em;
+  content: "✦";
+  font-style: normal;
+  font-size: 0.55em;
+  vertical-align: middle;
+}
+#w-intro h2.w-intro-title .en-sub {
+  top: 620px;
+  left: 518px;
+  background: radial-gradient(closest-side, rgba(32, 16, 110, 0.75), rgba(32, 16, 110, 0));
+  padding: 6px 0 16px;
+  width: 728px;
+  font-size: 40px;
+  line-height: 54px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px #6a4cff;
+}
+#m-intro h2.m-intro-title .en-sub {
+  top: 696px;
+  left: 60px;
+  background: radial-gradient(closest-side, rgba(32, 16, 110, 0.75), rgba(32, 16, 110, 0));
+  padding: 4px 0 12px;
+  width: 590px;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #6a4cff;
+}
+#w-header .w-header-logo .en-sub {
+  top: 43px;
+  right: 0;
+  left: 0;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0.3px;
+}
+#w-header .w-header-scroll-area ul .w-header-btn-tab {
+  letter-spacing: -0.5px;
+}
+
+/* ----- scenario ----- */
+#w-scenario .w-scenario {
+  padding: 100px 130px;
+}
+#w-scenario p.w-scenario-desc {
+  margin-bottom: 26px;
+  font-size: 19px;
+  line-height: 28px;
+  font-family: pretendard, sans-serif;
+  letter-spacing: -0.2px;
+}
+#m-scenario .m-scenario {
+  padding: 60px 36px;
+}
+#m-scenario p.m-scenario-desc {
+  margin-bottom: 24px;
+  font-size: 20px;
+  line-height: 29px;
+  font-family: pretendard, sans-serif;
+  letter-spacing: -0.2px;
+}
+
+/* ----- idol ----- */
+.w-idol-title.en-live,
+.m-idol-title.en-live {
+  background: none !important;
+  height: auto !important;
+}
+.w-idol-title .en-label,
+.m-idol-title .en-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: pretendard, sans-serif;
+  white-space: nowrap;
+}
+.w-idol-title .en-label small,
+.m-idol-title .en-label small {
+  color: #3ff0f0;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 50px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+.w-idol-title .en-label b,
+.m-idol-title .en-label b {
+  font-size: 128px;
+  line-height: 134px;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+}
+.w-idol-title .en-label em,
+.m-idol-title .en-label em {
+  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 16px 100%, 0 50%);
+  margin-top: 10px;
+  background: #6a3df0;
+  padding: 0 34px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 46px;
+}
+.w-idol-desc {
+  width: 500px;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.2px;
+}
+.w-idol-desc p + p {
+  margin-top: 22px;
+}
+.m-idol-desc {
+  padding: 0 44px;
+  font-size: 21px;
+  line-height: 30px;
+  letter-spacing: -0.3px;
+  white-space: normal;
+}
+.m-idol-desc p + p {
+  margin-top: 22px;
+}
+
+/* ----- battle panels: repainted text areas ----- */
+.en-hole {
+  padding: 6px 10px;
+  overflow: hidden;
+  font-family: pretendard, sans-serif;
+}
+.en-h {
+  position: relative;
+  padding-left: 46px;
+  font-size: 46px;
+  line-height: 62px;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+.en-h::before {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  content: "✦";
+  -webkit-text-fill-color: #43e8f5;
+  font-size: 32px;
+}
+.en-badge {
+  display: inline-block;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 10px 100%, 0 50%);
+  margin-left: 12px;
+  background: #6a3df0;
+  padding: 0 20px;
+  -webkit-text-fill-color: #fff;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+.en-p {
+  padding-left: 14px;
+  color: #fff;
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 27px;
+  letter-spacing: -0.2px;
+  text-indent: -14px;
+}
+.en-h + .en-p {
+  margin-top: 16px;
+}
+[class*="m-battle-content"] .en-p {
+  font-size: 21px;
+  line-height: 29px;
+}
+
+/* ----- style room ----- */
+.w-style-title.en,
+.m-style-title.en {
+  background: none !important;
+}
+.w-style-title .en-label,
+.m-style-title .en-label {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  font-size: 52px;
+  line-height: 52px;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+.w-style-content-2.en,
+.m-style-content-3.en {
+  background: none !important;
+  height: auto !important;
+  color: #fff;
+  font-family: pretendard, sans-serif;
+  text-align: center;
+}
+.w-style-content-2.en {
+  left: calc(50% - 600px) !important;
+  width: 1200px !important;
+}
+.en-lead {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+}
+.w-style-content-2 .en-p,
+.m-style-content-3 .en-p {
+  margin-top: 14px;
+  padding: 0;
+  font-size: 18px;
+  line-height: 28px;
+  text-indent: 0;
+}
+.en-note {
+  margin-top: 18px;
+  color: #5ce8e8;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 26px;
+}
+.m-style-content-3 .en-lead {
+  font-size: 20px;
+  line-height: 29px;
+}
+.m-style-content-3 .en-lead br {
+  display: none;
+}
+
+/* ----- Korean text cut out of the artwork and repainted (generated) ----- */
+.en-art {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.en-hole {
+  position: absolute !important;
+}
+.w-battle-content-1.en {
+  background: none !important;
+}
+.w-battle-content-1.en > .en-art {
+  background: url(../images/web/battle/content-1.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 40px 40px / 600px 180px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 40px 40px / 600px 180px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-battle-content-1.en > .en-hole-1 {
+  top: 40px !important;
+  left: 40px !important;
+  background: linear-gradient(rgba(7,1,80,0.302), rgba(7,0,82,0.302), rgba(5,2,91,0.302), rgba(0,1,94,0.302), rgba(0,7,66,0.302));
+  width: 600px;
+  height: 180px;
+}
+.w-battle-content-2.en {
+  background: none !important;
+}
+.w-battle-content-2.en > .en-art {
+  background: url(../images/web/battle/content-2.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 40px 40px / 620px 190px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 40px 40px / 620px 190px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-battle-content-2.en > .en-hole-1 {
+  top: 40px !important;
+  left: 40px !important;
+  background: linear-gradient(rgba(7,1,80,0.302), rgba(8,2,83,0.302), rgba(2,1,92,0.302), rgba(0,2,88,0.302), rgba(0,7,66,0.302));
+  width: 620px;
+  height: 190px;
+}
+.w-battle-content-3.en {
+  background: none !important;
+}
+.w-battle-content-3.en > .en-art {
+  background: url(../images/web/battle/content-3.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 40px 40px / 600px 124px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 40px 40px / 600px 124px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-battle-content-3.en > .en-hole-1 {
+  top: 40px !important;
+  left: 40px !important;
+  background: linear-gradient(rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(8,2,81,0.302), rgba(6,2,87,0.302));
+  width: 600px;
+  height: 124px;
+}
+.w-battle-content-4.en {
+  background: none !important;
+}
+.w-battle-content-4.en > .en-art {
+  background: url(../images/web/battle/content-4.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 40px 40px / 620px 74px no-repeat, linear-gradient(#000 0 0) 30px 280px / 640px 100px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 40px 40px / 620px 74px no-repeat, linear-gradient(#000 0 0) 30px 280px / 640px 100px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-battle-content-4.en > .en-hole-1 {
+  top: 40px !important;
+  left: 40px !important;
+  background: linear-gradient(rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(7,0,82,0.302), rgba(7,1,80,0.302), rgba(7,1,80,0.302));
+  width: 620px;
+  height: 74px;
+}
+.w-battle-content-4.en > .en-hole-2 {
+  top: 280px !important;
+  left: 30px !important;
+  background: linear-gradient(rgba(2,0,94,0.302), rgba(0,6,81,0.302), rgba(2,4,78,0.302), rgba(2,8,69,0.302), rgba(2,7,62,0.302));
+  width: 640px;
+  height: 100px;
+}
+.w-battle-content-5.en {
+  background: none !important;
+}
+.w-battle-content-5.en > .en-art {
+  background: url(../images/web/battle/content-5.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 40px 40px / 600px 74px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 40px 40px / 600px 74px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-battle-content-5.en > .en-hole-1 {
+  top: 40px !important;
+  left: 40px !important;
+  background: linear-gradient(rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(7,1,80,0.302));
+  width: 600px;
+  height: 74px;
+}
+.m-battle-content-1.en {
+  background: none !important;
+}
+.m-battle-content-1.en > .en-art {
+  background: url(../images/mobile/battle/content-1.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 36px 36px / 540px 140px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 36px 36px / 540px 140px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.m-battle-content-1.en > .en-hole-1 {
+  top: 36px !important;
+  left: 36px !important;
+  background: linear-gradient(rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(2,1,90,0.302), rgba(2,1,90,0.302), rgba(2,6,68,0.302));
+  width: 540px;
+  height: 140px;
+}
+.m-battle-content-2.en {
+  background: none !important;
+}
+.m-battle-content-2.en > .en-art {
+  background: url(../images/mobile/battle/content-2.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 36px 36px / 540px 126px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 36px 36px / 540px 126px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.m-battle-content-2.en > .en-hole-1 {
+  top: 36px !important;
+  left: 36px !important;
+  background: linear-gradient(rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(7,1,80,0.302), rgba(8,1,85,0.302));
+  width: 540px;
+  height: 126px;
+}
+.m-battle-content-3.en {
+  background: none !important;
+}
+.m-battle-content-3.en > .en-art {
+  background: url(../images/mobile/battle/content-3.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 36px 36px / 560px 240px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 36px 36px / 560px 240px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.m-battle-content-3.en > .en-hole-1 {
+  top: 36px !important;
+  left: 36px !important;
+  background: linear-gradient(rgba(8,0,80,0.302), rgba(7,0,82,0.302), rgba(4,0,92,0.302), rgba(0,4,84,0.302), rgba(0,8,62,0.302));
+  width: 560px;
+  height: 240px;
+}
+.m-battle-content-4.en {
+  background: none !important;
+}
+.m-battle-content-4.en > .en-art {
+  background: url(../images/mobile/battle/content-4.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 36px 36px / 560px 74px no-repeat, linear-gradient(#000 0 0) 30px 258px / 570px 120px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 36px 36px / 560px 74px no-repeat, linear-gradient(#000 0 0) 30px 258px / 570px 120px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.m-battle-content-4.en > .en-hole-1 {
+  top: 36px !important;
+  left: 36px !important;
+  background: linear-gradient(rgba(5,2,80,0.302), rgba(5,2,80,0.302), rgba(5,2,80,0.302), rgba(5,2,80,0.302), rgba(5,2,80,0.302));
+  width: 560px;
+  height: 74px;
+}
+.m-battle-content-4.en > .en-hole-2 {
+  top: 258px !important;
+  left: 30px !important;
+  background: linear-gradient(rgba(2,1,102,0.302), rgba(0,6,83,0.302), rgba(0,4,78,0.302), rgba(0,6,68,0.302), rgba(0,7,64,0.302));
+  width: 570px;
+  height: 120px;
+}
+.m-battle-content-5.en {
+  background: none !important;
+}
+.m-battle-content-5.en > .en-art {
+  background: url(../images/mobile/battle/content-5.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 36px 36px / 540px 74px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 36px 36px / 540px 74px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.m-battle-content-5.en > .en-hole-1 {
+  top: 36px !important;
+  left: 36px !important;
+  background: linear-gradient(rgba(5,2,80,0.302), rgba(5,2,80,0.302), rgba(5,2,80,0.302), rgba(5,2,80,0.302), rgba(5,2,80,0.302));
+  width: 540px;
+  height: 74px;
+}

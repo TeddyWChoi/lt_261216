@@ -1,0 +1,299 @@
+/* ------------------------------------------------------------------
+ * English build: live text in place of the Korean lettering that was
+ * baked into the artwork, plus copy sizing for the longer English text.
+ * (must load last)
+ * ------------------------------------------------------------------ */
+.en-grad,
+.w-map-sub-title .en-label,
+p.w-characters-title .en-label,
+h2.w-system-title .en-label {
+  background: linear-gradient(100deg, #4ca770 0%, #5ab997 50%, #76ced7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ----- logo: hide the Korean tagline under SHINING, add the English one ----- */
+#w-intro h2.w-intro-title.en,
+#w-header .w-header-scroll-area .w-header-logo.en {
+  background: none;
+}
+#w-intro h2.w-intro-title.en::before,
+#w-header .w-header-scroll-area .w-header-logo.en::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+#w-intro h2.w-intro-title.en::before {
+  background: url(../images/web/intro/title.webp);
+  -webkit-mask: linear-gradient(#000 0 206px, transparent 214px);
+  mask: linear-gradient(#000 0 206px, transparent 214px);
+}
+#w-header .w-header-scroll-area .w-header-logo.en {
+  position: relative;
+}
+#w-header .w-header-scroll-area .w-header-logo.en::before {
+  background: url(../images/web/header/logo.webp);
+  -webkit-mask: linear-gradient(#000 0 46px, transparent 48px);
+  mask: linear-gradient(#000 0 46px, transparent 48px);
+}
+.en-sub {
+  position: absolute;
+  right: 0;
+  left: 0;
+  color: #fff;
+  font-style: italic;
+  font-weight: 700;
+  font-family: pretendard, sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+.en-sub::before,
+.en-sub::after {
+  margin: 0 0.5em;
+  content: "✦";
+  font-style: normal;
+  font-size: 0.55em;
+  vertical-align: middle;
+}
+#w-intro h2.w-intro-title .en-sub {
+  top: 212px;
+  font-size: 30px;
+  line-height: 44px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #1f9a5a, 0 0 22px #1f9a5a;
+}
+#w-header .w-header-logo .en-sub {
+  top: 46px;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0.3px;
+}
+
+/* ----- header tabs ----- */
+#w-header .w-header-scroll-area ul .w-header-btn-tab {
+  letter-spacing: -0.5px;
+}
+
+/* ----- scenario ----- */
+#w-scenario p.w-scenario-desc {
+  letter-spacing: -0.3px;
+}
+
+/* ----- map ----- */
+.w-map-slide .w-map-sub-title.en-live {
+  background: none !important;
+  width: auto !important;
+  height: 84px;
+  font-weight: 800;
+  font-size: 54px;
+  line-height: 84px;
+  font-family: pretendard, sans-serif;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+.w-map-slide .w-map-btn-detail.en-live {
+  background-position: right center !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent;
+  padding: 0 42px 0 0;
+  width: auto !important;
+  height: 42px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 42px;
+  font-family: pretendard, sans-serif;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+.w-map-btn-detail.en-live .en-label {
+  display: block;
+  transition-property: background;
+  border-radius: 7px 0 0 7px;
+  background: #000;
+  padding: 0 14px;
+  height: 42px;
+  color: #fff;
+}
+.w-map-map-3 .w-map-btn-detail.en-live .en-label,
+.w-map-map-4 .w-map-btn-detail.en-live .en-label {
+  background: #fff;
+  color: #000;
+}
+.w-map-slide .w-map-btn-detail.en-live:hover .en-label {
+  background: #2db281;
+  color: #fff;
+}
+.w-map-slide p.w-map-title {
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+.w-map-slide p.w-map-desc {
+  width: 584px;
+  font-size: 20px;
+  line-height: 33px;
+  letter-spacing: -0.4px;
+}
+
+/* ----- characters ----- */
+#w-characters ul .w-characters-btn-tab {
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+#w-characters p.w-characters-title.en-live {
+  background: none !important;
+  width: max-content !important;
+  height: 84px;
+  font-weight: 800;
+  font-size: 58px;
+  line-height: 84px;
+  font-family: pretendard, sans-serif;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+#w-characters .w-characters-normal p.w-characters-title.en-live {
+  height: 48px;
+  font-size: 46px;
+  line-height: 48px;
+}
+.w-characters-content .w-characters-boss p.w-characters-desc,
+.w-characters-content .w-characters-npc p.w-characters-desc {
+  width: 600px;
+  letter-spacing: -0.3px;
+}
+.w-characters-content .w-characters-normal p.w-characters-desc {
+  width: 600px;
+  letter-spacing: -0.3px !important;
+}
+.w-characters-content .w-characters-normal:nth-child(even) p.w-characters-desc {
+  margin-left: auto;
+}
+
+/* ----- system ----- */
+#w-system h2.w-system-title.en-live {
+  background: none !important;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 46px;
+  line-height: 121px;
+  font-family: pretendard, sans-serif;
+  letter-spacing: -1px;
+  text-align: center;
+  white-space: nowrap;
+}
+#w-system [class*="w-system-content-"].en-live .en-label {
+  display: flex;
+  position: absolute;
+  top: 372px;
+  left: 45px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 284px;
+  height: 100px;
+  color: #000;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  font-family: pretendard, sans-serif;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+#w-system [class*="w-system-content-"].en-live .en-label small {
+  margin-top: 6px;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: -0.3px;
+}
+#w-system .w-system-patch-note.en-live {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(../images/web/characters/btn-tab-hover.webp) center / 100% 100% no-repeat !important;
+  color: #fff;
+  font-weight: 700;
+  font-size: 26px;
+  font-family: pretendard, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+/* ----- Korean text cut out of the artwork and repainted (generated) ----- */
+.en-art {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.en-hole {
+  position: absolute !important;
+}
+.w-system-content-1.en {
+  background: none !important;
+}
+.w-system-content-1.en > .en-art {
+  background: url(../images/web/system/content-1.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 45px 372px / 284px 100px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 45px 372px / 284px 100px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-system-content-1.en > .en-hole-1 {
+  top: 372px !important;
+  left: 45px !important;
+  background: linear-gradient(rgba(248,249,233,1.000), rgba(248,249,233,1.000), rgba(248,249,233,1.000), rgba(248,249,233,1.000), rgba(248,249,231,1.000));
+  width: 284px;
+  height: 100px;
+}
+.w-system-content-2.en {
+  background: none !important;
+}
+.w-system-content-2.en > .en-art {
+  background: url(../images/web/system/content-2.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 45px 372px / 284px 100px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 45px 372px / 284px 100px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-system-content-2.en > .en-hole-1 {
+  top: 372px !important;
+  left: 45px !important;
+  background: linear-gradient(rgba(248,249,231,0.804), rgba(248,249,231,0.804), rgba(248,249,231,0.804), rgba(248,249,231,0.804), rgba(250,250,232,0.812));
+  width: 284px;
+  height: 100px;
+}
+.w-system-content-3.en {
+  background: none !important;
+}
+.w-system-content-3.en > .en-art {
+  background: url(../images/web/system/content-3.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 45px 372px / 284px 100px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 45px 372px / 284px 100px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-system-content-3.en > .en-hole-1 {
+  top: 372px !important;
+  left: 45px !important;
+  background: linear-gradient(rgba(247,249,237,0.804), rgba(247,249,237,0.804), rgba(247,249,237,0.804), rgba(247,249,237,0.804), rgba(247,249,235,0.812));
+  width: 284px;
+  height: 100px;
+}
+.w-system-content-4.en {
+  background: none !important;
+}
+.w-system-content-4.en > .en-art {
+  background: url(../images/web/system/content-4.webp);
+  -webkit-mask: linear-gradient(#000 0 0) 45px 372px / 284px 100px no-repeat, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) 45px 372px / 284px 100px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.w-system-content-4.en > .en-hole-1 {
+  top: 372px !important;
+  left: 45px !important;
+  background: linear-gradient(rgba(245,249,241,0.804), rgba(245,249,239,0.804), rgba(245,249,239,0.804), rgba(245,249,239,0.804), rgba(245,250,237,0.812));
+  width: 284px;
+  height: 100px;
+}

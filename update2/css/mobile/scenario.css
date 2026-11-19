@@ -1,0 +1,5 @@
+#m-scenario{background:url(../../images/mobile/scenario/scenario.webp) center 0;height:1600px}
+#m-scenario h2.m-scenario-title{--top:114px;--left:204px;background:url(../../images/mobile/scenario/title.webp);width:313px;height:49px}
+#m-scenario .m-scenario{--top:203px;--left:41px;background:url(../../images/mobile/scenario/scenario_scenario.webp);width:638px;height:1290px;padding:60px 0}
+#m-scenario p.m-scenario-desc{margin-bottom:35px;color:#fff;font-weight:300;font-size:25px;line-height:35px;font-family:"Noto Sans KR",sans-serif;letter-spacing:-2px;text-align:center}
+

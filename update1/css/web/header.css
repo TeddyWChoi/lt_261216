@@ -1,0 +1,18 @@
+#w-header{width:100%;min-width:1485px;max-width:1920px;--bar-height:88px}
+#w-header .w-header-fixed-area{display:flex;position:fixed;justify-content:end;z-index:999;margin-top:19px;margin-right:19px;margin-left:auto;inset:0 0 auto;width:fit-content;height:var(--bar-height)}
+#w-header .w-header-fixed-area .w-header-home{background:url(../../images/web/header/home.webp);width:51px;height:50px;transition-property:background;margin-right:13px}
+#w-header .w-header-fixed-area .w-header-home:hover{background-image:url(../../images/web/header/home-hover.webp)}
+#w-header .w-header-fixed-area .w-header-btn-music{background:url(../../images/web/header/btn-music.webp);width:50px;height:50px;margin-right:13px}
+#w-header .w-header-fixed-area .w-header-btn-music.w-header-playing{background:url(../../images/web/header/btn-music_playing.webp);width:50px;height:50px}
+#w-header .w-header-fixed-area .w-header-login{background:url(../../images/web/header/login.webp);width:51px;height:50px;transition-property:background;margin-right:13px}
+#w-header .w-header-fixed-area .w-header-login:hover{background-image:url(../../images/web/header/login-hover.webp)}
+#w-header .w-header-fixed-area .w-header-btn-game-start{border-radius:25px;background-color:#fff;width:150px;height:50px;color:#123e28;font-weight:300;font-size:18px;line-height:50px;font-family:"Noto Sans KR",sans-serif;letter-spacing:-1.5px;text-align:center;text-transform:uppercase}
+#w-header .w-header-fixed-area .w-header-btn-game-start:hover{transition-property:background-color;background-color:#f1f047}
+#w-header .w-header-fixed-area .w-header-btn-not-today{position:absolute;top:74px;right:10px;background:url(../../images/web/header/btn-not-today.webp);width:111px;height:19px}
+#w-header .w-header-scroll-area{display:flex;position:absolute;top:1440px;align-items:center;z-index:995;background-color:#123e28;width:100%;min-width:1485px;height:88px}
+#w-header .w-header-scroll-area.w-header-is-fixed{position:fixed;inset:0 0 auto}
+#w-header .w-header-scroll-area .w-header-logo{margin:0 0 0 40px;background:url(../../images/web/header/logo.webp);width:159px;height:64px}
+#w-header .w-header-scroll-area ul{display:flex;justify-content:center;width:calc(100% - 500px);white-space:nowrap}
+#w-header .w-header-scroll-area ul .w-header-btn-tab{flex-shrink:0;margin:0 40px;background-color:rgba(0,0,0,0);padding:0 30px;color:#a7a6ac;font-weight:300;font-size:24px;line-height:52px;font-family:"Noto Sans KR",sans-serif;letter-spacing:-1.5px;text-align:center}
+#w-header .w-header-scroll-area ul .w-header-btn-tab.w-header-active,#w-header .w-header-scroll-area ul .w-header-btn-tab:hover{border-radius:25px;background-color:#1f6742;height:52px;color:#fff}
+

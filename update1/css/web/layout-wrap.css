@@ -1,0 +1,5 @@
+.w-layout-wrap{--base-width:var(--max-width);--b06283:#000;--dd1c11:#fff;--min-width:1760px;--max-width:2560px;--780fdc:#000;--c7fe27:90px;position:relative;transition-property:min-width,max-width;margin:0 auto;background:var(--dd1c11);min-width:var(--min-width);max-width:var(--max-width);overflow:hidden;color:var(--b06283)}
+
+.w-layout-wrap-6851{--5b7537:var(--1a0b822c)}
+.w-layout-wrap-blank{padding:0;min-width:auto;max-width:none}
+

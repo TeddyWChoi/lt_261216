@@ -1,0 +1,9 @@
+#m-intro{background:url(../../images/mobile/intro/intro.webp) center 0;height:1600px}
+#m-intro .m-intro-title-effect{--top:775px;--left:18px;background:url(../../images/mobile/intro/title-effect.webp);width:682px;height:493px;mix-blend-mode:color-dodge}
+#m-intro .m-intro-title-effect[data-animation-complete=true]{animation:animation-title-shining 1s cubic-bezier(0.16, 1, 0.3, 1) forwards}
+#m-intro h2.m-intro-title{--top:459px;--left:0px;background:url(../../images/mobile/intro/title.webp);width:720px;height:1167px}
+#m-intro h2.m-intro-title[data-animation-complete=true]{animation:animation-title-shining 1s cubic-bezier(0.16, 1, 0.3, 1) forwards}
+#m-intro .m-intro-char-1{--top:103px;--left:0px;background:url(../../images/mobile/intro/char-1.webp);width:720px;height:1405px}
+#m-intro .m-intro-scroll{--top:1249px;--left:303px;background:url(../../images/mobile/intro/scroll.webp);width:114px;height:46px}
+#m-intro .m-intro-scroll[data-animation-complete=true]{animation:animation-floating-v-10 1.5s ease-in-out both infinite alternate}
+

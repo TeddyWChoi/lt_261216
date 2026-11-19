@@ -11,7 +11,7 @@
   'use strict';
 
   global.EVENT_CONFIG = {
-    // true  = sample data + the PREVIEW state switcher (bottom-left)
+    // true  = sample data (no server needed)
     // false = real API calls (see js/api.js)
     mock: true,
 

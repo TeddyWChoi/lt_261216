@@ -58,16 +58,7 @@
         toasts: [],
         windowWidth: window.innerWidth,
         envelopeNativeW: 898,
-        envelopeNativeH: 500,
-        previewOpen: window.innerWidth >= 768,
-        previewState: 'guest',
-        previewStates: [
-          { id: 'guest', label: 'Signed out' },
-          { id: 'invitee', label: 'New / returning player' },
-          { id: 'registered', label: 'Code entered' },
-          { id: 'inviter', label: 'Existing player' },
-          { id: 'inviting', label: 'Existing player · 3 invited' }
-        ]
+        envelopeNativeH: 500
       };
     },
     computed: {
@@ -144,16 +135,11 @@
       },
       signIn: function () {
         var self = this;
-        api.signIn().then(function (status) { self.me = status; self.previewState = 'invitee'; });
+        api.signIn().then(function (status) { self.me = status; });
       },
       signOut: function () {
         var self = this;
-        api.signOut().then(function (status) { self.me = status; self.previewState = 'guest'; });
-      },
-      usePreset: function (id) {
-        var self = this;
-        this.previewState = id;
-        api.usePreset(id).then(function (status) { self.me = status; });
+        api.signOut().then(function (status) { self.me = status; });
       },
       handleConfirm: function () {
         var self = this;
@@ -176,7 +162,7 @@
           }
           self.me.registeredCode = res.code;
           self.inviteCode = '';
-          self.previewState = 'registered';
+         
           self.resultPopup = {
             type: 'success',
             title: 'Code Registered!',

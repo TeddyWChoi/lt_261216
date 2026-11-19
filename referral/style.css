@@ -1460,48 +1460,6 @@ ul {
   font-weight: 600;
 }
 
-/* ─── Account (sign in / out) ─── */
-.account-bar {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.account-name {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.5px;
-  color: #ffffff;
-  text-shadow: 0 1px 6px rgba(27, 9, 51, 0.8);
-}
-
-.btn-account {
-  height: 38px;
-  padding: 0 20px;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #7c3aed;
-  background: #f0eafd;
-  border: 2px dashed #9f86f8;
-  border-radius: 19px;
-  box-shadow: 0 4px 10px rgba(27, 9, 51, 0.3);
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.btn-account:hover {
-  background: #7c3aed;
-  color: #ffffff;
-  border-style: solid;
-}
-
 /* ─── Form states ─── */
 .btn-primary:disabled,
 .btn-copy:disabled {
@@ -1895,80 +1853,8 @@ ul {
   font-size: 15px;
 }
 
-/* ─── Preview switcher (mock only) ─── */
-.preview-panel {
-  position: fixed;
-  left: 12px;
-  bottom: 12px;
-  z-index: 900;
-  width: 214px;
-  padding: 8px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 13px;
-  color: #ffffff;
-  background: rgba(17, 17, 24, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 12px;
-}
-
-.preview-panel.closed {
-  width: auto;
-}
-
-.preview-toggle {
-  width: 100%;
-  padding: 2px 6px;
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-align: left;
-  text-transform: uppercase;
-  color: #ffd043;
-  background: none;
-}
-
-.preview-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 6px;
-}
-
-.preview-list button {
-  padding: 6px 10px;
-  font-weight: 700;
-  text-align: left;
-  color: #ffffff;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.preview-list button:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.preview-list button.active {
-  color: #1b0933;
-  background: #ffd043;
-}
-
 /* ─── MOBILE (< 640px) ─── */
 @media (max-width: 639px) {
-  .account-bar {
-    top: 10px;
-    right: 10px;
-  }
-
-  .btn-account {
-    height: 32px;
-    padding: 0 14px;
-    font-size: 11px;
-  }
-
-  .account-name {
-    font-size: 13px;
-  }
-
   .reward-box,
   .photos {
     margin: 0 12px;
@@ -2054,9 +1940,7 @@ ul {
     text-align: center;
   }
 
-  .preview-panel {
-    bottom: 12px;
-  }
+
 }
 
 /* The notices list is longer than the envelope artwork: fade the artwork out
@@ -2071,8 +1955,33 @@ ul {
   border-color: #c9b3a6;
 }
 
-@media (max-width: 639px) {
-  .header {
-    padding-top: 64px;
-  }
+/* ─── Characters: one idol on each side, tucked behind the paper ─── */
+.char-left-wrap,
+.char-right-wrap {
+  top: 250px;
+  width: clamp(300px, 27vw, 500px);
+  max-width: none;
+}
+
+.char-left-wrap {
+  left: auto;
+  right: calc(50% + 395px);
+}
+
+.char-right-wrap {
+  right: auto;
+  left: calc(50% + 395px);
+  top: 330px;
+  width: clamp(255px, 23vw, 425px);
+}
+
+/* soft edge where each figure was cut out of the pair artwork */
+.char-left-inner img {
+  -webkit-mask-image: linear-gradient(90deg, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, #000 94%, transparent);
+}
+
+.char-right-wrap img {
+  -webkit-mask-image: linear-gradient(270deg, #000 95%, transparent);
+  mask-image: linear-gradient(270deg, #000 95%, transparent);
 }

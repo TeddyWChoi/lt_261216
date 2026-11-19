@@ -20,22 +20,13 @@
       <!-- Left Character (desktop) -->
       <div class="char-left-wrap">
         <div class="char-left-inner">
-          <img src="images/idol-a.webp" alt="" />
+          <img src="images/idol-left.webp" alt="" />
         </div>
       </div>
 
       <!-- Right Character (desktop) -->
       <div class="char-right-wrap">
-        <img src="images/idol-b.webp" alt="" />
-      </div>
-
-      <!-- Account (sign in / out) -->
-      <div class="account-bar">
-        <template v-if="me.loggedIn">
-          <span class="account-name">{{ me.account }}</span>
-          <button class="btn-account" type="button" @click="signOut">Sign Out</button>
-        </template>
-        <button v-else class="btn-account" type="button" @click="signIn">Sign In</button>
+        <img src="images/idol-right.webp" alt="" />
       </div>
 
       <!-- Main Content Column -->
@@ -496,15 +487,6 @@
             </svg>
           </span>
           <span class="toast-text">{{ toast.message }}</span>
-        </div>
-      </div>
-
-      <!-- PREVIEW state switcher (only while EVENT_CONFIG.mock is true) -->
-      <div v-if="cfg.mock" class="preview-panel" :class="{ closed: !previewOpen }">
-        <button class="preview-toggle" type="button" @click="previewOpen = !previewOpen">Preview {{ previewOpen ? '▾' : '▴' }}</button>
-        <div v-if="previewOpen" class="preview-list">
-          <button v-for="p in previewStates" :key="p.id" type="button" :class="{ active: previewState === p.id }"
-            @click="usePreset(p.id)">{{ p.label }}</button>
         </div>
       </div>
 

@@ -27,7 +27,8 @@
     { date: '2027-01-04 13:47:02', account: 'Mint***', reached: false }
   ];
 
-  // Sample states for the PREVIEW switcher
+  // Sample account states. While EVENT_CONFIG.mock is true, open the page with
+  // ?state=guest | invitee | registered | inviter | inviting  to look at each one.
   var PRESETS = {
     guest:      { loggedIn: false, account: '', canEnterCode: false, registeredCode: '', myCode: '', referrals: [] },
     invitee:    { loggedIn: true, account: 'Star***', canEnterCode: true, registeredCode: '', myCode: '', referrals: [] },
@@ -37,6 +38,10 @@
   };
 
   var state = clone(PRESETS.guest);
+  if (global.EVENT_CONFIG.mock) {
+    var wanted = new URLSearchParams(global.location.search).get('state');
+    if (wanted && PRESETS[wanted]) state = clone(PRESETS[wanted]);
+  }
 
   function clone(o) { return JSON.parse(JSON.stringify(o)); }
   function later(value) {
@@ -51,7 +56,7 @@
   global.ReferralApi = {
     presets: Object.keys(PRESETS),
 
-    // PREVIEW only
+    // sample data only
     usePreset: function (name) {
       state = clone(PRESETS[name] || PRESETS.guest);
       return later(state);

@@ -29,8 +29,9 @@ Open `index.html` in a browser. No build, no `npm install`.
   Reward icons go in `images/items/`.
 - `js/api.js` - the only place that talks to the server. It returns sample data for now;
   replace the body of each function with the real request (response shapes are documented at the top).
-- `mock: true` in `js/config.js` also shows the PREVIEW switcher (bottom-left) for trying each
-  account state. Set it to `false` for the live page.
+- `mock: true` in `js/config.js` means sample data. While it is on, add `?state=guest`, `invitee`,
+  `registered`, `inviter` or `inviting` to the address to look at each account state.
+  Set it to `false` for the live page.
 
 ## Still to be confirmed
 

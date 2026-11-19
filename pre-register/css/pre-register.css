@@ -1,0 +1,810 @@
+/* ------------------------------------------------------------------
+ * SHINING pre-registration page
+ * Design width: 1200px content column on full-width artwork.
+ * Narrower screens are scaled down as a whole (see refreshScale in js/app.js).
+ * ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: #0b0a2a;
+  color: #1b2a22;
+  font: 18px/1.5 pretendard, -apple-system, "Segoe UI", roboto, sans-serif;
+}
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.sp-wrap {
+  position: relative;
+  min-width: 1200px;
+  overflow: hidden;
+}
+.sp-wrap section {
+  position: relative;
+  overflow: hidden;
+}
+.sp-inner {
+  position: relative;
+  margin: 0 auto;
+  width: 1200px;
+}
+
+/* ===================== shared pieces ===================== */
+.sp-title {
+  position: relative;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 76px;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  text-align: center;
+}
+.sp-title-green {
+  background: linear-gradient(100deg, #2f9a5c 0%, #45b98b 50%, #5cc9d2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 3px 0 #fff) drop-shadow(0 0 14px rgba(255, 255, 255, 0.9));
+}
+.sp-title-holo {
+  background: linear-gradient(100deg, #fff 0%, #fff3cf 22%, #e9dcff 50%, #c4ecff 76%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(130, 96, 255, 0.9));
+}
+.sp-ribbon {
+  margin: 28px auto 0;
+  border-radius: 999px;
+  background: #1f6742;
+  padding: 0 40px;
+  width: fit-content;
+  color: #fff;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 58px;
+  letter-spacing: -0.5px;
+}
+.sp-ribbon::before,
+.sp-ribbon::after {
+  color: #f1f047;
+  content: "✦";
+}
+.sp-ribbon::before {
+  margin-right: 14px;
+}
+.sp-ribbon::after {
+  margin-left: 14px;
+}
+.sp-ribbon-purple {
+  background: #6a3df0;
+}
+.sp-ribbon-purple::before,
+.sp-ribbon-purple::after {
+  color: #5ce8e8;
+}
+
+/* "Pre-Register Now!" button (art: the green pill from the Characters tabs) */
+.sp-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, filter 0.2s;
+  margin: 0 auto;
+  background: url(../images/ui/btn.webp) center / 100% 100% no-repeat;
+  width: 360px;
+  height: 92px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 0 rgba(18, 62, 40, 0.45);
+}
+.sp-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.12) saturate(1.1);
+}
+.sp-btn-large {
+  width: 460px;
+  height: 112px;
+  font-size: 32px;
+}
+.sp-btn-wide {
+  width: 520px;
+  font-size: 22px;
+}
+.sp-loading {
+  animation: sp-spin 1s linear infinite;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+/* ===================== top-right buttons ===================== */
+.sp-top {
+  display: flex;
+  position: fixed;
+  top: 19px;
+  right: 19px;
+  gap: 13px;
+  z-index: 900;
+}
+.sp-home,
+.sp-music {
+  transition: background 0.2s;
+  width: 51px;
+  height: 50px;
+  overflow: hidden;
+  color: transparent;
+  font-size: 0;
+}
+.sp-home {
+  background: url(../images/ui/home.webp);
+}
+.sp-home:hover {
+  background-image: url(../images/ui/home-hover.webp);
+}
+.sp-music {
+  background: url(../images/ui/btn-music.webp);
+  width: 50px;
+}
+.sp-music.playing {
+  background-image: url(../images/ui/btn-music_playing.webp);
+}
+
+/* ===================== 1. hero ===================== */
+.sp-hero {
+  background: #000;
+  height: 1300px;
+}
+/* 2560px-wide stage centred on the screen; positions are the ones of the update page */
+.sp-stage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  animation: sp-opening 1.2s 0.3s ease-in both;
+  margin-left: -1280px;
+  background: url(../images/hero/intro.webp) center 0;
+  width: 2560px;
+  height: 100%;
+}
+.sp-stage > * {
+  position: absolute;
+}
+.sp-hero-title-effect {
+  top: -17px;
+  left: 911px;
+  mix-blend-mode: screen;
+  animation: sp-drop 1s 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  background: url(../images/hero/title-effect.webp);
+  width: 754px;
+  height: 436px;
+}
+.sp-hero-title {
+  top: 60px;
+  left: 929px;
+  animation: sp-drop 1s 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  width: 702px;
+  height: 282px;
+  color: transparent;
+  font-size: 0;
+}
+/* logo art without the Korean tagline printed under it */
+.sp-hero-title::before {
+  position: absolute;
+  inset: 0;
+  -webkit-mask: linear-gradient(#000 0 206px, transparent 214px);
+  mask: linear-gradient(#000 0 206px, transparent 214px);
+  background: url(../images/hero/title.webp);
+  content: "";
+}
+.sp-hero-title span {
+  position: absolute;
+  top: 210px;
+  right: 0;
+  left: 0;
+  color: #fff;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 52px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 0 0 10px #1f9a5a, 0 0 24px #1f9a5a, 0 2px 0 #1f6742;
+}
+.sp-hero-title span::before,
+.sp-hero-title span::after {
+  margin: 0 0.5em;
+  content: "✦";
+  font-style: normal;
+  font-size: 0.5em;
+  vertical-align: middle;
+}
+.sp-hero-char-1 {
+  top: 485px;
+  left: 144px;
+  animation: sp-fade-in 0.6s 1.9s both;
+  background: url(../images/hero/char-1.webp);
+  width: 2254px;
+  height: 594px;
+}
+.sp-hero-char-2 {
+  top: 220px;
+  left: 572px;
+  animation: sp-fade-in 0.6s 2.1s both;
+  background: url(../images/hero/char-2.webp);
+  width: 314px;
+  height: 268px;
+}
+.sp-hero-char-3 {
+  top: 385px;
+  left: 369px;
+  animation: sp-fade-in 0.6s 2s both;
+  background: url(../images/hero/char-3.webp);
+  width: 1971px;
+  height: 915px;
+}
+.sp-hero-char-4 {
+  top: 474px;
+  left: 733px;
+  animation: sp-fade-in 0.6s 2.1s both;
+  background: url(../images/hero/char-4.webp);
+  width: 1062px;
+  height: 753px;
+}
+.sp-hero-balloon-1 {
+  top: 40px;
+  left: 0;
+  animation: sp-float 3s ease-in-out infinite alternate;
+  background: url(../images/hero/balloon-1.webp);
+  width: 534px;
+  height: 411px;
+}
+.sp-hero-balloon-2 {
+  top: 40px;
+  left: 2015px;
+  animation: sp-float 3s 0.6s ease-in-out infinite alternate;
+  background: url(../images/hero/balloon-2.webp);
+  width: 570px;
+  height: 411px;
+}
+.sp-hero-confetti {
+  top: -27px;
+  left: 616px;
+  animation: sp-fade-in 0.8s 2.2s both;
+  background: url(../images/hero/confetti.webp);
+  width: 1272px;
+  height: 475px;
+  pointer-events: none;
+}
+.sp-hero-cta {
+  top: 342px;
+  left: 0;
+  z-index: 5;
+  animation: sp-pop 0.5s 2.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  width: 100%;
+}
+.sp-scroll {
+  display: block;
+  position: relative;
+  margin: 6px auto 0;
+  padding-bottom: 26px;
+  color: #123e28;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.sp-scroll::after {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  rotate: 45deg;
+  animation: sp-bounce 1.2s ease-in-out infinite alternate;
+  margin-left: -8px;
+  border-right: 4px solid #123e28;
+  border-bottom: 4px solid #123e28;
+  width: 16px;
+  height: 16px;
+  content: "";
+}
+
+/* ===================== 2. introduction + video ===================== */
+.sp-intro {
+  background: #cfeaf6 url(../images/intro/bg.webp) center top / cover no-repeat;
+  padding: 120px 0 110px;
+  min-height: 1430px;
+}
+.sp-intro-balloon-1,
+.sp-intro-balloon-2 {
+  position: absolute;
+  top: 60px;
+  animation: sp-float 3s ease-in-out infinite alternate;
+  background: url(../images/hero/balloon-1.webp) center / contain no-repeat;
+  width: 320px;
+  height: 246px;
+}
+.sp-intro-balloon-1 {
+  left: -330px;
+}
+.sp-intro-balloon-2 {
+  right: -330px;
+  animation-delay: 0.6s;
+  background-image: url(../images/hero/balloon-2.webp);
+}
+.sp-video {
+  margin: 40px auto 0;
+  box-shadow: 0 18px 40px rgba(18, 62, 40, 0.25);
+  border: 8px solid #fff;
+  border-radius: 18px;
+  background: #000;
+  width: 1060px;
+  height: 596px;
+  overflow: hidden;
+}
+.sp-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.sp-desc {
+  margin: 40px auto 0;
+  box-shadow: 0 0 0 3px #49a261, 0 0 0 9px #f1f047;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 40px 70px 34px;
+  width: 1060px;
+  font-size: 22px;
+  line-height: 34px;
+  letter-spacing: -0.3px;
+  text-align: center;
+}
+.sp-desc p + p {
+  margin-top: 18px;
+  font-weight: 700;
+}
+.sp-desc .sp-btn {
+  margin-top: 24px;
+}
+
+/* ===================== 3. rewards ===================== */
+.sp-rewards {
+  background: #2a1d8f url(../images/rewards/bg.webp) center top / cover no-repeat;
+  padding: 150px 0 120px;
+  min-height: 1440px;
+  color: #fff;
+}
+.sp-rewards-panel {
+  margin-top: 50px;
+  background: url(../images/rewards/panel.webp) center / 100% 100% no-repeat;
+  padding: 86px 90px 70px;
+  min-height: 800px;
+}
+.sp-rewards-panel .sp-ribbon {
+  margin-top: 0;
+}
+.sp-rewards-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 34px 10px;
+  margin-top: 44px;
+}
+.sp-reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.sp-reward-icon {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0 3px rgba(196, 236, 255, 0.85), 0 0 22px rgba(130, 96, 255, 0.9);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #fff 0%, #e9dcff 55%, #b9a4ff 100%);
+  width: 118px;
+  height: 118px;
+}
+.sp-reward-icon img {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+}
+.sp-reward-icon i {
+  color: #6a3df0;
+  font-style: normal;
+  font-size: 52px;
+  line-height: 1;
+}
+.sp-reward-quantity {
+  position: absolute;
+  right: -10px;
+  bottom: -4px;
+  border-radius: 999px;
+  background: #f0468a;
+  padding: 0 12px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 30px;
+}
+.sp-reward-name {
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+}
+.sp-rewards-message {
+  margin: 44px 0 20px;
+  color: #c4ecff;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* ===================== 4. what's new ===================== */
+.sp-news {
+  background: #14104a url(../images/news/bg.webp) center top / cover no-repeat;
+  padding: 140px 0 130px;
+  min-height: 1702px;
+  color: #fff;
+}
+.sp-news-idol {
+  position: absolute;
+  top: -70px;
+  right: -400px;
+  opacity: 0.95;
+  background: url(../images/news/idol.webp) center / contain no-repeat;
+  width: 620px;
+  height: 604px;
+  pointer-events: none;
+}
+.sp-news-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 70px;
+}
+.sp-news-box {
+  position: relative;
+  backdrop-filter: blur(3px);
+  border: 2px solid rgba(160, 140, 255, 0.6);
+  border-radius: 8px;
+  background: linear-gradient(rgba(7, 1, 80, 0.42), rgba(0, 8, 60, 0.5));
+  padding: 44px 34px 38px;
+}
+.sp-news-number {
+  position: absolute;
+  top: -26px;
+  left: 26px;
+  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 14px 100%, 0 50%);
+  background: #6a3df0;
+  padding: 0 30px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 50px;
+}
+.sp-news-title {
+  background: linear-gradient(100deg, #fff 0%, #fff3cf 30%, #e9dcff 60%, #c4ecff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding-bottom: 12px;
+  color: transparent;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 44px;
+  letter-spacing: -1px;
+}
+.sp-news-box ul {
+  border-top: 2px solid rgba(92, 232, 232, 0.6);
+  padding-top: 18px;
+}
+.sp-news-box li {
+  position: relative;
+  padding-left: 22px;
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 32px;
+  letter-spacing: -0.2px;
+}
+.sp-news-box li::before {
+  position: absolute;
+  left: 0;
+  color: #43e8f5;
+  content: "✦";
+  font-size: 12px;
+}
+.sp-news-large {
+  margin-top: 60px;
+}
+.sp-maps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  border-top: 2px solid rgba(92, 232, 232, 0.6);
+  padding-top: 26px;
+}
+.sp-map {
+  display: block;
+  color: #fff;
+  text-align: left;
+}
+.sp-map img {
+  transition: transform 0.25s, box-shadow 0.25s;
+  border: 2px solid rgba(196, 236, 255, 0.7);
+  border-radius: 8px;
+  aspect-ratio: 1400 / 878;
+  width: 100%;
+  object-fit: cover;
+}
+.sp-map:hover img {
+  transform: translateY(-4px);
+  box-shadow: 0 0 22px rgba(130, 96, 255, 0.95);
+}
+.sp-map strong {
+  display: block;
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: -0.4px;
+}
+.sp-map em {
+  color: #5ce8e8;
+  font-style: normal;
+  font-size: 15px;
+}
+.sp-chars {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+  margin-top: 34px;
+}
+.sp-char {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+  font-size: 17px;
+}
+.sp-char img {
+  margin-bottom: 8px;
+  width: 107px;
+  height: 107px;
+}
+.sp-news .sp-inner > .sp-btn {
+  margin-top: 70px;
+}
+
+/* ===================== popups ===================== */
+.sp-modal-bg {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 990;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 24px;
+  overflow-y: auto;
+}
+.sp-modal {
+  position: relative;
+  animation: sp-modal-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  margin: auto;
+  box-shadow: 0 0 0 4px #49a261, 0 0 0 12px #f1f047, 0 30px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+  background: linear-gradient(#fff, #f6fbe6);
+  padding: 34px 60px 44px;
+  width: 760px;
+  text-align: center;
+}
+.sp-modal-logo {
+  margin: 0 auto;
+  background: url(../images/hero/title.webp) center top / 340px auto no-repeat;
+  width: 340px;
+  height: 100px;
+}
+.sp-modal h2 {
+  margin-top: 6px;
+  color: #123e28;
+  font-weight: 800;
+  font-size: 34px;
+  letter-spacing: -1px;
+}
+.sp-modal-subtitle {
+  margin-top: 8px;
+  color: #3a4d42;
+  font-size: 18px;
+}
+.sp-modal-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  border-radius: 20px;
+  background: #1f6742;
+  padding: 24px 16px;
+  color: #fff;
+}
+.sp-modal-items .sp-reward-icon {
+  width: 96px;
+  height: 96px;
+}
+.sp-modal-items .sp-reward-icon i {
+  font-size: 42px;
+}
+.sp-modal-items .sp-reward-name {
+  font-size: 16px;
+}
+.sp-modal-more {
+  color: #f1f047;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+}
+.sp-modal-desc {
+  margin: 22px 0 18px;
+  color: #3a4d42;
+  font-size: 17px;
+}
+.sp-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  z-index: 2;
+  transition: background 0.2s;
+  background: url(../images/ui/close.webp);
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  color: transparent;
+  font-size: 0;
+}
+.sp-close:hover {
+  background-image: url(../images/ui/close-hover.webp);
+}
+.sp-image-popup {
+  position: relative;
+  margin: auto;
+  max-width: 1400px;
+}
+.sp-image-popup img {
+  border-radius: 8px;
+  width: 100%;
+}
+.sp-image-popup .sp-close {
+  top: 0;
+  right: 0;
+}
+.sp-fade-enter-active,
+.sp-fade-leave-active {
+  transition: opacity 0.3s;
+}
+.sp-fade-enter,
+.sp-fade-leave-to {
+  opacity: 0;
+}
+
+.sp-footer {
+  background: #0b0a2a;
+  padding: 26px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+/* ===================== keyframes ===================== */
+@keyframes sp-opening {
+  from {
+    clip-path: circle(100px at 50% 40%);
+  }
+  to {
+    clip-path: circle(1600px at 50% 40%);
+  }
+}
+@keyframes sp-drop {
+  0% {
+    transform: translateY(-600px);
+    opacity: 0;
+  }
+  55% {
+    transform: translateY(18px);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes sp-fade-in {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes sp-pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes sp-float {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -14px;
+  }
+}
+@keyframes sp-bounce {
+  from {
+    translate: 0 -4px;
+  }
+  to {
+    translate: 0 4px;
+  }
+}
+@keyframes sp-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes sp-modal-in {
+  from {
+    transform: translateY(-120px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sp-wrap *,
+  .sp-wrap *::before,
+  .sp-wrap *::after {
+    animation-duration: 0.01s !important;
+    animation-delay: 0s !important;
+  }
+}

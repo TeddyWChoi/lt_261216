@@ -8,9 +8,9 @@
 
   global.preRegisterConfig = {
     updateName: "SHINING",
-    tagline: "A ray of light connecting the past, present and future",
-    // Shown under the logo. The Korean page showed its launch date (26.06.24) here.
-    date: "COMING SOON",
+    tagline: "Through past, present, and future",
+    // North American launch date, shown under the logo
+    date: "DECEMBER 16, 2026",
 
     links: {
       home: "https://latale.papayaplay.com/",
@@ -37,21 +37,21 @@
     },
 
     messages: {
-      10000: "You have successfully pre-registered for SHINING",
-      20001: "User does not exist",
-      30001: "You have already pre-registered for SHINING",
-      90000: "Error",
-      90001: "Logical Error",
+      10000: "You have successfully pre-registered for SHINING!",
+      20001: "Account not found. Please log in again.",
+      30001: "You have already pre-registered for SHINING.",
+      90000: "An error occurred. Please try again later.",
+      90001: "Something went wrong. Please try again later.",
     },
 
     // Reward cards. The artwork (and quantities) comes from the Korean pre-registration page;
-    // names are translated here and are not official English item names.
+    // names are the in-game English item names.
     rewards: [
-      { id: 1, name: "[Event] Essence of Resurrection<br />Exchange Ticket" },
-      { id: 2, name: "[Event] Bottle of<br />Twinkling Stars" },
+      { id: 1, name: "[Event] Potion of Resurrection<br />Exchange Coupon" },
+      { id: 2, name: "[Event] Bottle of<br />Shining Stars" },
       { id: 3, name: "[Event] Advanced Awakening Stone<br />Extension Ticket (90 Days)" },
-      { id: 4, name: "[Event]<br />SHINING Title Book" },
-      { id: 5, name: "[Event] SHINING Rabbit Costume Set" },
+      { id: 4, name: "[Event]<br />Shining Titlebook" },
+      { id: 5, name: "[Event] Shining Bunny Outfit Set" },
     ],
 
     // Effect of the SHINING title (shown when hovering "Title Effect" on the title book)
@@ -59,25 +59,26 @@
       stats: [
         ["Physical / Magic Critical Rate", "+1%"],
         ["Physical / Magic Critical Damage", "+10%"],
-        ["EXP Gain", "+3%"],
+        ["EXP Gain Rate", "+3%"],
       ],
       trigger: "Activates on a direct critical hit",
-      detail: "Critical Damage +200% for 15 sec.<br />(the duration is not refreshed)",
+      detail: "Critical Damage +200% for 15 sec.<br />(buff duration does not refresh)",
     },
 
     notes: [
       "Pre-registration is available once per account.",
       "Pre-registration rewards are delivered through the in-game Gift Bundle after the SHINING update.",
       "This page is optimized for PC. Some features may be limited on mobile devices.",
+      "SHINING Part 1 and Part 2 will both be released on December 16, 2026.",
     ],
 
     news: [
       {
         number: "01",
-        title: "Light of the Soul",
+        title: "Part 1 · From the Soul",
         list: [
           "New scenario: the first oracle",
-          "New town: Linford, the City of Angels",
+          "New village: Linford, the City of Angels",
           "New field: Aether Road",
           "4-Player Dungeon: River of Hatred and Oath",
           "8-Player Dungeon: Amaranth Nova",
@@ -87,14 +88,14 @@
       },
       {
         number: "02",
-        title: "Light on the Stage",
+        title: "Part 2 · On Stage",
         list: [
           "New class: Idol",
           "Combat type: Magic",
           "Weapon: Microphone",
           "Switch freely between three weapons",
           "Encore Gauge: store up to 5",
-          "Class awakening: Eternal Idol",
+          "Class awakening: Idol of Eternity",
           "New stage: Etoile",
         ],
       },
@@ -103,7 +104,7 @@
         title: "System Updates",
         list: [
           "Dungeon Conquest System",
-          "Content Overhaul (Summoner / Transcendent / Legend)",
+          "Content Revamp (Summon / Champion / Legend)",
           "Growth Items",
           "Item Awakening Improvements",
           "Style Room: fashion shared across your account",
@@ -113,14 +114,14 @@
     ],
 
     maps: [
-      { name: "Linford", type: "Town", image: "images/maps/map-1.webp" },
+      { name: "Linford", type: "Village", image: "images/maps/map-1.webp" },
       { name: "Aether Road", type: "Field", image: "images/maps/map-2.webp" },
       { name: "River of Hatred and Oath", type: "4-Player Dungeon", image: "images/maps/map-3.webp" },
       { name: "Amaranth Nova", type: "8-Player Dungeon", image: "images/maps/map-4.webp" },
     ],
 
     characters: [
-      { name: "Elone", image: "images/chars/elone.webp" },
+      { name: "Ellone", image: "images/chars/elone.webp" },
       { name: "Nuckalava", image: "images/chars/nuckalava.webp" },
       { name: "Barbatos", image: "images/chars/barbatos.webp" },
       { name: "Benjamin", image: "images/chars/benjamin.webp" },

@@ -216,16 +216,16 @@
             <div class="sp-intro-balloon-1"></div>
             <div class="sp-intro-balloon-2"></div>
             <h2 class="sp-title sp-title-green" v-animation:slide-bottom="{ distance: 80 }">Pre-Registration<br />for SHINING</h2>
-            <p class="sp-ribbon" v-animation:fade="{ delay: 150 }">La Tale's 20th Anniversary Summer Update: SHINING!</p>
+            <p class="sp-ribbon" v-animation:fade="{ delay: 150 }">New Class Idol Takes the Stage in SHINING!</p>
             <div class="sp-video" v-animation:zoom-out="{ delay: 200, duration: 400 }">
               <iframe :src="videoUrl" title="SHINING video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="sp-desc" v-animation:slide-top="{ distance: 80 }">
               <p>
-                SHINING lights up La Tale's 20th anniversary in two parts. Follow the first oracle to Linford, the City of Angels,
+                SHINING Parts 1 and 2 arrive together on December 16. Follow the first oracle to Linford, the City of Angels,
                 and face Despair in Amaranth Nova. Then step onto a brand-new stage with the new class, Idol.
               </p>
-              <p>Pre-register today to receive a bundle of SHINING items the moment the update goes live!</p>
+              <p>Pre-register today to receive a bundle of SHINING items when the update goes live on December 16!</p>
               <pre-register-btn @open="openModal"></pre-register-btn>
             </div>
           </div>
@@ -238,7 +238,7 @@
             <div class="sp-rewards-char" v-animation:fade="{ delay: 100 }"></div>
             <reward-card v-for="(reward, index) in config.rewards" :key="reward.id" :reward="reward" v-animation:fade="{ delay: 150 * (index + 1) }"></reward-card>
             <div class="sp-rewards-foot">
-              <p class="sp-rewards-message">* Rewards will be sent via Gift Bundle after the SHINING update!</p>
+              <p class="sp-rewards-message">* Rewards will be sent via Gift Bundle after the SHINING update on December 16!</p>
               <pre-register-btn @open="openModal"></pre-register-btn>
             </div>
           </div>
@@ -294,7 +294,7 @@
               <button class="sp-close" type="button" @click="closeModal">Close</button>
               <div class="sp-modal-logo"></div>
               <h2>Pre-Registration for SHINING</h2>
-              <p class="sp-modal-subtitle">Pre-register now to get a jump ahead of the other players with a bunch of items.</p>
+              <p class="sp-modal-subtitle">Pre-register now and get a head start with a bundle of items.</p>
               <div class="sp-modal-items">
                 <div class="sp-modal-item" v-for="reward in config.rewards.slice(0, 3)" :key="reward.id">
                   <reward-card :reward="reward"></reward-card>
@@ -302,8 +302,8 @@
                 </div>
                 <div class="sp-modal-more">AND MUCH<br />MORE!</div>
               </div>
-              <p class="sp-modal-desc">In order to pre-register you must already have a created account.</p>
-              <a class="sp-btn sp-btn-wide" v-if="!isLogin" :href="signInUrl"><span>Login or Register a New Account Now!</span></a>
+              <p class="sp-modal-desc">You need a La Tale account to pre-register.</p>
+              <a class="sp-btn sp-btn-wide" v-if="!isLogin" :href="signInUrl"><span>Log In or Create an Account Now!</span></a>
               <button class="sp-btn sp-btn-wide" v-else type="button" @click="handlePreRegister">
                 <span v-if="!isLoading">Pre-Register Now!</span>
                 <span class="sp-loading" v-else></span>

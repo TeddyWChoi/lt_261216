@@ -615,6 +615,11 @@ img {
   line-height: 44px;
   letter-spacing: -1px;
 }
+/* top-row titles ("Part 1 · From the Soul") stay on one line so the three boxes line up */
+.sp-news-row .sp-news-title {
+  font-size: 32px;
+  white-space: nowrap;
+}
 .sp-news-box ul {
   border-top: 2px solid rgba(92, 232, 232, 0.6);
   padding-top: 18px;

@@ -835,21 +835,41 @@ img {
   color: #4a4266;
   font-size: 17px;
 }
+/* round purple close button sitting on the frame's corner, X drawn with two bars */
 .sp-close {
   position: absolute;
-  top: -18px;
-  right: -18px;
+  top: -22px;
+  right: -22px;
   z-index: 2;
-  transition: background 0.2s;
-  background: url(../images/ui/close.webp);
-  width: 50px;
-  height: 50px;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 0 0 4px #f3c98b, 0 6px 14px rgba(40, 10, 120, 0.35);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8f40ff, #6a2fe0);
+  width: 52px;
+  height: 52px;
   overflow: hidden;
   color: transparent;
   font-size: 0;
 }
+.sp-close::before,
+.sp-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 2px;
+  background: #fff;
+  width: 24px;
+  height: 4px;
+  content: "";
+  translate: -50% -50%;
+  rotate: 45deg;
+}
+.sp-close::after {
+  rotate: -45deg;
+}
 .sp-close:hover {
-  background-image: url(../images/ui/close-hover.webp);
+  transform: rotate(90deg);
+  background: linear-gradient(135deg, #a55cff, #8040ff);
 }
 .sp-image-popup {
   position: relative;
@@ -861,8 +881,8 @@ img {
   width: 100%;
 }
 .sp-image-popup .sp-close {
-  top: 0;
-  right: 0;
+  top: -18px;
+  right: -18px;
 }
 .sp-fade-enter-active,
 .sp-fade-leave-active {

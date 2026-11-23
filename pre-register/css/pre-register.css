@@ -772,15 +772,8 @@ img {
   width: 760px;
   text-align: center;
 }
-.sp-modal-logo {
-  margin: 0 auto;
-  background: #1a1266 url(../images/prereg/title.webp) center -6px / 330px auto no-repeat;
-  border-radius: 16px;
-  width: 360px;
-  height: 84px;
-}
 .sp-modal h2 {
-  margin-top: 12px;
+  margin-top: 4px;
   color: #3b1d9e;
   font-weight: 800;
   font-size: 34px;
@@ -893,14 +886,6 @@ img {
   opacity: 0;
 }
 
-.sp-footer {
-  background: #0b0a2a;
-  padding: 26px 0;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 13px;
-  letter-spacing: 0.3px;
-  text-align: center;
-}
 
 /* ===================== keyframes ===================== */
 @keyframes sp-opening {

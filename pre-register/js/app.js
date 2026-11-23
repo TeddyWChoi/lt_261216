@@ -292,7 +292,6 @@
           <div class="sp-modal-bg" v-if="isModalOpen" @click.self="closeModal">
             <div class="sp-modal">
               <button class="sp-close" type="button" @click="closeModal">Close</button>
-              <div class="sp-modal-logo"></div>
               <h2>Pre-Registration for SHINING</h2>
               <p class="sp-modal-subtitle">Pre-register now and get a head start with a bundle of items.</p>
               <div class="sp-modal-items">
@@ -322,7 +321,6 @@
           </div>
         </transition>
 
-        <footer class="sp-footer">COPYRIGHT © ACTOZ SOFT CO., LTD. ALL RIGHTS RESERVED.</footer>
         <audio ref="bgm" src="media/bgm.mp3" loop preload="none" @play="soundState = true" @pause="soundState = false"></audio>
       </div>
     `,

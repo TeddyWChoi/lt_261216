@@ -2011,3 +2011,129 @@ ul {
     font-size: 16px;
   }
 }
+
+/* ─── 2026-11-23 confirmed rewards: 5 items per step ───
+   Level tiers and milestones become one row per step:
+   level / tier on the left, 5 icons on the right.
+   Mobile: level on top, icons wrap 3 + 2. */
+.tier-row,
+.tier-row-3 {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.tier {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-auto-rows: min-content;
+  align-content: start;
+  column-gap: 8px;
+  padding: 16px 14px;
+  text-align: left;
+}
+
+.tier > p {
+  grid-column: 1;
+}
+
+.tier .item-row {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.tier .item {
+  width: 104px;
+}
+
+.tier .item-box {
+  width: 72px;
+  height: 72px;
+}
+
+.tier .item-box i {
+  font-size: 26px;
+}
+
+.tier-pick {
+  justify-self: start;
+  margin-top: 8px;
+  padding: 0 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 22px;
+  color: #ffffff;
+  background: #ff85a2;
+  border-radius: 11px;
+}
+
+@media (max-width: 639px) {
+  .tier-row,
+  .tier-row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .tier-row-3 .tier:last-child {
+    grid-column: auto;
+  }
+
+  .tier {
+    grid-template-columns: 1fr;
+    padding: 14px 8px;
+    text-align: center;
+  }
+
+  .tier-pick {
+    justify-self: center;
+  }
+
+  .tier .item-row {
+    grid-column: 1;
+    grid-row: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .tier .item-row {
+    gap: 12px 4px;
+  }
+
+  .tier .item {
+    width: calc((100% - 8px) / 3);
+  }
+
+  .tier .item-box {
+    width: 62px;
+    height: 62px;
+  }
+
+  .tier .item-box i {
+    font-size: 22px;
+  }
+}
+
+/* item icons: 32px pixel-art originals, keep them crisp */
+.item-box img {
+  image-rendering: pixelated;
+}
+
+.tier .item-box img {
+  width: 56px;
+  height: 56px;
+}
+
+@media (max-width: 639px) {
+  .item-box img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .tier .item-box img {
+    width: 48px;
+    height: 48px;
+  }
+}

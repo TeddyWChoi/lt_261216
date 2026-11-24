@@ -39,11 +39,11 @@
           <h1 class="referral-title-text">REFERRAL EVENT</h1>
 
           <div class="date-badge-wrap">
-            <span class="date-badge-text">Event Period: December 16 ~ February 14</span>
+            <span class="date-badge-text">Event Period: Dec 16, 2026 – Feb 14, 2027</span>
           </div>
 
           <div class="description">
-            <p class="description-lead">A new stage begins with IDOL!</p>
+            <p class="description-lead">A new stage begins with Idol!</p>
             <p>
               Invite your friends to La Tale during the two-month event period<br />
               <strong>starting December 16</strong>, and enjoy special rewards together!
@@ -129,7 +129,7 @@
 
                   <p v-if="codeState === 'registered'" class="state-text state-done">
                     ✓ Your invitation code has been registered. The Welcome Package will be sent to your in-game
-                    Mailbox once you log in to La Tale.
+                    Gift Bundle once you log in to La Tale.
                   </p>
                   <p v-else-if="codeState === 'ineligible'" class="state-text state-warn">
                     ※ Invitation codes can only be entered by new and returning players. You can still invite your
@@ -137,15 +137,15 @@
                   </p>
 
                   <p class="no-code-text">
-                    ※ Don&apos;t have a code? Visit the <strong>Guild Promotion</strong> channel in our official Discord
-                    server and get one from other players.
+                    ※ Don&apos;t have a code? Get one from other players in the <strong>Guild Promotion</strong> channel
+                    on our official Discord server.
                     <a :href="links.discord" target="_blank" rel="noopener">Join Discord</a>
                   </p>
                 </div>
 
                 <!-- Welcome Package -->
                 <div class="reward-box">
-                  <p class="reward-cond">When you log in after entering an Invitation Code</p>
+                  <p class="reward-cond">When you log in after entering an invitation code</p>
                   <ul class="item-row">
                     <reward-item v-for="(it, i) in cfg.rewards.welcome" :key="'w' + i" :item="it"></reward-item>
                   </ul>
@@ -158,7 +158,8 @@
                   <div class="tier-row">
                     <div v-for="(t, i) in cfg.rewards.levelTiers" :key="'t' + i" class="tier" :class="{ 'tier-final': t.final }">
                       <p class="tier-level">Ascension Lv. {{ t.level || '___' }}</p>
-                      <p class="tier-label">{{ t.label }}<template v-if="t.final"> · Selectable Box</template></p>
+                      <p class="tier-label">{{ t.label }}<template v-if="t.final"> · Selection Box</template></p>
+                      <p v-if="t.final" class="tier-pick">Choose 1</p>
                       <ul class="item-row">
                         <reward-item v-for="(it, j) in t.items" :key="j" :item="it"></reward-item>
                       </ul>
@@ -171,11 +172,11 @@
                 <div class="info-box">
                   <p class="info-box-title">How to Level Up Fast</p>
                   <ul class="info-list">
-                    <li><strong>New Class IDOL &amp; Burning 6.0</strong> —
+                    <li><strong>New Class Idol &amp; Burning 6.0</strong> —
                       <ext-link :href="links.idolUpdate">View Update</ext-link></li>
                     <li><strong>Level Up Guide</strong> — step-by-step leveling tips on the La Tale Wiki.
                       <ext-link :href="links.wiki">La Tale Wiki: Starting Out</ext-link></li>
-                    <li><strong>New / Returning User Rewards and Special Sale</strong> —
+                    <li><strong>New &amp; Returning Player Rewards and Special Sale</strong> —
                       <ext-link :href="links.rewards">Rewards</ext-link> ·
                       <ext-link :href="links.sales">Sales</ext-link></li>
                   </ul>
@@ -183,13 +184,13 @@
 
                 <!-- Eligibility -->
                 <div class="info-box">
-                  <p class="info-box-title">Referral Code Eligibility</p>
+                  <p class="info-box-title">Invitation Code Eligibility</p>
                   <ul class="info-list">
                     <li><strong>New Players:</strong> Papaya Play accounts created on or after December 16, 2026</li>
                     <li><strong>Returning Players:</strong> players who have not logged in to La Tale for 60 days or
                       more before the event begins</li>
-                    <li class="warn">Players who join with a referral code cannot invite other players.</li>
-                    <li class="warn">Only one code can be entered per eligible account.</li>
+                    <li class="warn">Players who join with an invitation code cannot invite other players.</li>
+                    <li class="warn">Only one invitation code can be entered per eligible account.</li>
                   </ul>
                 </div>
 
@@ -199,7 +200,7 @@
                   </p>
                   <p>* The Welcome Package can be received once per account.</p>
                   <p>* Level rewards are calculated based on the level reached through the previous day and sent to
-                    your in-game Mailbox.</p>
+                    your in-game Gift Bundle.</p>
                 </div>
               </div>
 
@@ -232,7 +233,7 @@
                       <button class="btn-copy" :class="{ copied: copiedType === 'code' }" :disabled="!me.myCode"
                         @click="handleCopy('code')">{{ copiedType === 'code' ? 'Copied!' : 'Copy Code' }}</button>
                       <button class="btn-copy" :class="{ copied: copiedType === 'url' }" :disabled="!me.myCode"
-                        @click="handleCopy('url')">{{ copiedType === 'url' ? 'Copied!' : 'Copy URL' }}</button>
+                        @click="handleCopy('url')">{{ copiedType === 'url' ? 'Copied!' : 'Copy Link' }}</button>
                     </div>
                     <div class="referral-info">
                       <div>
@@ -248,13 +249,13 @@
                     <a href="#" @click.prevent="signIn">Sign In</a>
                   </p>
                   <p v-else-if="me.registeredCode" class="state-text state-warn">
-                    ※ You joined with a referral code, so this account cannot invite other players.
+                    ※ You joined with an invitation code, so this account cannot invite other players.
                   </p>
                 </div>
 
                 <!-- Per-invite reward -->
                 <div class="reward-box">
-                  <p class="reward-cond">When an Invitee Uses Your Code
+                  <p class="reward-cond">When an invitee uses your code
                     <span>(for each eligible invitee · up to {{ cfg.maxReferrals }})</span></p>
                   <ul class="item-row">
                     <reward-item v-for="(it, i) in cfg.rewards.perInvite" :key="'p' + i" :item="it"></reward-item>
@@ -264,7 +265,7 @@
 
                 <!-- Milestones -->
                 <div class="reward-box">
-                  <p class="reward-cond">When Your Invitees Reach Ascension Lv. {{ cfg.inviterGoalLevel }}</p>
+                  <p class="reward-cond">When your invitees reach Ascension Lv. {{ cfg.inviterGoalLevel }}</p>
                   <div class="tier-row tier-row-3">
                     <div v-for="m in cfg.rewards.milestones" :key="m.count" class="tier"
                       :class="{ 'tier-final': m.final, 'tier-reached': me.loggedIn && reachedCount >= m.count }">
@@ -279,13 +280,13 @@
                 <p class="reward-package-name">[Milestone Rewards]</p>
 
                 <div class="notes">
-                  <p>* Copy the invitation code or URL and share it with someone you&apos;d like to play with.</p>
-                  <p>* If the invited player enters the code, or logs in to Papaya Play through the shared URL and plays
+                  <p>* Copy your invitation code or link and share it with someone you&apos;d like to play with.</p>
+                  <p>* If the invited player enters the code, or logs in to Papaya Play through the shared link and plays
                     La Tale, both players receive rewards.</p>
                   <p>* Milestones count eligible invitees who reach Ascension Lv. {{ cfg.inviterGoalLevel }} during the
                     event period.</p>
                   <p>* Rewards are not granted immediately; eligibility is calculated based on progress through the
-                    previous day and rewards are sent to your in-game Mailbox.</p>
+                    previous day and rewards are sent to your in-game Gift Bundle.</p>
                 </div>
               </div>
 
@@ -298,7 +299,7 @@
                     <div class="line"></div>
                   </div>
 
-                  <h2 class="section-title">20th Anniversary Goods</h2>
+                  <h2 class="section-title">La Tale Special Goods</h2>
 
                   <p class="section-lead">Official goods from the La Tale 20th Anniversary Pop-up Store in Korea!</p>
                 </div>
@@ -353,21 +354,21 @@
                 <li>New Players: Papaya Play accounts created on or after December 16, 2026.</li>
                 <li>Returning Players: players with no La Tale login history for 60 days or more before the event
                   begins. Returning status remains even after logging in during the event.</li>
-                <li>Players who have joined with a referral code cannot invite other players.</li>
+                <li>Players who have joined with an invitation code cannot invite other players.</li>
                 <li>Only one invitation code can be entered per eligible account.</li>
-                <li>The event entry is completed once the invited player logs in to Papaya Play and La Tale.</li>
+                <li>An invitation is complete once the invited player logs in to La Tale through Papaya Play.</li>
                 <li>Inviting players can receive per-invite rewards for up to {{ cfg.maxReferrals }} eligible
                   invitees.</li>
                 <li>Level and milestone rewards are not granted immediately. Eligibility is calculated based on
                   progress through the previous day.</li>
-                <li>All rewards are sent to your Mailbox in-game, and must be claimed within 14 days.</li>
+                <li>All rewards are sent to your in-game Gift Bundle and must be claimed within 14 days.</li>
                 <li>Lucky Draw: 5 winners in total will be drawn from eligible inviting and invited players after the
                   event ends. Invited players must reach Ascension Lv. {{ cfg.luckyDrawLevel }} to be eligible.</li>
                 <li>No purchase is necessary to enter or win. Winners will be contacted to collect shipping
                   information.</li>
-                <li>Participation using abnormal methods (multiple accounts, the same IP or device, etc.) may result in
-                  disqualification and reward removal.</li>
-                <li>Event details and rewards may be changed without prior notice.</li>
+                <li>Participation through abnormal means (e.g., multiple accounts or a shared IP or device) may result in
+                  disqualification and removal of rewards.</li>
+                <li>Event details and rewards are subject to change without prior notice.</li>
                 <li>All times are based on Eastern Standard Time (US).</li>
               </ul>
               <p class="notices-links">
@@ -402,7 +403,7 @@
                   <span class="popup-badge-text">Inviting Player</span>
                   <div class="popup-badge-line"></div>
                 </div>
-                <h2 class="popup-title">Referred Users</h2>
+                <h2 class="popup-title">My Invitees</h2>
               </div>
               <button class="btn-close" @click="showDetails = false" aria-label="Close">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -430,8 +431,8 @@
             </div>
 
             <div class="popup-note">
-              <span>• Information is shown for the first {{ cfg.maxReferrals }} invited users only; rewards are limited
-                to a maximum of {{ cfg.maxReferrals }} per account.<br />• Level progress is updated once a day, based
+              <span>• Only your first {{ cfg.maxReferrals }} invitees are shown here; per-invite rewards are limited to
+                {{ cfg.maxReferrals }} per account.<br />• Level progress is updated once a day, based
                 on progress through the previous day.</span>
             </div>
           </div>

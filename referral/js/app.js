@@ -14,7 +14,7 @@
       '<li class="item">' +
         '<div class="item-box">' +
           '<img v-if="item.icon" :src="\'images/items/\' + item.icon" alt="" loading="lazy" />' +
-          '<i v-else aria-hidden="true">?</i>' +
+          '<i v-else aria-hidden="true">{{ item.no || \'?\' }}</i>' +
           '<span v-if="item.qty" class="item-qty">x{{ item.qty }}</span>' +
         '</div>' +
         '<p class="item-name">{{ item.name }}</p>' +
@@ -36,8 +36,8 @@
     own: { title: 'Invalid Code', message: 'You cannot enter your own invitation code.' },
     ineligible: { title: 'Not Eligible', message: 'Invitation codes can only be entered by new and returning players.' },
     used: { title: 'Already Registered', message: 'Only one invitation code can be entered per account.' },
-    nochar: { title: 'No Character Found', message: 'No characters have been created. Please check your account.' },
-    invitee: { title: 'Cannot Generate a Code', message: 'Players who joined with a referral code cannot invite other players.' },
+    nochar: { title: 'No Character Found', message: 'This account has no La Tale character. Please create a character and try again.' },
+    invitee: { title: 'Cannot Generate a Code', message: 'Players who joined with an invitation code cannot invite other players.' },
     fallback: { title: 'Something Went Wrong', message: 'Please try again in a moment.' }
   };
 
@@ -166,7 +166,7 @@
           self.resultPopup = {
             type: 'success',
             title: 'Code Registered!',
-            message: 'Your invitation code has been registered. Log in to La Tale and check your in-game Mailbox for the Welcome Package!',
+            message: 'Your invitation code has been registered. Log in to La Tale and check your in-game Gift Bundle for the Welcome Package!',
             action: ''
           };
           if (window.confetti && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -196,7 +196,7 @@
           : this.me.myCode;
         this.copyText(text);
         this.copiedType = type;
-        this.showToast(type === 'url' ? 'Invitation Link has been Copied' : 'Invitation Code has been Copied');
+        this.showToast(type === 'url' ? 'Invitation link copied!' : 'Invitation code copied!');
         setTimeout(function () { self.copiedType = null; }, 1500);
       },
       copyText: function (text) {

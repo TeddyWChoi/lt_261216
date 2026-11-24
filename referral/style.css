@@ -1963,14 +1963,17 @@ ul {
   max-width: none;
 }
 
+/* pulled toward the centre so the cut edge of each figure tucks behind the
+   description card (50% ± 320px) and the paper below it */
 .char-left-wrap {
   left: auto;
-  right: calc(50% + 395px);
+  right: calc(50% + 280px);
+  top: 310px;
 }
 
 .char-right-wrap {
   right: auto;
-  left: calc(50% + 395px);
+  left: calc(50% + 280px);
   top: 330px;
   width: clamp(255px, 23vw, 425px);
 }
@@ -2185,9 +2188,7 @@ ul {
   top: 22%;
   bottom: 6%;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.75);
-  border-left-color: transparent;
-  border-bottom-color: rgba(214, 170, 255, 0.9);
+  border: 2px solid rgba(232, 208, 255, 0.85);
   transform: rotate(-7deg);
   filter: drop-shadow(0 0 6px #c78bff) drop-shadow(0 0 14px #8f40ff);
   pointer-events: none;
@@ -2228,13 +2229,12 @@ ul {
 
 .title-line-1 {
   font-size: 104px;
-  transform: translateX(-18px);
 }
 
 .title-line-2 {
   font-size: 84px;
   letter-spacing: 10px;
-  transform: translateX(44px);
+  margin-right: -10px; /* cancel the trailing letter-spacing so it centers under REFERRAL */
   background: linear-gradient(180deg, #fff7e2 0%, #ffe3a3 50%, #f3b86a 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -2343,8 +2343,8 @@ ul {
   .header-subtitle { gap: 6px; font-size: 11px; letter-spacing: 1.2px; white-space: nowrap; }
   .header-subtitle::before, .header-subtitle::after { width: 14px; }
   .title-wrap { margin: 4px 0 20px; }
-  .title-line-1 { font-size: 54px; transform: translateX(-8px); }
-  .title-line-2 { font-size: 44px; letter-spacing: 5px; transform: translateX(20px); }
+  .title-line-1 { font-size: 54px; }
+  .title-line-2 { font-size: 44px; letter-spacing: 5px; margin-right: -5px; }
   .date-badge-text { flex-direction: column; gap: 2px; padding: 8px 20px; font-size: 14px; letter-spacing: 0.5px; }
   .date-badge-text em { padding: 0; border: 0; font-size: 10px; }
   .description { padding: 18px 16px 20px; border-radius: 20px; }
@@ -2352,4 +2352,28 @@ ul {
   .hdr-spark-1 { top: 70px; left: 14px; }
   .hdr-spark-2 { top: 40px; left: auto; right: 20px; }
   .hdr-spark-3 { display: none; }
+}
+
+/* ─── Character entrance: after the title and description panel appear,
+       both idols fade in and slide outward from behind the panel ─── */
+.char-left-inner img {
+  animation: char-out-left 0.8s 1.5s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.char-right-wrap img {
+  animation: char-out-right 0.8s 1.5s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes char-out-left {
+  from { opacity: 0; transform: translateX(120px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes char-out-right {
+  from { opacity: 0; transform: translateX(-120px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char-left-inner img, .char-right-wrap img { animation: none; }
 }

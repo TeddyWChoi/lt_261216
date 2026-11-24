@@ -63,21 +63,21 @@
           { no: '09', name: 'EXP Potion (+100)', qty: 30, icon: '09-exp-potion-100.png' },
           { no: '10', name: 'EXP Potion (+20)', qty: 30, icon: '10-exp-potion-20.png' }
         ] },
-        { level: 1500, label: 'Tier 2', items: [
+        { level: 300, label: 'Tier 2', items: [
           { no: '11', name: 'La Tale Adventure Dice', qty: 100, icon: '11-la-tale-adventure-dice.png' },
           { no: '12', name: '[Event] Super Dawn Hammer Coupon', qty: 30, icon: '12-super-dawn-hammer-coupon.png' },
           { no: '13', name: '[Event] Noble Dawn Hammer Coupon', qty: 20, icon: '13-noble-dawn-hammer-coupon.png' },
           { no: '14', name: 'Memorial Fragment Box', qty: 30, icon: '14-memorial-fragment-box.png' },
           { no: '15', name: 'Memorial Reset Crystal', qty: 15, icon: '15-memorial-reset-crystal.png' }
         ] },
-        { level: 3000, label: 'Tier 3', items: [
+        { level: 1500, label: 'Tier 3', items: [
           { no: '16', name: 'Summonable Upgrade Spellbook', qty: 500, icon: '16-summonable-upgrade-spellbook.png' },
           { no: '17', name: 'Special Stimulant', qty: 30, icon: '17-special-stimulant.png' },
           { no: '14', name: 'Memorial Fragment Box', qty: 30, icon: '14-memorial-fragment-box.png' },
           { no: '18', name: 'Runestone Scroll', qty: 20, icon: '18-runestone-scroll.png' },
           { no: '19', name: 'Bottle of Shining Stars', qty: 10, icon: '19-bottle-of-shining-stars.png' }
         ] },
-        { level: 5000, label: 'Final Tier', final: true, items: [
+        { level: 3000, label: 'Final Tier', final: true, items: [
           { no: '20', name: 'Wished Pet Coupon II', qty: 1, icon: '20-wished-pet-coupon-2.png' },
           { no: '21', name: '[Event] Awakening Quest Skip Coupon', qty: 1, icon: '21-awakening-quest-skip-coupon.png' },
           { no: '22', name: 'Platinum Hammer', qty: 30, icon: '22-platinum-hammer.png' },

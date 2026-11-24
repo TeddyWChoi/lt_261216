@@ -39,6 +39,9 @@
     //          until the icon file arrives.
     //   icon : file name under images/items/ (empty = numbered placeholder).
     //          Icons: 32px in-game originals from the FigJam board, upscaled 2x (pixel art).
+    //   tile : true for icons drawn as a full square card (no transparent
+    //          background) - shown smaller with rounded corners so they sit
+    //          inside the round slot like the others.
     //   [Event] and non-[Event] versions of an item share one icon.
     rewards: {
       // 3. Invited player - Welcome Package (once per account)
@@ -56,7 +59,7 @@
         { level: 1, label: 'Tier 1', items: [
           { no: '06', name: 'Cheerful Tengu Totem Fragment', qty: 500, icon: '06-cheerful-tengu-totem-fragment.png' },
           { no: '07', name: 'Golden Hammer', qty: 70, icon: '07-golden-hammer.png' },
-          { no: '08', name: 'Potion of Resurrection Exchange Coupon', qty: 100, icon: '08-potion-of-resurrection-exchange-coupon.png' },
+          { no: '08', name: 'Potion of Resurrection Exchange Coupon', qty: 100, icon: '08-potion-of-resurrection-exchange-coupon.png', tile: true },
           { no: '09', name: 'EXP Potion (+100)', qty: 30, icon: '09-exp-potion-100.png' },
           { no: '10', name: 'EXP Potion (+20)', qty: 30, icon: '10-exp-potion-20.png' }
         ] },
@@ -97,7 +100,7 @@
         { count: 1, items: [
           { no: '17', name: 'Special Stimulant', qty: 3, icon: '17-special-stimulant.png' },
           { no: '12', name: 'Super Dawn Hammer Coupon', qty: 10, icon: '12-super-dawn-hammer-coupon.png' },
-          { no: '29', name: 'Weapon Skin Material Coupon', qty: 1, icon: '29-weapon-skin-material-coupon.png' },
+          { no: '29', name: 'Weapon Skin Material Coupon', qty: 1, icon: '29-weapon-skin-material-coupon.png', tile: true },
           { no: '30', name: 'Bottle of Blue Stars', qty: 1000, icon: '30-bottle-of-blue-stars.png' },
           { no: '31', name: 'Mysterious Hourglass', qty: 1, icon: '31-mysterious-hourglass.png' }
         ] },

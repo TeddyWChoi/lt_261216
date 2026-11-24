@@ -13,7 +13,7 @@
     template:
       '<li class="item">' +
         '<div class="item-box">' +
-          '<img v-if="item.icon" :src="\'images/items/\' + item.icon" alt="" loading="lazy" />' +
+          '<img v-if="item.icon" :src="\'images/items/\' + item.icon" :class="{ \'is-tile\': item.tile }" alt="" loading="lazy" />' +
           '<i v-else aria-hidden="true">{{ item.no || \'?\' }}</i>' +
           '<span v-if="item.qty" class="item-qty">x{{ item.qty }}</span>' +
         '</div>' +

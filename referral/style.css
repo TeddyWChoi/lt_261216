@@ -1959,7 +1959,7 @@ ul {
 .char-left-wrap,
 .char-right-wrap {
   top: 250px;
-  width: clamp(300px, 27vw, 500px);
+  width: clamp(360px, 32.4vw, 600px); /* 1.2x (2026-11-24) */
   max-width: none;
 }
 
@@ -1968,14 +1968,14 @@ ul {
 .char-left-wrap {
   left: auto;
   right: calc(50% + 280px);
-  top: 310px;
+  top: 280px;
 }
 
 .char-right-wrap {
   right: auto;
   left: calc(50% + 280px);
-  top: 330px;
-  width: clamp(255px, 23vw, 425px);
+  top: 260px;
+  width: clamp(306px, 27.6vw, 510px);
 }
 
 /* soft edge where each figure was cut out of the pair artwork */
@@ -2376,4 +2376,14 @@ ul {
 
 @media (prefers-reduced-motion: reduce) {
   .char-left-inner img, .char-right-wrap img { animation: none; }
+}
+
+/* square "card" icons (opaque background): shrink and round them so they sit
+   inside the round slot instead of poking out of it */
+.item-box img.is-tile,
+.tier .item-box img.is-tile {
+  width: 64%;
+  height: 64%;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(93, 34, 214, 0.25);
 }

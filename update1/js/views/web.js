@@ -29,7 +29,7 @@
     template: `
       <section class="floating-child" id="w-intro" ref="mainEl">
         <div class="w-intro-title-effect" v-animation="animationConfig.title"></div>
-        <h2 class="w-intro-title text-hidden floating en" v-animation="animationConfig.title"><span class="en-sub">Light of the Soul</span>SHINING</h2>
+        <h2 class="w-intro-title text-hidden floating en" v-animation="animationConfig.title"><span class="en-sub">From the Soul</span>SHINING</h2>
         <div class="w-intro-char-1" v-animation="animationConfig['char-1']"></div>
         <div class="w-intro-char-2" v-animation="animationConfig['char-2']"></div>
         <div class="w-intro-char-4" v-animation="animationConfig['char-4']"></div>
@@ -59,15 +59,15 @@
         <h2 class="w-scenario-title text-hidden floating" v-animation:slide-bottom="{once:false,delay:250,distance:100}">SCENARIO</h2>
         <div class="w-scenario floating" v-animation:slide-flip-top="{once:false,delay:350,distance:100,angle:-90,duration:1e3}">
           <p class="w-scenario-desc" v-animation="animationConfig()">
-            Having received the first oracle of the Celestial God, the Adventurer sets out with Hilda<br />
-            to gather the scattered pieces of the puzzle.<br />
-            Arriving in Linford, the City of Angels, and uncovering the tragedy and the truth of its past,<br />
-            the Adventurer comes face to face with ‘Despair’, busily preparing at the site of ruin for the long-awaited day.<br />
-            With no way left to turn back, the Adventurer resolves to follow the words of the oracle.
+            Having received the first oracle from the Celestial God, the Adventurer sets out with Hilda to find the scattered Fragments of Clues.<br />
+            Arriving in Linford, the City of Angels, the Adventurer uncovers the tragedy and truth of what happened there,<br />
+            and comes face to face with "Despair," who has been busily preparing for a long-awaited day in the place of ruin.<br />
+            With no way left to turn back,<br />
+            the Adventurer decides to follow the oracle.
           </p>
           <p class="w-scenario-desc" v-animation="animationConfig()">
-            It was to destroy Despair, a being that would bring harm to the world.<br />
-            To put an end to Despair, who had once been a god.
+            That oracle: to destroy Despair, a being that would bring harm to the world,<br />
+            and put an end to Despair, who was once a god.
           </p>
         </div>
       </section>
@@ -133,38 +133,38 @@
           <div class="swiper-wrapper">
           <div class="swiper-slide w-map-slide w-map w-map-map-1">
             <div class="w-map-sub-title en-live"><span class="en-label">Linford</span></div>
-            <button class="w-map-btn-detail en-live" type="button" @click="popupImage('map-1')"><span class="en-label">Town</span></button>
-            <p class="w-map-title">A Fragment of the Celestial Realm</p>
+            <button class="w-map-btn-detail en-live" type="button" @click="popupImage('map-1')"><span class="en-label">Village</span></button>
+            <p class="w-map-title">A Fragment of the Heavens</p>
             <p class="w-map-desc">
-              Unlike ordinary continents, Freios floats in the sky and is known as the ‘Continent of the Heavens’. From time to time, special places are discovered there. Said to have been left behind by the ancient gods of legend and called the ‘Celestial Realm’, they stir the curiosity of many with awe-inspiring scenery and immense magical power, yet the strong magic that lingers throughout does not readily allow anyone near.
+              Unlike ordinary continents, Freios floats in the sky and is known as the "Sky Continent," and from time to time, special places are discovered there. Said to have been left behind by the Ancient Gods of legend, these places are called "the Heavens." Their awe-inspiring scenery and powerful magic stir the curiosity of many, but the strong magic lingering throughout makes them difficult to approach.
             </p>
-            <p class="w-map-title">The Curse That Fell on a Beautiful City</p>
+            <p class="w-map-title">A Curse upon a Beautiful City</p>
             <p class="w-map-desc">
-              Thanks to the efforts of many mages, some of these places were successfully settled, like the ‘Isle of Wings’ in the Infinite Corridor. Most, however, had to be abandoned because of the powerful magic, and some were even sealed after accidents linked them to the Demon Realm. Yet one fragment that carried a part of the Celestial Realm stood for ages as a symbol of hope in Freios, alongside its many people. It was Linford, known as the ‘City of Angels’.
+              Through the efforts of many mages, some were successfully settled, like the "Isle of Wings" in the Infinity Corridor, but most had to be abandoned because of their powerful magic, and some were even sealed away after accidents linked them to the Demon Realm. Yet one fragment holding a piece of "the Heavens" stood for ages in Freios as a place of hope, home to many people. It was Linford, known as "the City of Angels."
             </p>
           </div>
           <div class="swiper-slide w-map-slide w-map w-map-map-2">
             <div class="w-map-sub-title en-live"><span class="en-label">Aether Road</span></div>
             <button class="w-map-btn-detail en-live" type="button" @click="popupImage('map-2')"><span class="en-label">Field</span></button>
             <p class="w-map-desc">
-              Long ago it was an untended road, so tangled that travelers lost their way within it, until Shiina, the first emperor of the Silvaria Empire, ordered it put in order and gave it the tidy form it has today. Ten years ago, when the so-called ‘Curse of the City’ made it impossible to reach Linford, travelers naturally stopped coming to Aether Road as well.
+              Long ago, it was so neglected and tangled that travelers would get lost inside, but by order of Siena, the first Emperor of the Sylvaria Empire, it took on the orderly form it has today. Ten years ago, the so-called "City's Curse" cut off all travel to Linford, and naturally, people stopped walking Aether Road as well.
             </p>
             <p class="w-map-desc">
-              In the middle of the road is a shelter where travelers used to rest. It is said that the sun, the moon and the stars can be seen clearly from there.
+              At the center of the road is a shelter where travelers once rested. It is said that from there, the sun, moon, and stars can be seen clearly.
             </p>
           </div>
           <div class="swiper-slide w-map-slide w-map w-map-map-3">
             <div class="w-map-sub-title en-live"><span class="en-label">River of Hatred and Oath</span></div>
             <button class="w-map-btn-detail en-live" type="button" @click="popupImage('map-3')"><span class="en-label">4-Player Dungeon</span></button>
-            <p class="w-map-title">A Lonely River for the Repose of Souls</p>
+            <p class="w-map-title">A Lonely River for the Rest of Souls</p>
             <p class="w-map-desc">
-              A soul whose life has ended and has no body left to dwell in is led by the hand of a spirit to a river filled with blue tears. Before the soul can even grasp its sorrow, the spirit gathers the water to soak away every care it carries, and as its loneliness drifts off downstream, gently pushes the soul to give itself to the current. Following the warm waters of purification, the soul forgets everything, passes through a time of rest and heads back into the world.
+              When a soul's life is spent and it has no body left to dwell in, a spirit takes it by the hand and leads it to a river filled with blue tears. Before the soul can even feel its grief, the spirit gathers the river's water to wash away all its sorrows, and as its loneliness drifts downstream, the spirit gently pushes the soul to give itself to the current. Following the warm, purifying waters, the soul soon forgets everything, and after a time of rest, returns to the world.
             </p>
             <p class="w-map-desc">
-              The man everyone feared fell into the river. As everyone wished, he was meant to drift away to a place no one knew. When he struggled back out of the water, those who were watching seized him again. At the mouth of the very river where all had once sworn to stand together for the sake of life, they pushed him under again and again. It was the best they could do, and their last desperate struggle.
+              A man everyone feared fell into the river. As everyone wished, he was meant to drift away to a place no one knew. When he struggled his way back out of the water, those watching seized him again. At the mouth of the river where all had sworn to stand together for life, they pushed him under the water again and again. It was the best they could do, and their last desperate struggle.
             </p>
             <p class="w-map-desc">
-              At some point the spirits stopped bringing souls there and helped them find rest in other ways. The river sank so deep that even the goddess of oblivion forgot it, but it rises once more for the one who wishes others to know the path of despair.
+              At some point, the spirit stopped bringing souls there and helped them find rest in other ways. The river sank so deep that even the Goddess of Oblivion forgot it, but now it rises once more for one who would make others walk the path of despair.
             </p>
           </div>
           <div class="swiper-slide w-map-slide w-map w-map-map-4">
@@ -172,13 +172,13 @@
             <button class="w-map-btn-detail en-live" type="button" @click="popupImage('map-4')"><span class="en-label">8-Player Dungeon</span></button>
             <p class="w-map-title">A Twisted Place That Dreamed of Eternity</p>
             <p class="w-map-desc">
-              One morning ten years ago, Linford was in turmoil. Something like an invisible barrier had spread across one end of the city so that no one could leave, and at the other end a road had appeared that had never been there before. At the end of that road gaped a hole, as if something had been attacked, filling all who saw it with dread.
+              One morning ten years ago, Linford awoke in turmoil. Something like an invisible barrier had spread across one end of the city, trapping its residents inside, while at the other end, a road that had never existed before appeared. At the end of that road gaped a hole, as if something had struck it, filling all who saw it with fear.
             </p>
             <p class="w-map-desc">
-              People tried to approach to learn what the road and the hole were, but the road to that fearful place kept stretching on and its end could never be reached. As things beyond all common sense continued, the people of Linford gave up every attempt and simply watched, and in time even that dulled until no one paid the place any mind.
+              People tried to approach and learn what the road and the hole were, but the path to that place of fear kept stretching on, and no one could ever reach its end. Faced with something beyond all reason, the people of Linford gave up every attempt and simply began to watch, until even that faded with time and no one paid the place any mind.
             </p>
             <p class="w-map-desc">
-              And then, at last, someone set foot in that place where nothing had happened. Walking through it and tracing old memories, the being climbs to a high place and looks up at the sky. So the place that seemed never to be used again becomes a stage once more, at the hands of one who walked the path of despair. Like the explosion of a star that dreamed of eternity...
+              Then, to that place where nothing had happened for so long, someone's footsteps finally arrived. Walking within and tracing old memories, the being climbs to a high place and gazes at the sky. And so a place that seemed never to be used again becomes a stage once more for the one who walked the path of despair. Like the explosion of a star that once dreamed of eternity...
             </p>
           </div>
           </div>
@@ -311,27 +311,27 @@
             <button class="w-characters-btn-tab w-characters-btn-tab-2 floating" :class="[{'w-characters-active': 'normal'===activeTab}]" type="button" @click="activeTab = 'normal'">Monsters</button>
           </li>
           <li>
-            <button class="w-characters-btn-tab w-characters-btn-tab-3 floating" :class="[{'w-characters-active': 'npc'===activeTab}]" type="button" @click="activeTab = 'npc'">NPC</button>
+            <button class="w-characters-btn-tab w-characters-btn-tab-3 floating" :class="[{'w-characters-active': 'npc'===activeTab}]" type="button" @click="activeTab = 'npc'">NPCs</button>
           </li>
         </ul>
         <div class="w-characters-content floating" ref="contentEl" tabindex="0" @click="focusContent" @focus="isContentFocused=true" @blur="isContentFocused=false" @wheel="handleContentWheel" v-animation:zoom-out="{once:false,delay:150,duration:300}">
           <div class="w-characters-content-boss" v-if="'boss'===activeTab">
             <div class="w-characters-boss w-characters-boss-1" v-if="1===activeBoss">
-              <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Elone</span></p>
+              <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Ellone</span></p>
               <p class="w-characters-desc" v-animation:fade="{once:false,delay:250}">
-                A spirit that prays for the health and well-being of all life, once destroyed in a certain incident. In the ‘River of Hatred and Oath’, touched by its master's will, it awakens through the power of the abyss and moves once more. Whether its master revived it as a curse of judgment or as a hand offering another chance it cannot tell, but since even this is its master's will, it simply follows without a word.
+                A spirit who prayed for the health and well-being of all life, until she vanished in a mysterious incident. In the "River of Hatred and Oath," where her master's will reached her, she awakens through the power of the Abyss and moves once more. Whether her master revived her as a Curse of Judgment or as a hand offering a second chance, she cannot know, but since even this is her master's will, she follows without a word.
               </p>
             </div>
             <div class="w-characters-boss w-characters-boss-2" v-if="2===activeBoss">
               <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Nuckalava</span></p>
               <p class="w-characters-desc" v-animation:fade="{once:false,delay:250}">
-                A creature that awoke and began to move among the remains of the ancient gods. It was once a sacred being that menaced the unclean, but now it is nothing more than a monster searching ‘Amaranth Nova’ for something to devour. Sensing a sacred power it has tasted somewhere before, it pauses for a moment.
+                A creature that awakens and stirs among the remains of an Ancient God. Once a holy being that menaced all things impure, it is now nothing but a monster hunting for prey in "Amaranth Nova." Sensing a holy power it once tasted somewhere, it pauses for a moment.
               </p>
             </div>
             <div class="w-characters-boss w-characters-boss-3" v-if="3===activeBoss">
               <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Barbatos</span></p>
               <p class="w-characters-desc" v-animation:fade="{once:false,delay:250}">
-                A high-ranking demon who has worked toward the long-awaited day from the moment he opened his eyes. To end his long journey, he comes to his final destination, ‘Amaranth Nova’. The time has come to lay down the ‘despair’ he has carried all this while, but for one person alone, the Adventurer, he means to show everything properly to the very end.
+                A high-ranking demon who has worked toward a long-awaited day since the moment he opened his eyes, he seeks his final destination, "Amaranth Nova," to end his long journey. The time has come to set down the "Despair" he has carried for so long, but for one person, the Adventurer, he means to show it in full before the end.
               </p>
             </div>
             <ul>
@@ -348,51 +348,51 @@
           </div>
           <div class="w-characters-content-normal" ref="contentNormalEl" v-if="'normal'===activeTab">
             <div class="w-characters-normal w-characters-normal-1" data-normal-index="1">
-              <p class="w-characters-title en-live"><span class="en-label">Sobaka</span></p>
+              <p class="w-characters-title en-live"><span class="en-label">Sovaca</span></p>
               <p class="w-characters-desc">
-                A small spirit that drifts at leisure over a river brimming with every kind of unseen emotion. It once served as a guide for lost souls, but now it roams as a predator that threatens others. Its silly face and movements bring a mischievous ghost to mind.
+                A small spirit drifting leisurely over a river filled with all kinds of unseen emotions. Once a guide for lost souls, it has now become a predator that threatens others. Its goofy expression and movements bring a mischievous ghost to mind.
               </p>
             </div>
             <div class="w-characters-normal w-characters-normal-2" data-normal-index="2">
-              <p class="w-characters-title en-live"><span class="en-label">Gputi</span></p>
+              <p class="w-characters-title en-live"><span class="en-label">Gputii</span></p>
               <p class="w-characters-desc">
-                A spirit of water and sea that once dreamed of becoming a god, or a great being equal to one. In ancient times, disappointed by those who abandoned everyone, it swept its sharp hatred into the river. Deep in a sleep that seemed never to end, it opens its eyes at someone's visit and decides to greet the guest. The moment it realizes the guest is an agent of the gods, it embraces once more the sharp feelings left in the river.
+                A spirit of water and sea that once dreamed of becoming a god, or a great being second only to one. In ancient times, disappointed by those who abandoned everyone, it swept its sharp hatred into the river. Sunk in a sleep it seemed it would never wake from, it opens its eyes at someone's visit and decides to greet its guest. The moment it realizes the guest is an agent of the gods, it embraces the sharp emotions left in the river once more.
               </p>
             </div>
             <div class="w-characters-normal w-characters-normal-3" data-normal-index="3">
               <p class="w-characters-title en-live"><span class="en-label">Upinea</span></p>
               <p class="w-characters-desc">
-                A spirit that once dwelt in the river, carrying those who fell in to safety and calming the flow of the water. When it was no longer needed where it lived, it entered the Demon Realm against its master's wishes and became a demon. As befits a water spirit it carries a jar of water, said to be filled not only with water but with all it has gained as the price of promises.
+                A spirit that once dwelled by the river, carrying the drowning to safety and calming the flow of the water. When it was no longer needed where it once lived, it entered the Demon Realm despite its master's pleas, and became a devil. True to its nature as a water spirit, it carries a jar of water, said to be filled not only with water but with everything it has gained as the price of promises.
               </p>
             </div>
             <div class="w-characters-normal w-characters-normal-4" data-normal-index="4">
               <p class="w-characters-title en-live"><span class="en-label">Shurinel</span></p>
               <p class="w-characters-desc">
-                A spirit of the stars that slept in a fragment of the Celestial Realm together with the remains of the ancient gods. It awakens naturally when one who shares the memory of those days visits ‘Amaranth Nova’. Wherever Shurinel passed once shone with beautiful starlight, but as it shakes off moments of despair and pain, it sinks into darkness.
+                A star spirit that slept in a Fragment of the Heavens alongside the remains of an Ancient God. When a being who shares its memories of that time visits "Amaranth Nova," it naturally awakens. Wherever Shurinel passed once shone with beautiful starlight, but as it shakes off moments of despair and pain, it sinks into darkness.
               </p>
             </div>
             <div class="w-characters-normal w-characters-normal-5" data-normal-index="5">
-              <p class="w-characters-title en-live"><span class="en-label">Cupola</span></p>
+              <p class="w-characters-title en-live"><span class="en-label">Kupola</span></p>
               <p class="w-characters-desc">
-                A mysterious plant that, under the influence of a special power, walks on two feet like a person. It is thought to have taken root and grown on an object that appears to be ancient before becoming what it is today. It resembles a mystical herb you might hear of only in very old tales, but now it is just a bizarre plant that pesters people with its strange dance.
+                A mysterious plant that, touched by a special power, walks on two legs like a person. It is believed to have taken root in an ancient-looking object and grown into its current form. It resembles a mystical herb you might hear of only in the oldest of tales, but now it is just a strange plant that dances oddly to torment people.
               </p>
             </div>
             <div class="w-characters-normal w-characters-normal-6" data-normal-index="6">
-              <p class="w-characters-title en-live"><span class="en-label">Vielo</span></p>
+              <p class="w-characters-title en-live"><span class="en-label">Viello</span></p>
               <p class="w-characters-desc">
-                An ancient relic that recorded and remembered the lives that lie between eternity and death. After the Twilight it left its master's hands and seemed never to be used again, but the moment the aura of despair fell upon it, it took on a human form and a self. Before recording and remembering more human figures, it seeks to keep for itself the owner of a blessed soul.
+                An ancient relic that recorded and remembered life between eternity and death. After the Twilight, it left its master's hands and seemed destined never to be used again, but the moment the aura of despair fell upon it, it took on a human form and a will of its own. Before it records and remembers more human forms, it seeks to keep the owners of blessed souls for itself.
               </p>
             </div>
             <div class="w-characters-normal w-characters-normal-7" data-normal-index="7">
-              <p class="w-characters-title en-live"><span class="en-label">Calviz</span></p>
+              <p class="w-characters-title en-live"><span class="en-label">Kalviz</span></p>
               <p class="w-characters-desc">
-                A spiritual being that awoke inside the weapons abandoned with the remains of the ancient gods. Believing the place where it opened its eyes to be a battlefield of the Twilight, it was searching for enemies to strike down when it stirred in response to the power of the Adventurer visiting Amaranth Nova. The name of a legendary giant, ‘Briareus’, is engraved on the armor it wears.
+                A spiritual being that awoke inside weapons discarded along with the remains of an Ancient God. Believing it had woken on a battlefield of the Twilight Days, it searched for enemies to strike down, and now stirs in response to the power of the Adventurer who came to Amaranth Nova. The armor it wears bears the name of a legendary giant: "Briaros."
               </p>
             </div>
             <div class="w-characters-normal w-characters-normal-8" data-normal-index="8">
               <p class="w-characters-title en-live"><span class="en-label">Zeruna</span></p>
               <p class="w-characters-desc">
-                A little fairy that has cleaned the cracks of the Great Wall since ancient times. It nearly perished through the schemes of the Twisted One, but was forgiven and left among the cracks of the Great Wall. It now works helping Iris, but after falling into Amaranth Nova in an accident someone caused on purpose, it has been brainwashed against its will and rushes at the Adventurer, taking them for something to be cleaned up.
+                A tiny fairy that has cleaned the cracks of the Great Wall since ancient times. Nearly destroyed by the scheme of a twisted one, it was forgiven and left to stay within the cracks of the Great Wall. It now helps Iris with her work, but after an accident someone caused on purpose sent it tumbling into Amaranth Nova, it was brainwashed against its will and now charges at the Adventurer as something to be cleaned.
               </p>
             </div>
           </div>
@@ -400,31 +400,31 @@
             <div class="w-characters-npc w-characters-npc-1" v-if="1===activeNpc">
               <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Benjamin</span></p>
               <p class="w-characters-desc" v-animation:fade="{once:false,delay:250}">
-                A poet with a charming smile who records the romance of Linford, the City of Angels. After his son Elliot left on a journey to mend his own character, the city fell under a curse that cut it off from the outside, and the two meet again only after ten years. When the son he thought he might never see again returns, he decides to help the Adventurer who came to Linford with him. He looks unbelievably young for his age and is far more timid than he appears. He seems easygoing, but it is said to have taken a great deal of training to get there. Like father, like son: Benjamin had much to do with Elliot leaving Linford to travel.
+                A poet with a winning smile who records the romance of Linford, the City of Angels. After his son Elliot set off on a journey to change his personality, the city fell under a curse that cut it off from the outside, and only after 10 years does he see his son again. When the son he thought he might never see again returns, he decides to help the Adventurer who came to Linford with him. He looks unbelievably young for his age, and is far more timid than he appears. He may seem composed, but they say he got there only after much practice. Like father, like son: Benjamin had a lot to do with Elliot leaving Linford to travel.
               </p>
             </div>
             <div class="w-characters-npc w-characters-npc-2" v-if="2===activeNpc">
               <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Hailee</span></p>
               <p class="w-characters-desc" v-animation:fade="{once:false,delay:250}">
-                A high elf from Lifthrasir and a demon hunter who has been active since the days when the Silvaria Empire was still a kingdom. No one knows why she began, but she is said to have struck down many witches and demons over the years. Ten years ago she happened to visit Linford, found herself unable to leave and has had no choice but to settle there. Unlike the haughty, unapproachable image of high elves, she is considerate and kind and never shies from hard work, earning her the nickname ‘Angel’. Still, she can react almost too sharply to any talk of witches and demons. These days she enjoys giving homemade treats to the birds and cats she meets on her patrols around town.
+                A High Elf from Lifthrasir, and a Demon Hunter active since the days when the Sylvaria Empire was still a kingdom. No one knows why she began, but she is said to have struck down many witches and demons over the years. Ten years ago, she happened to visit Linford and found herself unable to leave, so she has had no choice but to settle there. Unlike the aloof, hard-to-approach image of a High Elf, she is thoughtful, kind, and never shies away from hard work, earning her the nickname "Angel." However, she can react with extreme sensitivity to anything involving witches or demons. These days, she enjoys giving homemade treats to the birds and cats she meets on her village patrols.
               </p>
             </div>
             <div class="w-characters-npc w-characters-npc-3" v-if="3===activeNpc">
               <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Charlotte</span></p>
               <p class="w-characters-desc" v-animation:fade="{once:false,delay:250}">
-                A girl who has never once left Linford since she was born. From the moment she learned that the curse keeps her from going outside, her curiosity about the outside world has grown, but with so many people around her separated from their families, she rarely shows it for fear of touching their wounds. Hearing that outsiders have arrived, she feels a pleasant flutter she cannot explain. Calm, quiet and sparing with her emotions, she leaves those around her saying they can never tell what she is thinking, though Charlotte herself does not seem to mind. She likes Prirings, and her specialty is going out to look for things people rarely look for.
+                A girl who has never once left Linford since she was born. Ever since she learned that Linford's curse keeps everyone from leaving, her curiosity about the outside world has grown, but with so many around her separated from their families, she rarely shows it, afraid of reopening their wounds. Hearing that an outsider has arrived, she feels a pleasant flutter she can't explain. Calm and quiet, she shows little emotion, so people say they can never tell what she's thinking, but Charlotte herself doesn't seem to mind. She loves Priring, and her specialty is seeking out things people rarely look for.
               </p>
             </div>
             <div class="w-characters-npc w-characters-npc-4" v-if="4===activeNpc">
               <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Kyril</span></p>
               <p class="w-characters-desc" v-animation:fade="{once:false,delay:250}">
-                The owner of the general store ‘The Peculiar Priring’. On his first trip, taken the moment he came of age, he fell for Linford's beautiful scenery and has lived there ever since. He opened the store hoping to get rich, but when Linford fell under the curse he quietly set that dream aside. Handier than he looks, he scrapes by making whatever people ask for. What he is most confident in is making Priring-themed trinkets. He is the type to get by on his looks and a sly manner, but he never crosses the line, so it is hard to dislike him.
+                Owner of the general store "Quirky Priring." He fell for Linford's beautiful scenery on his very first journey as an adult and has lived there ever since. He opened the store hoping to get rich, but when Linford was cursed, he quietly let that dream go. Handier than he looks, he makes whatever people want and just barely gets by. His specialty is Priring-themed goods. He likes to play it cool and use his looks as a weapon, but never crosses the line, so it's hard to dislike him.
               </p>
             </div>
             <div class="w-characters-npc w-characters-npc-5" v-if="5===activeNpc">
               <p class="w-characters-title en-live" v-animation:fade="{once:false,delay:250}"><span class="en-label">Ariel</span></p>
               <p class="w-characters-desc" v-animation:fade="{once:false,delay:250}">
-                She looks like an ordinary resident of Linford, but she is in fact an angel who has lived among humans for a very long time with her wings hidden. The angels people know of are usually loyal to the gods and work for the sake of life, but Ariel is nothing like that. She loves an idle, easy life and goes so far as to say an angel's work does not suit her. During the Twilight, when something kept her from returning from a mission, she gladly settled in the human world and has stayed ever since. In Linford she now passes as ‘a woman in her late twenties who could not go home because of the city's curse’, and she grows very uneasy when an uninvited guest appears who seems to know what she is. Her wings have withered from long disuse, but she does not seem to care much.
+                She looks like an ordinary Linford resident, but she is actually an angel who has hidden her wings and lived among humans for ages. The angels people know are usually loyal to the gods and work for the sake of life, but Ariel is nothing like that. She loves nothing more than lazing around, so much so that she says angel work just isn't for her. During the Twilight Days, when something kept her from returning from a mission, she happily settled in the human world and has stayed ever since. In Linford, she lives under the cover story of "a woman in her late 20s, stranded by the city's curse while traveling," and an unwelcome guest who seems to see through her has her deeply worried. Her wings have withered from years without use, but she doesn't seem to mind much.
               </p>
             </div>
             <ul>
@@ -464,7 +464,7 @@
       <section class="floating-child" id="w-system" data-scroll-target="system" ref="systemEl">
         <h2 class="w-system-title en-live floating" v-animation:slide-bottom="{once:false,delay:250,distance:100}"><span class="en-label">System Updates & Improvements</span></h2>
         <div class="content w-system-content-1 en-live floating en" v-animation:fade="{once:false,delay:350}"><i class="en-art"></i><div class="en-hole en-hole-1"></div><span class="en-label">Dungeon Conquest System</span></div>
-        <div class="content w-system-content-2 en-live floating en" v-animation:fade="{once:false,delay:400}"><i class="en-art"></i><div class="en-hole en-hole-1"></div><span class="en-label">Content Overhaul<small>(Summoner / Transcendent / Legend)</small></span></div>
+        <div class="content w-system-content-2 en-live floating en" v-animation:fade="{once:false,delay:400}"><i class="en-art"></i><div class="en-hole en-hole-1"></div><span class="en-label">Content Revamp<small>(Summons / Champions / Legend)</small></span></div>
         <div class="content w-system-content-3 en-live floating en" v-animation:fade="{once:false,delay:450}"><i class="en-art"></i><div class="en-hole en-hole-1"></div><span class="en-label">Growth Items</span></div>
         <div class="content w-system-content-4 en-live floating en" v-animation:fade="{once:false,delay:500}"><i class="en-art"></i><div class="en-hole en-hole-1"></div><span class="en-label">Item Awakening Improvements</span></div>
         <a class="w-system-patch-note en-live floating" :href="patchNoteUrl" target="_blank" v-if="isEventDay" v-animation:fade="{once:false,delay:550}"><span class="en-label">View Patch Notes</span></a>

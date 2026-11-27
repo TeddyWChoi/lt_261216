@@ -1,4 +1,4 @@
-# LaTale 2026 2Q Update 2 (SHINING - Light on the Stage) - English build
+# LaTale 2026 2Q Update 2 (SHINING - On Stage) - English build
 
 English version of https://www.latale.com/event/2026/2q-update2/, rebuilt as plain HTML5 + CSS3 + Vue 2 (no build step).
 The Korean clone lives next to it in `LT/2026_2q_update2_vue2`.

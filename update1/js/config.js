@@ -12,7 +12,7 @@
     },
     page: {
       path: "2026/2q-update1",
-      title: "Light of the Soul",
+      title: "From the Soul",
       description: "Update",
     },
   };

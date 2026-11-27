@@ -78,20 +78,20 @@
         </div>
         <div class="w-header-scroll-area" :class="[{'w-header-is-fixed': isScrollAreaFixed}]" ref="scrollAreaRef">
           <h1>
-            <button class="w-header-logo text-hidden en" type="button" @click="scrollToTop"><span class="en-sub">Light of the Soul</span>SHINING</button>
+            <button class="w-header-logo text-hidden en" type="button" @click="scrollToTop"><span class="en-sub">From the Soul</span>SHINING</button>
           </h1>
           <ul>
             <li>
               <button class="w-header-btn-tab btn-tab-1" :class="[{'w-header-active': 'scenario'===activeSectionId}]" type="button" @click="scrollToSection('scenario')">Scenario</button>
             </li>
             <li>
-              <button class="w-header-btn-tab btn-tab-2" :class="[{'w-header-active': 'map'===activeSectionId}]" type="button" @click="scrollToSection('map')">Maps</button>
+              <button class="w-header-btn-tab btn-tab-2" :class="[{'w-header-active': 'map'===activeSectionId}]" type="button" @click="scrollToSection('map')">Map</button>
             </li>
             <li>
               <button class="w-header-btn-tab btn-tab-3" :class="[{'w-header-active': 'characters'===activeSectionId}]" type="button" @click="scrollToSection('characters')">Monsters & NPCs</button>
             </li>
             <li>
-              <button class="w-header-btn-tab btn-tab-4" :class="[{'w-header-active': 'system'===activeSectionId}]" type="button" @click="scrollToSection('system')">System Update</button>
+              <button class="w-header-btn-tab btn-tab-4" :class="[{'w-header-active': 'system'===activeSectionId}]" type="button" @click="scrollToSection('system')">System Updates</button>
             </li>
           </ul>
         </div>

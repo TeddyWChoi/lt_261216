@@ -12,7 +12,7 @@
     },
     page: {
       path: "2026/2q-update2",
-      title: "SHINING - Light on the Stage",
+      title: "SHINING - On Stage",
       description: "20th Anniversary Summer Update, Part 2",
     },
   };

@@ -79,7 +79,7 @@
         </div>
         <div class="w-header-scroll-area" :class="[{'w-header-is-fixed': isScrollAreaFixed}]" ref="scrollAreaRef">
           <h1>
-            <button class="w-header-logo text-hidden en" type="button" @click="scrollToTop"><span class="en-sub">Light on the Stage</span>SHINING</button>
+            <button class="w-header-logo text-hidden en" type="button" @click="scrollToTop"><span class="en-sub">On Stage</span>SHINING</button>
           </h1>
           <ul>
             <li>
